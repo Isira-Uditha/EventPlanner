@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Event 1</string>
+    <string-array name="Spinner_Gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="Spinner_Age">
+        <item>Adult</item>
+        <item>Child</item>
+        <item>Teenager</item>
+    </string-array>
+    <string name="g_name">Name</string>
+    <string name="g_gender">Gender</string>
+    <string name="g_age">Age</string>
+    <string name="g_contact">Contact</string>
+    <string name="g_email">E-mail</string>
+    <string name="g_invite">Invited</string>
+    <string name="g_note">Note</string>
+    <string name="g_btn_add">Add</string>
+    <string name="g_btn_edit">Edit</string>
+    <string name="g_btn_update">Update</string>
+    <string name="g_btn_guest">Guest</string>
+    <string name="s_completed_task">Completed Tasks</string>
+    <string name="s_budget">Budget</string>
+    <string name="s_date">Date and Time</string>
+    <string name="s_location">Location</string>
+    <string name="s_event">Event</string>
+    <string name="s_btn_todolist">To Do List</string>
+
+</resources>
+
