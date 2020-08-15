@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Event 1</string>
+    <string name="app_name2">xxxx</string>
     <string-array name="Spinner_Gender">
         <item>Male</item>
         <item>Female</item>
@@ -34,6 +35,9 @@
     <string name="g_toast_delete">You just deleted the guest record</string>
     <string name="g_toast_views">You just clicked the View button to check guest record</string>
     <string name="g_toast_redirect">You just redirected to the previous page</string>
+    <string name="e_home_name">Event Planner</string>
+    <string name="g_home_name">Guest</string>
+    <string name="g_home_name_extra">Guest 1</string>
 
 </resources>
 

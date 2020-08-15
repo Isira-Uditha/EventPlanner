@@ -23,6 +23,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_update);
+        getSupportActionBar().setTitle(R.string.g_home_name_extra);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.g_update);
 
@@ -59,13 +60,6 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_update,menu);
-        return true;
-
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

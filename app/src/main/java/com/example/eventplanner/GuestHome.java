@@ -28,6 +28,7 @@ public class GuestHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.g_home_name);
         edit1 = (ImageButton) findViewById(R.id.Edit1);
         delete1 = (ImageButton) findViewById(R.id.imageButton2);
 

@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle(R.string.e_home_name);
         edit1 = (ImageButton) findViewById(R.id.edit);
         edit2 = (ImageButton) findViewById(R.id.imageButton23);
 

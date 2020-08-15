@@ -25,8 +25,10 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_add);
+        getSupportActionBar().setTitle(R.string.g_home_name);
         btn = (Button) findViewById(R.id.g_update);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Spinner spinner1 = findViewById(R.id.spinner1);
         Spinner spinner2 = findViewById(R.id.spinner2);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.Spinner_Gender, android.R.layout.simple_spinner_item);
@@ -38,6 +40,14 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(this);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_update,menu);
+        return true;
 
     }
 

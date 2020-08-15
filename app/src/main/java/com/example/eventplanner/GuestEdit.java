@@ -21,6 +21,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_edit);
+        getSupportActionBar().setTitle(R.string.g_home_name_extra);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn1 = (Button) findViewById(R.id.button2);
 
