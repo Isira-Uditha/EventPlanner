@@ -26,6 +26,14 @@
     <string name="s_location">Location</string>
     <string name="s_event">Event</string>
     <string name="s_btn_todolist">To Do List</string>
+    <string name="g_toast_click">You just clicked the Guest button</string>
+    <string name="g_toast_add">You just clicked the Add button to add a new guest</string>
+    <string name="g_toast_add_successful">You just added a new guest record successfully</string>
+    <string name="g_toast_edit">You just clicked Edit button to Update guest record </string>
+    <string name="g_toast_update">Updated the guest details successfully</string>
+    <string name="g_toast_delete">You just deleted the guest record</string>
+    <string name="g_toast_views">You just clicked the View button to check guest record</string>
+    <string name="g_toast_redirect">You just redirected to the previous page</string>
 
 </resources>
 

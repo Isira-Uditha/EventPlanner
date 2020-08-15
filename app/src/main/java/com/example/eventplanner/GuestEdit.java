@@ -2,13 +2,16 @@ package com.example.eventplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -51,6 +54,14 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GuestEdit.this,GuestUpdate.class);
+
+                Context context = getApplicationContext();
+                CharSequence text = context.getString(R.string.g_toast_edit);
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+                toast.show();
+
                 startActivity(intent);
             }
         });

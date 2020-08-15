@@ -187,11 +187,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/g_update"
         android:layout_width="101dp"
         android:layout_height="50dp"
         android:backgroundTint="#3caac1"
-        android:text="@string/g_btn_update"
+        android:text="@string/g_btn_add"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
