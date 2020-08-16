@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventHome"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".Home"></activity>
+        <activity
+            android:name=".EventHome"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".GuestUpdate"
             android:parentActivityName=".GuestEdit" />
         <activity
             android:name=".GuestEdit"
             android:parentActivityName=".GuestHome" />
-        <activity
-            android:name=".GuestHome"/>
+        <activity android:name=".GuestHome" />
         <activity
             android:name=".GuestAdd"
             android:parentActivityName=".GuestHome" />
