@@ -29,7 +29,7 @@
         android:inputType="textPersonName"
         android:text="Guest1@gmail.com"
         android:textColor="#60000000"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox"
+        app:layout_constraintBottom_toTopOf="@+id/checkInvited"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +150,7 @@
         app:layout_constraintVertical_bias="0.222" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkInvited"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/g_invite"
