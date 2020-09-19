@@ -41,7 +41,6 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_guest_edit);
 
         title = getIntent().getExtras().getString("g_name");
-
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -59,9 +58,6 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         //guest_Gender.setEnabled(false);
         guest_Age = findViewById(R.id.guest_Age);
        // guest_Age.setEnabled(false);
-
-        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx" + guest_Contact.getText().toString());
-
 
 
         /*Spinner spinner1 = findViewById(R.id.spinner1);
@@ -110,7 +106,11 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String id = getIntent().getStringExtra("id");
+                final String title = getIntent().getExtras().getString("g_name");
                 Intent intent = new Intent(GuestEdit.this,GuestUpdate.class);
+                intent.putExtra("id",id);
+                intent.putExtra("title",title);
 
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.g_toast_edit);
