@@ -1,65 +1,47 @@
 package com.example.eventplanner;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton edit1;
-    ImageButton edit2;
+    Button btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setTitle(R.string.e_home_name);
-        edit1 = (ImageButton) findViewById(R.id.edit);
-        edit2 = (ImageButton) findViewById(R.id.imageButton23);
+        getSupportActionBar().hide();
+        btn = findViewById(R.id.button);
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_home,menu);
-        return true;
-
-    }
-
-
 
     @Override
     protected void onResume() {
         super.onResume();
-
-
-        edit2.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Home.class);
 
-                Intent intent = new Intent(MainActivity.this,GuestHome.class);
+                Context context = getApplicationContext();
+                CharSequence text = context.getString(R.string.welcome);
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+                toast.show();
+
                 startActivity(intent);
-
-            }
-        });
-
-        edit1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(MainActivity.this,EventHome.class);
-                startActivity(intent);
-
             }
         });
     }

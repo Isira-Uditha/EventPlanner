@@ -38,6 +38,8 @@
     <string name="e_home_name">Event Planner</string>
     <string name="g_home_name">Guest</string>
     <string name="g_home_name_extra">Guest 1</string>
+    <string name="welcome">Welcome To The Event Planner</string>
+    <string name="g_not_invite">Not Invited</string>
 
 </resources>
 
