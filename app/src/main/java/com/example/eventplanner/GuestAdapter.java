@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.EventsMaster;
 import com.example.eventplanner.Database.GuestModel;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
     private int resource;
     List<GuestModel> guests;
     private DBGuest dbGuest;
+
 
 
     public GuestAdapter( Context context, int resource,  List<GuestModel> guests) {
@@ -41,7 +43,7 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
         LayoutInflater inflater = LayoutInflater.from(context);
         View row = inflater.inflate(resource,parent,false);
 
-        //TextView title = row.findViewById((R.id.title));
+        TextView title = row.findViewById((R.id.title));
         TextView description = row.findViewById(R.id.idDescription);
         ImageView imageView = row.findViewById(R.id.idCheck);
         ImageButton edit = row.findViewById(R.id.idEditBtn);
@@ -71,6 +73,20 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
             }
         });
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context , GuestEdit.class);
+                intent.putExtra("id",String.valueOf(g_model.getGuestID()));
+                intent.putExtra("g_name",g_model.getGuestName());
+                context.startActivity(intent);
+
+            }
+        });
+
         return row;
     }
+
+
 }

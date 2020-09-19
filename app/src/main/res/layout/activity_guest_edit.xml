@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".GuestEdit">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
+    <TextView
+        android:id="@+id/guest_Contact"
         android:layout_width="376dp"
         android:layout_height="58dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
-        android:text="+9471444444"
         android:textColor="#60000000"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
@@ -21,14 +22,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
+    <TextView
+        android:id="@+id/guest_Email"
         android:layout_width="376dp"
         android:layout_height="58dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
-        android:text="Guest1@gmail.com"
         android:textColor="#60000000"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/checkInvited"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
@@ -36,14 +38,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
+    <TextView
+        android:id="@+id/guest_Note"
         android:layout_width="376dp"
         android:layout_height="58dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
-        android:text="xxxxx"
         android:textColor="#60000000"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,28 +117,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.222" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="128dp"
-        android:layout_height="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="128dp"
-        android:layout_height="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277" />
-
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
@@ -161,14 +142,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.675" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <TextView
+        android:id="@+id/guest_Name"
         android:layout_width="376dp"
         android:layout_height="58dp"
         android:ems="10"
+        android:gravity="center_vertical"
         android:inputType="textPersonName"
-        android:text="Guest 1"
         android:textColor="#60000000"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
@@ -191,5 +173,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
+
+    <TextView
+        android:id="@+id/guest_Gender"
+        android:layout_width="128dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/guest_Age"
+        android:layout_width="128dp"
+        android:layout_height="28dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/guest_Gender" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

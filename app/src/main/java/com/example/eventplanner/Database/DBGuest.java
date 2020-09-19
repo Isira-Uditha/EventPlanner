@@ -97,5 +97,45 @@ public class DBGuest extends SQLiteOpenHelper {
 
 
     }
+
+
+    public GuestModel readSelectedGuest(int id) {
+
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor =  sqLiteDatabase.query(EventsMaster.Guest.TABLE_NAME, new String[] {
+                EventsMaster.Guest._ID,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_NAME,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_AGE,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED,
+                EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE,} ,
+                EventsMaster.Guest._ID + " =?",new String[]{String.valueOf(id)},null , null,null );
+
+        GuestModel guest;
+
+        if (cursor != null){
+
+            cursor.moveToFirst();
+
+            guest = new GuestModel(
+
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getString(7 )
+
+            );
+            return guest;
+        }
+    return null;
+    }
+
 }
 
