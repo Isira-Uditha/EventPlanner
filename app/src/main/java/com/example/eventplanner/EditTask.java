@@ -78,7 +78,7 @@ public class EditTask extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EditTask.this , TaskHome.class);
+                Intent intent = new Intent(EditTask.this , UpdateTask.class);
                 intent.putExtra("id",String.valueOf(task.getId()));
 
                 Context context = getApplicationContext();
