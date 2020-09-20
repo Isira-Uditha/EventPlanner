@@ -70,7 +70,7 @@ public class TasksAdapter extends ArrayAdapter<Task> {
           }
       });
 
-    /*  edit.setOnClickListener(new View.OnClickListener() {
+     edit.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
 
@@ -79,7 +79,7 @@ public class TasksAdapter extends ArrayAdapter<Task> {
               context.startActivity(intent);
 
           }
-      });*/
+      });
 
 
 
