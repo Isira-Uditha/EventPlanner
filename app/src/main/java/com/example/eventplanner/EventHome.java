@@ -12,7 +12,8 @@ import android.widget.Toast;
 
 public class EventHome extends AppCompatActivity {
 
-    Button btn;
+    Button btn , taskHome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class EventHome extends AppCompatActivity {
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.button4);
+        taskHome = (Button) findViewById(R.id.button8);
     }
 
     @Override
@@ -40,5 +42,23 @@ public class EventHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        taskHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventHome.this,TaskHome.class);
+
+                Context context = getApplicationContext();
+                CharSequence text = "Manage your Tasks Here..";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+                toast.show();
+
+                startActivity(intent);
+            }
+        });
     }
+
+
 }
