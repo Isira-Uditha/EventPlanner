@@ -8,11 +8,24 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.eventplanner.Database.DBHelper;
+import com.example.eventplanner.Database.Task;
+
+import java.util.List;
 
 public class EventHome extends AppCompatActivity {
 
     Button btn , taskHome;
+    ProgressBar taskProgress;
+    Context context;
+    private DBHelper dbHelper;
+    private List<Task> tasks;
+    TextView showCount;
+
 
 
     @Override
@@ -22,6 +35,26 @@ public class EventHome extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.button4);
         taskHome = (Button) findViewById(R.id.button8);
+        taskProgress = (ProgressBar) findViewById(R.id.idprogressBarTask);
+        showCount = (TextView)findViewById(R.id.idShowCountTasks);
+
+
+        context = this;
+        dbHelper = new DBHelper(context);
+
+       int countTasks = dbHelper.countTasks();
+      taskProgress.setMax(countTasks);
+
+      int finished = dbHelper.countFinished(1);
+
+      taskProgress.setProgress(finished);
+
+      showCount.setText(finished + "/" + countTasks);
+
+
+
+
+
     }
 
     @Override

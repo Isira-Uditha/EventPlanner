@@ -139,10 +139,10 @@
         app:layout_constraintVertical_bias="0.192" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/idShowCountTasks"
         android:layout_width="30dp"
         android:layout_height="22dp"
-        android:text="1/2"
+        android:text="b/a"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +152,7 @@
         app:layout_constraintVertical_bias="0.077" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/idprogressBarTask"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="310dp"
         android:layout_height="30dp"

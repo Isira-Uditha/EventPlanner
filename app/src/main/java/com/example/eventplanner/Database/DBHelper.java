@@ -299,6 +299,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public int countFinished(int i) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
+
+
+       // Cursor cursor = db.rawQuery(query,null);
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
+        return cursor.getCount();
     }
+}
 
 
