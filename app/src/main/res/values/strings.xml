@@ -41,5 +41,36 @@
     <string name="welcome">Welcome To The Event Planner</string>
     <string name="g_not_invite">Not Invited</string>
 
+    //Anuththara's
+
+    <string name="b_name">Name</string>
+    <string name="add_price">Price</string>
+    <string name="add_amount">Amount</string>
+    <string name="b_note">Note</string>
+
+    <string name="as_qty">Total  Quantity</string>
+    <string name="as_price">Price</string>
+
+    <string name="bd_details">Budget Details</string>
+    <string name="bd_sl">Shopping List</string>
+    <string name="add">Add</string>
+
+    <string name="ebd_pa">Paid Amount</string>
+    <string name="ebd_a">Amount</string>
+    <string name="ebd_d">Delete</string>
+    <string name="ebd_u">Update</string>
+
+    <string name="adde_toast">New Budget Details added</string>
+    <string name="adds_toast">New Shopping List Details added</string>
+    <string name="bd_toast">Now You can add Budget Details</string>
+    <string name="asl_toast">Add New Shopping List</string>
+    <string name="ebd_dle_toast">Removed!</string>
+    <string name="ebu_up_toast">Updated!</string>
+
+
+    <string name="click_back">Nothing Changed</string>
+
+
+
 </resources>
 

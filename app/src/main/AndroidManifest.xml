@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Home"></activity>
+        <activity android:name=".BudgetOne"></activity>
+        <activity android:name=".BudgetDetails"></activity>
+        <activity android:name=".EditBudget"></activity>
+        <activity android:name=".AddBudget"></activity>
+        <activity android:name=".AddShoppingList"></activity>
+        <activity android:name=".EditShoppingList"></activity>
         <activity
             android:name=".EventHome"
             android:parentActivityName=".MainActivity" />

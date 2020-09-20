@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class EventHome extends AppCompatActivity {
 
     Button btn;
+    Button button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,13 @@ public class EventHome extends AppCompatActivity {
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.button4);
+
+        //visit to the budget page
+        button = (Button) findViewById(R.id.button9);
+
+
+
+
     }
 
     @Override
@@ -37,6 +46,14 @@ public class EventHome extends AppCompatActivity {
                 toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
                 toast.show();
 
+                startActivity(intent);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventHome.this,BudgetOne.class);
                 startActivity(intent);
             }
         });
