@@ -17,7 +17,7 @@ public class EventsMaster {
         public static final String COLUMN_NAME_PHOTOGRAPHERS = "eventphotographers";
         public static final String COLUMN_NAME_DESCRIPTION = "eventdescription";
         public static final String COLUMN_NAME_PLACE = "place";
-        //public static final String COLUMN_NAME_O = "eventdescription";
+
 
 
     }

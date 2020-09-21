@@ -1,4 +1,4 @@
-package com.example.eventplanner;
+package com.example.eventplanner.Database;
 
 public class Event {
 

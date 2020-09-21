@@ -54,7 +54,6 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
            description.setText(event.getDescription());
            completed.setVisibility(row.INVISIBLE);
 
-            // delete.setTag(position);
            delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -80,11 +79,6 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
                 }
             });
 
-
-
-            /*if(event.getFinished() > 0){
-                imageView.setVisibility(View.VISIBLE);
-            }*/
 
             return row;
 

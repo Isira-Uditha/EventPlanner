@@ -37,13 +37,10 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().setTitle(R.string.e_home_name);
-        //edit1 = (ImageButton) findViewById(R.id.edit);
-       //edit2 = (ImageButton) findViewById(R.id.imageButton23);
 
         context = this;
 
         DBHelper dbevent = new DBHelper(this);
-        //btn = (Button)findViewById(R.id.button);
         addBtn = (ImageButton)findViewById(R.id.button);
         listView = findViewById(R.id.eventList);
         count = findViewById(R.id.eventCount);
@@ -83,25 +80,5 @@ public class Home extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-
-       /* edit2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Home.this, GuestHome.class);
-                startActivity(intent);
-
-            }
-        });
-
-        edit1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Home.this, EventHome.class);
-                startActivity(intent);
-
-            }
-        });*/
     }
 }

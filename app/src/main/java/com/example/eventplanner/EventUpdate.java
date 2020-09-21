@@ -35,26 +35,12 @@ public class EventUpdate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_update);
-        //  getSupportActionBar().setTitle(R.string.string2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         radioGroup=(RadioGroup)findViewById(R.id.updateradioGroup);
         radioButton1 = (RadioButton)findViewById(R.id.updateIndoor);
         radioButton2 = (RadioButton)findViewById(R.id.updateOutdoor);
         textView=findViewById(R.id.selectedtxt);
-        //  textView=findViewById(R.id.selectedtxt);
-
-      /*  Button buttonApply = findViewById(R.id.choicebtn);
-        buttonApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                //textView.setText("selected :" + radioButton.getText());
-
-            }
-        });*/
 
         context = this;
         dbevent = new DBHelper(context);
@@ -68,7 +54,6 @@ public class EventUpdate extends AppCompatActivity {
         updatePhotographer  =  (EditText)findViewById(R.id.idUpdatePhotographer);
         updateDescription =  (EditText)findViewById(R.id.idUpdateDescription);
         updateDressCode =  (EditText)findViewById(R.id.idUpdateDressCode);
-        // updateIndoor =  (EditText)findViewById(R.id.idUpdateOutdoor);
         Button buttonApply = findViewById(R.id.choicebtn1);
 
         buttonApply.setOnClickListener(new View.OnClickListener() {
@@ -97,39 +82,12 @@ public class EventUpdate extends AppCompatActivity {
         updatePhotographer .setText(event.getPhotographer());
         updateDescription .setText(event.getDescription());
 
-        //String place = event.getPlace();
-        //System.out.println(place);
-        //int radioId ;
-        //CharSequence a = radioButton.getText();
 
         if( event.getPlace().equals("Indoor")){
-            System.out.println( "xxxxxxxxxx "+ event.getPlace());
-            //radioButton = (RadioButton)findViewById(radioButton1);
             radioButton1.setChecked(true);
-            // radioButton = (RadioButton)findViewById(R.id.updateIndoor);
-            // radioButton.setChecked(true);
         } else{
-            // radioId = 2;
-            System.out.println("kasuni");
-            //radioButton = (RadioButton)findViewById(R.id.updateOutdoor);
-            //System.out.println( "xxxxxxxxxx "+ event.getPlace());
             radioButton2.setChecked(true);
-            //radioButton = (RadioButton)findViewById(R.id.updateOutdoor);
-            //radioButton.setChecked(true);
-            //radioButton2.setChecked(true);
         }
-        //radioButton = (RadioButton)findViewById(radioId);
-        // radioButton.setChecked(true);
-
-        // System.out.println(radioButton);
-        /*public void checkButton(View view){
-            int radioId = radioGroup.getCheckedRadioButtonId();
-            radioButton = findViewById(radioId);
-            Toast.makeText(this, "Selected: " + radioButton.getText(), Toast.LENGTH_SHORT).show();
-        }*/
-
-
-
 
     }
 
@@ -146,16 +104,6 @@ public class EventUpdate extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*  Intent myIntent = new Intent(EventUpdate.this, MainActivity.class);
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.update);
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();*/
-
-                /*toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 10);
-                myIntent.putExtra("MAIN_EXTRA", myExtra);
-                startActivity(myIntent);*/
 
                 final String id = getIntent().getStringExtra("id");
 
@@ -186,15 +134,15 @@ public class EventUpdate extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected (@NonNull MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         int id1 = item.getItemId();
         context = this;
         dbevent = new DBHelper(context);
         final String id = getIntent().getStringExtra("id");
-        /*final Event event = dbHelper.getSingleEvent(Integer.parseInt(id));
+        final Event event = dbevent.getSingleEvent(Integer.parseInt(id));
 
-        if (id1 == android.R.id.home) {
+        if(id1 == android.R.id.home){
 
 
             Intent intent = new Intent(EventUpdate.this, EventEdit.class);
@@ -202,8 +150,7 @@ public class EventUpdate extends AppCompatActivity {
 
             startActivity(intent);
 
-        }*/
+        }
         return true;
-
     }
 }
