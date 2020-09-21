@@ -69,7 +69,7 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
                 }
             });
 
-         /* edit.setOnClickListener(new View.OnClickListener() {
+         edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
@@ -78,7 +78,7 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
                     context.startActivity(intent);
 
                 }
-            });*/
+            });
 
 
 
