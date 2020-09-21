@@ -21,12 +21,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.GuestModel;
 
 public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //button
     Button btn;
-    private DBGuest dbGuest;
+    private DBHelper dbGuest;
     private Context context;
     private  Long updatedDate;
     TextView guest_Name;
@@ -58,7 +59,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
         btn = (Button) findViewById(R.id.g_update);
 
         context = this;
-        dbGuest = new DBGuest(context);
+        dbGuest = new DBHelper(context);
         guest_Name = findViewById(R.id.guest_Name);
         guest_Contact = findViewById(R.id.guest_Contact);
         guest_Email = findViewById(R.id.guest_Email);
@@ -203,7 +204,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
         int id1 = item.getItemId();
         context = this;
-        dbGuest = new DBGuest(context);
+        dbGuest = new DBHelper(context);
         final String id = getIntent().getStringExtra("id");
         final GuestModel guest = dbGuest.readSelectedGuest(Integer.parseInt(id));
 

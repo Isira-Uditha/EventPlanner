@@ -17,12 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.GuestModel;
 
 public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Button btn1;
-    private DBGuest dbGuest;
+    private DBHelper dbGuest;
     private Context context;
     private  Long updatedDate;
     TextView guest_Name;
@@ -45,7 +46,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         context = this;
-        dbGuest = new DBGuest(context);
+        dbGuest = new DBHelper(context);
 
         btn1 = (Button) findViewById(R.id.button2);
         guest_Name = findViewById(R.id.guest_Name);
