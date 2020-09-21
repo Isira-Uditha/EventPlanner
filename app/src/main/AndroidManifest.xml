@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".EventUpdate"></activity>
+        <activity android:name=".EventEdit" />
+        <activity android:name=".EventAdd" />
+       
+
 <!--<<<<<<< Kasuni-->
         <activity android:name=".UpdateTask"></activity>
         <activity android:name=".EditTask" />
@@ -18,6 +24,7 @@
 <!--=======-->
         <activity android:name=".Home"></activity>
 <!-->>>>>>> Integration-->
+
         <activity
             android:name=".EventHome"
             android:parentActivityName=".MainActivity" />
