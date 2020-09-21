@@ -8,11 +8,19 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.GuestModel;
 
 public class EventHome extends AppCompatActivity {
 
     Button btn;
+    private DBGuest dbGuest;
+    private Context context;
+    TextView totalGuests;
+    TextView invitedGuests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +28,20 @@ public class EventHome extends AppCompatActivity {
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.button4);
+        totalGuests = findViewById(R.id.editTextTextPersonName15);
+        invitedGuests = findViewById(R.id.editTextTextPersonName16);
+
+        context = this;
+        dbGuest = new DBGuest(context);
+
+        int totalGuestsCount = dbGuest.totalGuest();
+        int invitedGuestsCount = dbGuest.invitedGuest();
+
+        totalGuests.setText(String.valueOf(totalGuestsCount));
+        invitedGuests.setText(String.valueOf(invitedGuestsCount));
+
+
+
     }
 
     @Override
