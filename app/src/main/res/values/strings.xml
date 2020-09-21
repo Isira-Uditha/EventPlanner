@@ -40,6 +40,7 @@
     <string name="g_home_name_extra">Guest 1</string>
     <string name="welcome">Welcome To The Event Planner</string>
     <string name="g_not_invite">Not Invited</string>
+
     <string name="eventName">Event Name</string>
     <string name="eventDate">Date</string>
     <string name="eventTime">Time</string>
@@ -52,5 +53,14 @@
     <string name="edit">You are going to edit your event</string>
     <string name="eventDes">Description</string>
 
+<!--<<<<<<< Kasuni-->
+    <string name="tName">Task</string>
+    <string name="tTime">Time</string>
+    <string name="tDescription">Description</string>
+    <string name="toast_edit">View Your Task Here</string>
+
+
+<!--=======-->
+<!-->>>>>>> Integration-->
 </resources>
 

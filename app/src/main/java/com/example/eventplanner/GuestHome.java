@@ -14,14 +14,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.DBHelper;
+import com.example.eventplanner.Database.GuestModel;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class GuestHome extends AppCompatActivity {
 
-    ImageButton edit1;
-    ImageButton delete1;
+    //ImageButton edit1;
+    //ImageButton delete1;
+    private List<GuestModel> guests;
+    private DBHelper dbGuest;
+    private ListView guestList;
+    Context context;
+    ImageButton delete;
+
+    public GuestHome() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +44,19 @@ public class GuestHome extends AppCompatActivity {
         setContentView(R.layout.activity_guest_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.g_home_name);
-        edit1 = (ImageButton) findViewById(R.id.Edit1);
-        delete1 = (ImageButton) findViewById(R.id.imageButton2);
+        //edit1 = (ImageButton) findViewById(R.id.Edit1);
+        //delete1 = (ImageButton) findViewById(R.id.imageButton2);
+        delete = findViewById(R.id.idDeleteBtn);
+        context = this;
+        dbGuest = new DBHelper(context);
+        guestList = findViewById(R.id.guestList);
+        guests = new ArrayList<>();
+
+        guests = dbGuest.readAllGuest();
+
+        GuestAdapter adapter = new GuestAdapter(context,R.layout.single_guest,guests);
+
+        guestList.setAdapter(adapter);
 
     }
 
@@ -82,7 +108,7 @@ public class GuestHome extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        edit1.setOnClickListener(new View.OnClickListener() {
+        /*edit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -118,6 +144,8 @@ public class GuestHome extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
+
+
     }
 }
