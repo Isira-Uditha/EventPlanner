@@ -38,7 +38,7 @@ public class EventHome extends AppCompatActivity {
     TextView showCount;
 
     Button btn;
-    private DBGuest dbGuest;
+    private DBHelper dbGuest;
     private Context context;
     TextView totalGuests;
     TextView invitedGuests;
@@ -74,7 +74,7 @@ public class EventHome extends AppCompatActivity {
         invitedGuests = findViewById(R.id.editTextTextPersonName16);
 
         //context = this;
-        dbGuest = new DBGuest(context);
+        dbGuest = new DBHelper(context);
 
         int totalGuestsCount = dbGuest.totalGuest();
         int invitedGuestsCount = dbGuest.invitedGuest();

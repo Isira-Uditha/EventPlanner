@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.EventsMaster;
 import com.example.eventplanner.Database.GuestModel;
 
@@ -25,7 +26,7 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
     private Context context;
     private int resource;
     List<GuestModel> guests;
-    private DBGuest dbGuest;
+    private DBHelper dbGuest;
 
 
 
@@ -64,7 +65,7 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
             @Override
             public void onClick(View view) {
 
-                dbGuest = new DBGuest(context);
+                dbGuest = new DBHelper(context);
                 dbGuest.deleteGuest(g_model.getGuestID());
                 Intent myIntent = new Intent(context,GuestHome.class);
                 context.startActivity(myIntent);

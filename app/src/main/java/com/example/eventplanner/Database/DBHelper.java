@@ -35,10 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-
-
-
-        String SQL_CREATE_ENTRIES =
+        String SQL_CREATE_ENTRIES_TASKS =
                 "CREATE TABLE " + TABLE_NAME + " (" +
                         COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
                        COLUMN_NAME_TASK_NAME + " TEXT," +
@@ -47,7 +44,20 @@ public class DBHelper extends SQLiteOpenHelper {
                       COLUMN_NAME_DESCRIPTION + " TEXT," +
                         COLUMN_NAME_FINISHED + " TEXT )";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES); //execute content of sql entries
+        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_TASKS); //execute content of sql entries
+
+        String SQL_CREATE_ENTRIES_GUESTS =
+                "CREATE TABLE " + EventsMaster.Guest.TABLE_NAME + "(" +
+                        EventsMaster.Guest._ID + " INTEGER PRIMARY KEY," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_NAME + " TEXT," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER + " TEXT," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_AGE + " TEXT," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT + " TEXT," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL + " TEXT," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED + " INTEGER," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE + " TEXT)";
+
+        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_GUESTS);
 
     }
 
@@ -310,6 +320,147 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
         return cursor.getCount();
     }
+
+    /////////////////////
+    //ISIRA - DATABASE
+    ////////////////////
+
+    public long addInfo_guest(String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestInvited, String guestNote) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_NAME, guestName);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER, guestGender);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_AGE, guestAge);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT, guestContact);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL, guestEmail);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED, guestInvited);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE, guestNote);
+
+        //Insert the new row
+        long newRowId = db.insert(EventsMaster.Guest.TABLE_NAME, null, values);
+        return newRowId;
+
+    }
+
+    public List<GuestModel> readAllGuest() {
+
+        List<GuestModel> guests = new ArrayList<>();
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME;
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                GuestModel guest = new GuestModel();
+
+                guest.setGuestID(cursor.getInt(0));
+                guest.setGuestName(cursor.getString(1));
+                guest.setGuestGender(cursor.getString(2));
+                guest.setGuestAge(cursor.getString(3));
+                guest.setGuestContact(cursor.getString(4));
+                guest.setGuestEmail(cursor.getString(5));
+                guest.setGuestCheck(cursor.getInt(6));
+                guest.setGuestNote(cursor.getString(7));
+
+                guests.add(guest);
+            } while (cursor.moveToNext());
+        }
+        return guests;
+    }
+
+    public void deleteGuest(int id){
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.delete(EventsMaster.Guest.TABLE_NAME,EventsMaster.Guest._ID+" =?",new String[]{String.valueOf(id)});
+
+        sqLiteDatabase.close();
+
+
+    }
+
+    public GuestModel readSelectedGuest(int id) {
+
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor =  sqLiteDatabase.query(EventsMaster.Guest.TABLE_NAME, new String[] {
+                        EventsMaster.Guest._ID,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_NAME,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_AGE,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED,
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE,} ,
+                EventsMaster.Guest._ID + " =?",new String[]{String.valueOf(id)},null , null,null );
+
+        GuestModel guest;
+
+        if (cursor != null){
+
+            cursor.moveToFirst();
+
+            guest = new GuestModel(
+
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getString(7 )
+
+            );
+            return guest;
+        }
+        return null;
+    }
+
+    public int updateGuest(GuestModel guest){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_NAME, guest.getGuestName());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER, guest.getGuestGender());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_AGE, guest.getGuestAge());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT, guest.getGuestContact());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL, guest.getGuestEmail());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED, guest.getGuestCheck());
+
+        int status = db.update(EventsMaster.Guest.TABLE_NAME,values,EventsMaster.Guest._ID+" =?",new String[]{String.valueOf(guest.getGuestID())});
+
+        db.close();
+        return status;
+
+    }
+
+    public int totalGuest(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME;
+        Cursor cursor = db.rawQuery(count,null);
+        int num = cursor.getCount();
+        cursor.close();
+        return num;
+
+    }
+
+    public int invitedGuest(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED+ " = 1";
+        Cursor cursor = db.rawQuery(count,null);
+        int num = cursor.getCount();
+        cursor.close();
+        return num;
+
+    }
+
 }
 
 

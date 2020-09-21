@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DBGuest extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "EventPlanner.db";
+    public static final String DATABASE_NAME = "EventPlanner1.db";
 
     public DBGuest(Context context) {
         super(context, DATABASE_NAME, null, 1);

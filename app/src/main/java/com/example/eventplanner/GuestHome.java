@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.GuestModel;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class GuestHome extends AppCompatActivity {
     //ImageButton edit1;
     //ImageButton delete1;
     private List<GuestModel> guests;
-    private DBGuest dbGuest;
+    private DBHelper dbGuest;
     private ListView guestList;
     Context context;
     ImageButton delete;
@@ -47,7 +48,7 @@ public class GuestHome extends AppCompatActivity {
         //delete1 = (ImageButton) findViewById(R.id.imageButton2);
         delete = findViewById(R.id.idDeleteBtn);
         context = this;
-        dbGuest = new DBGuest(context);
+        dbGuest = new DBHelper(context);
         guestList = findViewById(R.id.guestList);
         guests = new ArrayList<>();
 

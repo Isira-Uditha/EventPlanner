@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.GuestModel;
 
 import java.util.ArrayList;
@@ -157,14 +158,14 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
 
 
     public void addData(View view){
-        DBGuest dbguest = new DBGuest(this);
+        DBHelper dbguest = new DBHelper(this);
 
 
 
         //Toast.makeText(this, s1 + " Successfully Inserted", Toast.LENGTH_SHORT).show();
 
 
-        long val = dbguest.addInfo(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString());
+        long val = dbguest.addInfo_guest(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString());
 
         intent = new Intent(GuestAdd.this,GuestHome.class);
         startActivity(intent);
