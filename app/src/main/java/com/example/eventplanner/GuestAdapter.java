@@ -79,7 +79,6 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
 
                 Intent intent = new Intent(context , GuestEdit.class);
                 intent.putExtra("id",String.valueOf(g_model.getGuestID()));
-                intent.putExtra("g_name",g_model.getGuestName());
                 context.startActivity(intent);
 
             }

@@ -156,6 +156,28 @@ public class DBGuest extends SQLiteOpenHelper {
 
     }
 
+    public int totalGuest(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME;
+        Cursor cursor = db.rawQuery(count,null);
+        int num = cursor.getCount();
+        cursor.close();
+        return num;
+
+    }
+
+    public int invitedGuest(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED+ " = 1";
+        Cursor cursor = db.rawQuery(count,null);
+        int num = cursor.getCount();
+        cursor.close();
+        return num;
+
+    }
+
 }
 
 

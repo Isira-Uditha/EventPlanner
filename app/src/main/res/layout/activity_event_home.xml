@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.535" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.357" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName11"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
@@ -204,9 +204,10 @@
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintVertical_bias="0.235"
+        android:gravity="center"/>
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName15"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
@@ -219,9 +220,10 @@
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.625"
+        android:gravity="center"/>
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName16"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
@@ -234,9 +236,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.625"
+        android:gravity="center"/>
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName12"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
@@ -249,9 +252,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintVertical_bias="0.235"
+        android:gravity="center"/>
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName13"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
@@ -264,7 +268,8 @@
         app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.234" />
+        app:layout_constraintVertical_bias="0.234"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/button4"
