@@ -2,26 +2,71 @@ package com.example.eventplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.eventplanner.Database.DBHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
 
     ImageButton edit1;
     ImageButton edit2;
+    public String myExtra = "text";
+    Button btn;
+    private ImageButton addBtn;
+    private ListView listView;
+    private TextView count;
+    Context context;
+    private List<com.example.eventplanner.Event> events;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().setTitle(R.string.e_home_name);
-        edit1 = (ImageButton) findViewById(R.id.edit);
-        edit2 = (ImageButton) findViewById(R.id.imageButton23);
+        //edit1 = (ImageButton) findViewById(R.id.edit);
+       //edit2 = (ImageButton) findViewById(R.id.imageButton23);
+
+        context = this;
+
+        DBHelper dbevent = new DBHelper(this);
+        //btn = (Button)findViewById(R.id.button);
+        addBtn = (ImageButton)findViewById(R.id.button);
+        listView = findViewById(R.id.eventList);
+        count = findViewById(R.id.eventCount);
+        events = new ArrayList<>();
+
+        events = dbevent.readAllEvent();
+
+        EventsAdapter adapter = new EventsAdapter(context, R.layout.single_event,events);
+        listView.setAdapter(adapter);
+
+        int countEvents = dbevent.countEvents();
+        count.setText("You have "+countEvents+" Events");
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Home.this, EventAdd.class);
+
+                myIntent.putExtra("MAIN_EXTRA", myExtra);
+                startActivity(myIntent);
+            }
+        });
+
 
     }
 
@@ -39,7 +84,7 @@ public class Home extends AppCompatActivity {
         super.onResume();
 
 
-        edit2.setOnClickListener(new View.OnClickListener() {
+       /* edit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -57,6 +102,6 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
 }

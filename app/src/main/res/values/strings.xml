@@ -40,6 +40,14 @@
     <string name="g_home_name_extra">Guest 1</string>
     <string name="welcome">Welcome To The Event Planner</string>
     <string name="g_not_invite">Not Invited</string>
+    <string name="eventName">Event Name</string>
+    <string name="eventDate">Date</string>
+    <string name="eventTime">Time</string>
+    <string name="eventLocation">Location</string>
+    <string name="eventTheme">Theme</string>
+    <string name="evetnDress">Dress Code</string>
+    <string name="photoes">Photographers</string>
+    <string name="eventDes">Description</string>
 
 </resources>
 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="8dp"
+    android:paddingRight="8dp">
+
+    <TextView
+        android:id="@+id/eventDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="48dp"
+        android:layout_marginLeft="24dp" />
+
+    <TextView
+        android:id="@+id/descriptionDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventDisplay"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="48dp"
+        android:layout_marginLeft="24dp"  />
+
+
+    <ImageView
+        android:id="@+id/completed"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginRight="144dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.313"
+        app:srcCompat="@android:drawable/checkbox_on_background"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/editImgBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193"
+        app:srcCompat="@android:drawable/ic_menu_edit"  />
+
+    <ImageButton
+        android:id="@+id/deleteImgBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
