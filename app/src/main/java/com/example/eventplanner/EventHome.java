@@ -1,15 +1,19 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
 //<<<<<<< Kasuni
 import android.widget.ProgressBar;
+
 import android.widget.TextView;
 import android.widget.Toast;
 //import android.widget.TextView;
@@ -28,6 +32,8 @@ import java.util.List;
 //=======
 
 
+import com.example.eventplanner.Database.DBHelper;
+
 public class EventHome extends AppCompatActivity {
   
     Button taskHome;
@@ -37,12 +43,18 @@ public class EventHome extends AppCompatActivity {
     private List<Task> tasks;
     TextView showCount;
 
+
+    Button btnEvent;
+    DBHelper dbevent;
+    private Context context;
+    TextView viewEventDateTime,viewEventLocation;
+
     Button btn;
     private DBHelper dbGuest;
-    private Context context;
     TextView totalGuests;
     TextView invitedGuests;
 //>>>>>>> Integration
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +62,46 @@ public class EventHome extends AppCompatActivity {
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.button4);
-//<<<<<<< Kasuni
+
+        btnEvent = (Button) findViewById(R.id.btnEvent);
+        viewEventDateTime = (TextView) findViewById(R.id.idViewEventDateTime);
+        viewEventLocation = (TextView) findViewById(R.id.idViewEventLocation);
+
+        context = this;
+        dbevent = new DBHelper(context);
+
+        final String id = getIntent().getStringExtra("id");
+        final com.example.eventplanner.Database.Event event = dbevent.getSingleEvent(Integer.parseInt(id));
+        getSupportActionBar().setTitle(event.getEventName());
+
+        viewEventDateTime.setText(event.getDate() + " " + event.getTime());
+        viewEventLocation.setText(event.getLocation());
+
+        btnEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent myIntent = new Intent(EventHome.this,EventEdit.class);
+                myIntent.putExtra("id",String.valueOf(event.getId()));
+                Context context = getApplicationContext();
+                CharSequence text = "Go to Event Details";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+                toast.show();
+
+                startActivity(myIntent);
+            }
+        });
+
+
         taskHome = (Button) findViewById(R.id.button8);
         taskProgress = (ProgressBar) findViewById(R.id.idprogressBarTask);
         showCount = (TextView)findViewById(R.id.idShowCountTasks);
 
 
-        context = this;
+        //context = this;
         dbHelper = new DBHelper(context);
 
        int countTasks = dbHelper.countTasks();
@@ -69,7 +114,7 @@ public class EventHome extends AppCompatActivity {
       showCount.setText(finished + "/" + countTasks);
 
 
-//=======
+
         totalGuests = findViewById(R.id.editTextTextPersonName15);
         invitedGuests = findViewById(R.id.editTextTextPersonName16);
 
@@ -81,7 +126,8 @@ public class EventHome extends AppCompatActivity {
 
         totalGuests.setText(String.valueOf(totalGuestsCount));
         invitedGuests.setText(String.valueOf(invitedGuestsCount));
-//>>>>>>> Integration
+
+
 
 
 
@@ -94,6 +140,8 @@ public class EventHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventHome.this,GuestHome.class);
+                final String id = getIntent().getStringExtra("id");
+                intent.putExtra("id",id);
 
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.g_toast_click);
@@ -105,11 +153,13 @@ public class EventHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        taskHome.setOnClickListener(new View.OnClickListener() {
+      
+              taskHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventHome.this,TaskHome.class);
+                final String id = getIntent().getStringExtra("id");
+                intent.putExtra("id",id);
 
                 Context context = getApplicationContext();
                 CharSequence text = "Manage your Tasks Here..";
@@ -121,6 +171,23 @@ public class EventHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+
+            Intent intent = new Intent(EventHome.this,Home.class);
+
+            startActivity(intent);
+
+        }
+        return true;
+    
     }
 
 

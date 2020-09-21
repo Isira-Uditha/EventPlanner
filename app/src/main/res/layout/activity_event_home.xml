@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.535" />
 
     <TextView
-        android:id="@+id/editTextTextPersonName14"
+        android:id="@+id/idViewEventLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -177,7 +177,8 @@
         app:layout_constraintVertical_bias="0.315" />
 
     <TextView
-        android:id="@+id/editTextTextPersonName10"
+
+        android:id="@+id/idViewEventDateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -300,7 +301,7 @@
         app:layout_constraintVertical_bias="0.787" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btnEvent"
         android:layout_width="98dp"
         android:layout_height="46dp"
         android:backgroundTint="#3caac1"

@@ -84,6 +84,9 @@ public class TaskHome extends AppCompatActivity {
         if(id == android.R.id.home){
 
             Intent intent = new Intent(TaskHome.this,EventHome.class);
+            final String id1 = getIntent().getStringExtra("id");
+            intent.putExtra("id",id1);
+
 
             startActivity(intent);
 
