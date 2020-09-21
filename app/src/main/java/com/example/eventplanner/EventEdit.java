@@ -44,7 +44,7 @@ public class EventEdit extends AppCompatActivity {
         etLocationType = (TextView) findViewById(R.id.editLocationType);
 
         final String id = getIntent().getStringExtra("id");
-        final com.example.eventplanner.Event event = dbevent.getSingleEvent(Integer.parseInt(id));
+        final com.example.eventplanner.Database.Event event = dbevent.getSingleEvent(Integer.parseInt(id));
         getSupportActionBar().setTitle(event.getEventName());
 
         etEventName.setText(event.getEventName());

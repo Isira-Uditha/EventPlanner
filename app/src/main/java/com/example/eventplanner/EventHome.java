@@ -71,7 +71,7 @@ public class EventHome extends AppCompatActivity {
         dbevent = new DBHelper(context);
 
         final String id = getIntent().getStringExtra("id");
-        final com.example.eventplanner.Event event = dbevent.getSingleEvent(Integer.parseInt(id));
+        final com.example.eventplanner.Database.Event event = dbevent.getSingleEvent(Integer.parseInt(id));
         getSupportActionBar().setTitle(event.getEventName());
 
         viewEventDateTime.setText(event.getDate() + " " + event.getTime());
@@ -95,7 +95,7 @@ public class EventHome extends AppCompatActivity {
             }
         });
 
-//<<<<<<< Kasuni
+
         taskHome = (Button) findViewById(R.id.button8);
         taskProgress = (ProgressBar) findViewById(R.id.idprogressBarTask);
         showCount = (TextView)findViewById(R.id.idShowCountTasks);
@@ -114,7 +114,7 @@ public class EventHome extends AppCompatActivity {
       showCount.setText(finished + "/" + countTasks);
 
 
-//=======
+
         totalGuests = findViewById(R.id.editTextTextPersonName15);
         invitedGuests = findViewById(R.id.editTextTextPersonName16);
 
@@ -126,7 +126,7 @@ public class EventHome extends AppCompatActivity {
 
         totalGuests.setText(String.valueOf(totalGuestsCount));
         invitedGuests.setText(String.valueOf(invitedGuestsCount));
-//>>>>>>> Integration
+
 
 
 
@@ -140,6 +140,8 @@ public class EventHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventHome.this,GuestHome.class);
+                final String id = getIntent().getStringExtra("id");
+                intent.putExtra("id",id);
 
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.g_toast_click);
@@ -156,6 +158,8 @@ public class EventHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventHome.this,TaskHome.class);
+                final String id = getIntent().getStringExtra("id");
+                intent.putExtra("id",id);
 
                 Context context = getApplicationContext();
                 CharSequence text = "Manage your Tasks Here..";

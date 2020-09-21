@@ -46,10 +46,7 @@
         app:layout_constraintVertical_bias="0.535" />
 
     <TextView
-
         android:id="@+id/idViewEventLocation"
-        <!--android:id="@+id/editTextTextPersonName14"-->
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -182,9 +179,6 @@
     <TextView
 
         android:id="@+id/idViewEventDateTime"
-
-        <!--android:id="@+id/editTextTextPersonName10"-->
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

@@ -29,7 +29,7 @@ public class Home extends AppCompatActivity {
     private ListView listView;
     private TextView count;
     Context context;
-    private List<com.example.eventplanner.Event> events;
+    private List<com.example.eventplanner.Database.Event> events;
 
 
     @Override

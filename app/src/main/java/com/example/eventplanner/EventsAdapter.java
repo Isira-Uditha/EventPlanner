@@ -17,16 +17,16 @@ import com.example.eventplanner.Database.DBHelper;
 
 import java.util.List;
 
-public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
+public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Database.Event>{
 
 
 
         private Context context;
         private int resource;
-        List<com.example.eventplanner.Event> events;
+        List<com.example.eventplanner.Database.Event> events;
         DBHelper dbevent;
 
-        public EventsAdapter(@NonNull Context context, int resource, List<com.example.eventplanner.Event> events) {
+        public EventsAdapter(@NonNull Context context, int resource, List<com.example.eventplanner.Database.Event> events) {
             super(context, resource, events);
             this.context = context;
             this.resource = resource;
@@ -49,7 +49,7 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
 
 
 
-           final com.example.eventplanner.Event event = events.get(position);
+           final com.example.eventplanner.Database.Event event = events.get(position);
            eventName.setText(event.getEventName());
            description.setText(event.getDescription());
            completed.setVisibility(row.INVISIBLE);

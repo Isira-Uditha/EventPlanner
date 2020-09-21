@@ -90,6 +90,9 @@ public class GuestHome extends AppCompatActivity {
         if(id == android.R.id.home){
 
             Intent intent = new Intent(GuestHome.this,EventHome.class);
+            final String id1 = getIntent().getStringExtra("id");
+            intent.putExtra("id",id1);
+
 
             Context context = getApplicationContext();
             CharSequence text = context.getString(R.string.g_toast_redirect);

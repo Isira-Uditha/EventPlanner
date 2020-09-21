@@ -45,6 +45,7 @@ public class EditTask extends AppCompatActivity {
         editDate = (TextView)findViewById(R.id.idEditDate);
         editTime = (TextView)findViewById(R.id.idEditTime);
         editFinished = (CheckBox) findViewById(R.id.idEditFinished);
+        editFinished.setClickable(false);
 
 
         final String id = getIntent().getStringExtra("id");

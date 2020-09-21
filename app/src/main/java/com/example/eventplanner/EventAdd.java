@@ -70,7 +70,7 @@ public class EventAdd extends AppCompatActivity {
 
     public void addData(View view){
         DBHelper dbevent = new DBHelper(this);
-        long val =dbevent.addInfo(etEventName.getText().toString(),etEventDate.getText().toString(),etEventTime.getText().toString(),tietLocation.getText().toString(),tietTheme.getText().toString(),etDressCode.getText().toString(),etPhotographer.getText().toString(),etDescription.getText().toString(),radioButton.getText().toString());
+        long val =dbevent.addInfo_event(etEventName.getText().toString(),etEventDate.getText().toString(),etEventTime.getText().toString(),tietLocation.getText().toString(),tietTheme.getText().toString(),etDressCode.getText().toString(),etPhotographer.getText().toString(),etDescription.getText().toString(),radioButton.getText().toString());
         if (val>0){
             Intent intent = new Intent(EventAdd.this , Home.class);
             Toast.makeText(this, "Data successfully inserted", Toast.LENGTH_SHORT).show();

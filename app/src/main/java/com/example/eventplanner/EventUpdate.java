@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eventplanner.Database.DBHelper;
-import com.example.eventplanner.Event;
+import com.example.eventplanner.Database.Event;
 import com.example.eventplanner.R;
 
 public class EventUpdate extends AppCompatActivity {
