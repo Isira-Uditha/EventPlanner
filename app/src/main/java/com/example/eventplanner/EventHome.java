@@ -8,25 +8,41 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+//<<<<<<< Kasuni
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+//import android.widget.TextView;
+//import android.widget.Toast;
+
+import com.example.eventplanner.Database.DBGuest;
+import com.example.eventplanner.Database.GuestModel;
 
 import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.Task;
 
 import java.util.List;
 
-public class EventHome extends AppCompatActivity {
 
-    Button btn , taskHome;
+
+//=======
+
+
+public class EventHome extends AppCompatActivity {
+  
+    Button taskHome;
     ProgressBar taskProgress;
-    Context context;
+    //Context context;
     private DBHelper dbHelper;
     private List<Task> tasks;
     TextView showCount;
 
-
+    Button btn;
+    private DBGuest dbGuest;
+    private Context context;
+    TextView totalGuests;
+    TextView invitedGuests;
+//>>>>>>> Integration
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +50,7 @@ public class EventHome extends AppCompatActivity {
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn = (Button) findViewById(R.id.button4);
+//<<<<<<< Kasuni
         taskHome = (Button) findViewById(R.id.button8);
         taskProgress = (ProgressBar) findViewById(R.id.idprogressBarTask);
         showCount = (TextView)findViewById(R.id.idShowCountTasks);
@@ -52,6 +69,19 @@ public class EventHome extends AppCompatActivity {
       showCount.setText(finished + "/" + countTasks);
 
 
+//=======
+        totalGuests = findViewById(R.id.editTextTextPersonName15);
+        invitedGuests = findViewById(R.id.editTextTextPersonName16);
+
+        //context = this;
+        dbGuest = new DBGuest(context);
+
+        int totalGuestsCount = dbGuest.totalGuest();
+        int invitedGuestsCount = dbGuest.invitedGuest();
+
+        totalGuests.setText(String.valueOf(totalGuestsCount));
+        invitedGuests.setText(String.valueOf(invitedGuestsCount));
+//>>>>>>> Integration
 
 
 
