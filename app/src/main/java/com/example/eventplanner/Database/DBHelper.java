@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.eventplanner.Event;
+import com.example.eventplanner.Database.Event;
 
 import java.util.ArrayList;
 import java.util.List;
