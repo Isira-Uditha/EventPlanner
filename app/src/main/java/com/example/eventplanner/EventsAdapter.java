@@ -73,7 +73,7 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Event>{
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(context , EventEdit.class);
+                    Intent intent = new Intent(context , EventHome.class);
                     intent.putExtra("id",String.valueOf(event.getId()));
                     context.startActivity(intent);
 

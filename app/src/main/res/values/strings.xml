@@ -47,9 +47,10 @@
     <string name="eventTheme">Theme</string>
     <string name="evetnDress">Dress Code</string>
     <string name="photoes">Photographers</string>
-    <string name="eventDes">Description</string>
+
     <string name="eventPhotos">Photographers</string>
     <string name="edit">You are going to edit your event</string>
+    <string name="eventDes">Description</string>
 
 </resources>
 

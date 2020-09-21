@@ -59,8 +59,8 @@ public class EventEdit extends AppCompatActivity {
         btnedit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                Intent myIntent = new Intent(EventEdit.this, Home.class);
-                //myIntent.putExtra("id",String.valueOf(event.getId()));
+                Intent myIntent = new Intent(EventEdit.this, EventUpdate.class);
+                myIntent.putExtra("id",String.valueOf(event.getId()));
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.edit);
                 int duration = Toast.LENGTH_LONG;
