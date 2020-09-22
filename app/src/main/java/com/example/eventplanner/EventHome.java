@@ -120,10 +120,10 @@ public class EventHome extends AppCompatActivity {
         //context = this;
         dbHelper = new DBHelper(context);
 
-       int countTasks = dbHelper.countTasks();
-      taskProgress.setMax(countTasks);
+       int countTasks = dbHelper.countTasks(eid);
+       taskProgress.setMax(countTasks);
 
-      int finished = dbHelper.countFinished(1);
+      int finished = dbHelper.countFinished(1 , eid);
 
       taskProgress.setProgress(finished);
 

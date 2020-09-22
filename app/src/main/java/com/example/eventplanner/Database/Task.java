@@ -6,6 +6,7 @@ public class Task {
     private String taskName , description;
     private int finished;
     private String date , time;
+    private int eventId;
 
     public Task() {
     }
@@ -25,6 +26,17 @@ public class Task {
         this.time = time;
         this.description = description;
         this.finished = finished;
+
+    }
+
+    public Task(int id, String taskName,String date,String time, String description, int finished , int eventId) {
+        this.id = id;
+        this.taskName = taskName;
+        this.date = date;
+        this.time = time;
+        this.description = description;
+        this.finished = finished;
+        this.eventId = eventId;
 
     }
 
@@ -74,5 +86,13 @@ public class Task {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 }
