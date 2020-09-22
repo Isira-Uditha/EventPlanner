@@ -16,54 +16,51 @@ import com.example.eventplanner.Database.DBHelper;
 
 import java.util.List;
 
-/*public class ShoppingAdapter extends ArrayAdapter<ShoppingLists> {
-
-    private final List<ShoppingLists> shoppingListz;
+public class ShoppingAdapter extends ArrayAdapter<ShoppingLists> {
     private  Context context;
     private int resource;
     List<ShoppingLists> shoppingLists;
-    DBHelper dbShopiing;
 
+    DBHelper dbShopping;
 
-    public ShoppingAdapter(@NonNull Context context, int resource,List<ShoppingLists>shoppingListz) {
-        super(context, resource);
+    public ShoppingAdapter(@NonNull Context context, int resource, List<ShoppingLists> shoppingLists) {
+        super(context, resource, shoppingLists);
         this.context=context;
         this.resource=resource;
-        this.shoppingListz=shoppingListz;
+        this.shoppingLists=shoppingLists;
+
+
     }
 
     @NonNull
     @Override
-    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View row = inflater.inflate(resource,parent,false);
+        View row= inflater.inflate(resource,parent,false);
 
-        //TextView title = row.findViewById((R.id.title));
-        TextView budgetname = row.findViewById(R.id.idBudgetName);
-        //ImageView imageView = row.findViewById(R.id.idCheck);
-        ImageButton edit = row.findViewById(R.id.idEditBtn);
-        final ImageButton delete = row.findViewById(R.id.idDeleteBtn);
-        TextView paidAmount = row.findViewById((R.id.idPaidAmount));
+        TextView shoppingName = row.findViewById(R.id.idEditSName);
+        TextView qty = row.findViewById((R.id.idEditSQty));
+        TextView price = row.findViewById((R.id.idEditSPrice));
+        ImageButton edit = row.findViewById(R.id.idEditSBtn);
+        ImageButton delete = row.findViewById(R.id.idDeleteSBtn);
 
+        final ShoppingLists shoppingList= shoppingLists.get(position);
 
-
-
-        final Budgets bud = budgetz.get(position);
-        budgetname.setText(bud.getBudgetName());
-        paidAmount.setText(bud.getPadiAmount());
-        //imageView.setVisibility(row.INVISIBLE);
+        shoppingName.setText(shoppingList.getShoppingName());
+        qty.setText(shoppingList.getQty());
+        price.setText(shoppingList.getPrice());
 
         //delete.setTag(position);
-        delete.setOnClickListener(new View.OnClickListener() {
+       delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                dbBudget = new DBHelper(context);
+                dbShopping = new DBHelper(context);
                 //Task task = tasks.get(position);
-                dbBudget.deleteBudget(bud.getId());
+                System.out.println("zxzxzxzxzxz"+ shoppingList.getId());
+                dbShopping.deleteShopping(shoppingList.getId());
 
-                Intent myIntent = new Intent(context,BudgetDetails.class);
+                Intent myIntent = new Intent(context,ShoppingDetails.class);
                 context.startActivity(myIntent);
 
             }
@@ -73,17 +70,15 @@ import java.util.List;
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context , EditBudget.class);
-                intent.putExtra("id",String.valueOf(bud.getId()));
+                Intent intent = new Intent(context , EditShoppingList.class);
+                intent.putExtra("ids",String.valueOf(shoppingList.getId()));
+                System.out.println("IDDDDDDDDDD" + shoppingList.getId());
                 context.startActivity(intent);
 
             }
         });
 
+        return row;
 
-
-        /*if(task.getFinished() > 0){
-            imageView.setVisibility(View.VISIBLE);
-        }*/
-
-
+    }
+}

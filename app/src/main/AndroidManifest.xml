@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateBudget"></activity>
+        <activity android:name=".ShoppingDetails"/>
+        <activity android:name=".BudgetDetails" />
+
+        <activity android:name=".UpdateShopping" />
+        <activity android:name=".UpdateBudget" />
         <activity android:name=".Home" />
         <activity android:name=".BudgetOne" />
-        <activity android:name=".BudgetDetails" />
         <activity android:name=".EditBudget" />
         <activity android:name=".AddBudget" />
         <activity android:name=".AddShoppingList" />

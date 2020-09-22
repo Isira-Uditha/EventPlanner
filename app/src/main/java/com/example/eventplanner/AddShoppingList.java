@@ -26,7 +26,7 @@ public class AddShoppingList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shopping_list);
         //disable nagivation  bar
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
 
         etASName=findViewById(R.id.etASName);
         etASQty=findViewById(R.id.etASQty);
@@ -39,7 +39,7 @@ public class AddShoppingList extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddShoppingList.this, BudgetOne.class);
+                Intent intent = new Intent(AddShoppingList.this, ShoppingDetails.class);
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.click_back);
                 int duration = Toast.LENGTH_SHORT;
@@ -53,7 +53,7 @@ public class AddShoppingList extends AppCompatActivity {
         });
 
         //Afer adding list details
-        button1 = (Button)findViewById(R.id.button1);
+        /*button1 = (Button)findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,13 +66,21 @@ public class AddShoppingList extends AppCompatActivity {
                 toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }
     public void addSData(View view){
         DBHelper dbHelper= new DBHelper(this);
-        //long val= dbHelper.addSInfo(etASNamee.getText().toString(),etASQty.getText().toString(),etASPrice.getText().toString(),etASNote.getText().toString());
+        long val= dbHelper.addSLInfo(etASName.getText().toString(),etASQty.getText().toString(),etASPrice.getText().toString(),etASNote.getText().toString());
 
+        if(val>0){
+            Intent intent = new Intent(AddShoppingList.this,ShoppingDetails.class);
+            Toast.makeText(this, "New Shopping List Details inserted", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "Shopping Details not inserted", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -100,5 +100,21 @@ public class EditBudget extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //back button
+        imageButton =(ImageButton)findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditBudget.this, BudgetDetails.class);
+                Context context = getApplicationContext();
+                CharSequence text = context.getString(R.string.click_back);
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context,text,duration);
+                toast.show();
+                toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
+                startActivity(intent);
+            }
+        });
     }
 }

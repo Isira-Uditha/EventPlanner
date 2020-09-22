@@ -5,11 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.CalendarContract;
 
-import com.example.eventplanner.BudgetDetails;
-import com.example.eventplanner.BudgetOne;
 import com.example.eventplanner.Budgets;
+import com.example.eventplanner.ShoppingLists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME_SQTY="sqty";
     public static final String COLUMN_NAME_SPRICE="sprice";
     public static final String COLUMN_NAME_SNOTE="snote";
-    public static String COLUMN_NAME_SID="id";
+    public static String COLUMN_NAME_SID="ids";
 
 
     // @Override
@@ -51,12 +49,12 @@ public class DBHelper extends SQLiteOpenHelper {
                         COLUMN_NAME_EBNOTE + " TEXT)";
 
         String SQL_CREATE_ENTRIEZ =
-                "CREATE TABLE" + TABLE_SNAME+"(" +
+                "CREATE TABLE " + TABLE_SNAME+"(" +
                         COLUMN_NAME_SID + " INTEGER PRIMARY KEY," +
-                            COLUMN_NAME_SNAME +"TEXT," +
-                        COLUMN_NAME_SQTY +"TEXT,"+
-                        COLUMN_NAME_SPRICE + "TEXT,"+
-                        COLUMN_NAME_SNOTE + "TEXT)";
+                            COLUMN_NAME_SNAME + " TEXT," +
+                        COLUMN_NAME_SQTY + " TEXT,"+
+                        COLUMN_NAME_SPRICE + " TEXT,"+
+                        COLUMN_NAME_SNOTE + " TEXT)";
 
         //execute the comtemts of  SQL_CREATE_ENTERIES
         db.execSQL(SQL_CREATE_ENTRIES);
@@ -84,18 +82,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return  newRowId;
     }
+
     //SHOPIING-LIST
-    public long addSLInfo(String sName, String bPadiAmount, String bAmount, String bNote) {
+    public long addSLInfo(String sName, String sQty, String sPrice, String sNote) {
 
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //values.put(COLUMN_NAME_EBNAME, bName);
-        values.put(COLUMN_NAME_EBPADIDA, bPadiAmount);
-        values.put(COLUMN_NAME_EBAMOUNT, bAmount);
-        values.put(COLUMN_NAME_EBNOTE, bNote);
+        values.put(COLUMN_NAME_SNAME, sName);
+        values.put(COLUMN_NAME_SQTY, sQty);
+        values.put(COLUMN_NAME_SPRICE, sPrice);
+        values.put(COLUMN_NAME_SNOTE, sNote);
 
-        long newRowId = db.insert(TABLE_NAME,null,values);
+        long newRowId = db.insert(TABLE_SNAME,null,values);
 
         return  newRowId;
     }
@@ -156,6 +155,52 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //ShoppingList
+    /*public  List<ShoppingLists>realAllEvent(){
+        List<ShoppingLists> shopping = new ArrayList();
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String query = "SELECT * FROM"+ EventsMaster.Shoppings.TABLE_SNAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        if (cursor.moveToFirst()){
+            do{
+                ShoppingLists shoppingLists= new ShoppingLists();
+                shoppingLists.setId((cursor.getInt(0)));
+                shoppingLists.setShoppingName((cursor.getString(1)));
+                shoppingLists.setQty((cursor.getString(2)));
+                shoppingLists.setPrice((cursor.getString(3)));
+                shoppingLists.setNote((cursor.getString(4)));
+
+                shopping.add(shoppingLists);
+            }while (cursor.moveToNext());
+
+       }
+        return  shopping;
+    }*/
+    public List<ShoppingLists> readAllShoppings(){
+        List<ShoppingLists> shpls=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String query ="SELECT * FROM "+ EventsMaster.Shoppings.TABLE_SNAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        if (cursor.moveToFirst()){
+            do{
+                ShoppingLists shpl= new ShoppingLists();
+                shpl.setId(cursor.getInt(0));
+                shpl.setShoppingName(cursor.getString(1));
+                shpl.setQty(cursor.getString(2));
+                shpl.setPrice(cursor.getString(3));
+                shpl.setNote(cursor.getString(4));
+
+                shpls.add(shpl);
+            }while (cursor.moveToNext());
+
+        }
+        System.out.println("jjjjjjjjjjjjj "+ shpls);
+        return  shpls;
+
+    }
+
     //Delete budget details
     public  void deleteBudget(int id){
         SQLiteDatabase db = getWritableDatabase();
@@ -192,6 +237,41 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Retreive shopping List
+    public ShoppingLists getSingleShopping(int ids){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor =  sqLiteDatabase.query(TABLE_SNAME, new String[] {
+                COLUMN_NAME_SID,
+                COLUMN_NAME_SNAME,
+                COLUMN_NAME_SQTY,
+                COLUMN_NAME_SPRICE,
+                COLUMN_NAME_SNOTE,
+        } ,COLUMN_NAME_SID + " =?",new String[]{String.valueOf(ids)},null , null,null );
+
+
+        ShoppingLists shoppingList;
+
+        if(cursor  != null){
+
+            cursor.moveToFirst();
+
+            shoppingList = new ShoppingLists(
+
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4)
+
+            );
+            System.out.println("fggggggggdasasas sxxxx" + shoppingList);
+            return  shoppingList;
+
+        }
+
+        return  null;
+
+    }
 
     //Update budget Details
    public int updateBudget(Budgets budget){
@@ -210,6 +290,55 @@ public class DBHelper extends SQLiteOpenHelper {
 
    }
 
+
+   //Delete Shpooing Details
+    public void  deleteShopping(int ids){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_SNAME,COLUMN_NAME_SID+"=?",new String[]{String.valueOf(ids)});
+        db.close();
+    }
+
+   /* public ShoppingLists getSingleShopping(int id){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor =sqLiteDatabase.query(TABLE_SNAME,new String[}{ COLUMN_NAME_SID,COLUMN_NAME_SNAME,COLUMN_NAME_SQTY,COLUMN_NAME_SPRICE,COLUMN_NAME_SNOTE,},COLUMN_NAME_SID + " =?",new String[]{String.valueOf(id)},null , null,null );
+
+        ShoppingLists shoppingList;
+
+        if(ursor  != null){
+
+        cursor.moveToFirst();
+
+        shoppingList = new ShoppingLists(
+
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4)
+
+        );
+
+        return  shoppingList;
+
+    }
+
+        return  null;
+    }*/
+
+    //Update shopiing list details
+    public  int updateShopping(ShoppingLists shoppingList) {
+        SQLiteDatabase db = getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SNAME, shoppingList.getShoppingName());
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SQTY, shoppingList.getQty());
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SPRICE, shoppingList.getPrice());
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SNOTE, shoppingList.getNote());
+
+        int status =db.update(EventsMaster.Shoppings.TABLE_SNAME,values,COLUMN_NAME_SID+" =?",new String[]{String.valueOf(shoppingList.getId())});
+        db.close();
+        return status;
+
+    }
 }
 
     /*public int updateGuest(GuestModel guest){

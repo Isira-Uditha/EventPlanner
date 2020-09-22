@@ -50,7 +50,7 @@ public class BudgetOne extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BudgetOne.this,AddShoppingList.class);
+                Intent intent = new Intent(BudgetOne.this,ShoppingDetails.class);
                         Context context = getApplicationContext();
                         CharSequence text = context.getString(R.string.asl_toast);
                         int duration = Toast.LENGTH_SHORT;

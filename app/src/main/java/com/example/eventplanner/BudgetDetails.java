@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBHelper;
@@ -27,11 +28,18 @@ public class BudgetDetails extends AppCompatActivity {
     Button button;
     ImageView imageView;
     ImageView imageView3;
+
+    TextView btot, bpaid, bamount ;
     private ListView budgetView;
+
 
     Context context;
     private DBHelper dbHelper;
     private List<Budgets> bds;
+
+
+    //for calculation
+    private int overTotal =0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +52,14 @@ public class BudgetDetails extends AppCompatActivity {
         dbHelper = new DBHelper(context);
         budgetView = (ListView)findViewById(R.id.idBudgetView);
 
+
         bds = new ArrayList<>();
         bds = dbHelper.readAllBudgets();
 
-       BudgetAdapter adapter = new BudgetAdapter(context , R.layout.single_budget, bds);
-       budgetView.setAdapter(adapter);
 
+
+        BudgetAdapter adapter = new BudgetAdapter(context , R.layout.single_budget, bds);
+        budgetView.setAdapter(adapter);
 
         //visit to the back page
         imageButton = (ImageButton)findViewById(R.id.imageButton);
@@ -93,7 +103,7 @@ public class BudgetDetails extends AppCompatActivity {
             }
         });*/
 
-        budgetView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*budgetView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
@@ -122,17 +132,21 @@ public class BudgetDetails extends AppCompatActivity {
                 });
 
             }
-        });
+        });*/
+
+
 
         //Edit shoppinglist
-        imageView3 = (ImageView)findViewById(R.id.imageView3);
+        /*imageView3 = (ImageView)findViewById(R.id.imageView3);
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BudgetDetails.this, EditShoppingList.class);
                 startActivity(intent);
             }
-        });
+        });*/
+
+        //Calculation
     }
 
 

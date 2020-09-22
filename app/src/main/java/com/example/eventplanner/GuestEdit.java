@@ -23,7 +23,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_guest_edit);
         getSupportActionBar().setTitle(R.string.g_home_name_extra);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btn1 = (Button) findViewById(R.id.button2);
+       // btn1 = (Button) findViewById(R.id.button2);
 
         Spinner spinner1 = findViewById(R.id.spinner1);
         Spinner spinner2 = findViewById(R.id.spinner2);
