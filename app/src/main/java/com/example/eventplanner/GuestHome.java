@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -46,13 +47,17 @@ public class GuestHome extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.g_home_name);
         //edit1 = (ImageButton) findViewById(R.id.Edit1);
         //delete1 = (ImageButton) findViewById(R.id.imageButton2);
+
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        String eid = prf.getString("eid", "No ID");
+
         delete = findViewById(R.id.idDeleteBtn);
         context = this;
         dbGuest = new DBHelper(context);
         guestList = findViewById(R.id.guestList);
         guests = new ArrayList<>();
 
-        guests = dbGuest.readAllGuest();
+        guests = dbGuest.readAllGuest(eid);
 
         GuestAdapter adapter = new GuestAdapter(context,R.layout.single_guest,guests);
 
@@ -90,8 +95,10 @@ public class GuestHome extends AppCompatActivity {
         if(id == android.R.id.home){
 
             Intent intent = new Intent(GuestHome.this,EventHome.class);
-            final String id1 = getIntent().getStringExtra("id");
-            intent.putExtra("id",id1);
+            //final String id1 = getIntent().getStringExtra("id");
+            SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+            String eid = prf.getString("eid", "No ID");
+            intent.putExtra("id",eid);
 
 
             Context context = getApplicationContext();

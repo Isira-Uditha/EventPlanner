@@ -6,6 +6,19 @@ public class GuestModel {
         private String guestName,guestGender,guestAge,guestContact,guestEmail;
         private int guestCheck;
         private String guestNote;
+        private int EmpID;
+
+    public GuestModel(int guestID, String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestCheck, String guestNote, int empID) {
+        this.guestID = guestID;
+        this.guestName = guestName;
+        this.guestGender = guestGender;
+        this.guestAge = guestAge;
+        this.guestContact = guestContact;
+        this.guestEmail = guestEmail;
+        this.guestCheck = guestCheck;
+        this.guestNote = guestNote;
+        EmpID = empID;
+    }
 
     public GuestModel() {
     }
@@ -93,5 +106,13 @@ public class GuestModel {
 
     public void setGuestNote(String guestNote) {
         this.guestNote = guestNote;
+    }
+
+    public int getEmpID() {
+        return EmpID;
+    }
+
+    public void setEmpID(int empID) {
+        EmpID = empID;
     }
 }
