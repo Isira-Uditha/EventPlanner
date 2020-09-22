@@ -210,9 +210,10 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
         if (id1 == android.R.id.home) {
 
-
+            title = getIntent().getExtras().getString("title");
             Intent intent = new Intent(GuestUpdate.this, GuestEdit.class);
             intent.putExtra("id",id);
+            intent.putExtra("g_name",title);
 
             startActivity(intent);
 

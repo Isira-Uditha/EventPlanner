@@ -1,14 +1,17 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -160,12 +163,13 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
     public void addData(View view){
         DBHelper dbguest = new DBHelper(this);
 
-
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        String eid = prf.getString("eid", "No ID");
 
         //Toast.makeText(this, s1 + " Successfully Inserted", Toast.LENGTH_SHORT).show();
 
 
-        long val = dbguest.addInfo_guest(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString());
+        long val = dbguest.addInfo_guest(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString(),Integer.parseInt(eid));
 
         intent = new Intent(GuestAdd.this,GuestHome.class);
         startActivity(intent);
@@ -179,5 +183,26 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
         }
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+
+            Intent intent = new Intent(GuestAdd.this,GuestHome.class);
+
+            startActivity(intent);
+
+        }
+        if(id == R.id.cancel){
+
+            finish();
+            startActivity(getIntent());
+
+        }
+        return true;
     }
 }

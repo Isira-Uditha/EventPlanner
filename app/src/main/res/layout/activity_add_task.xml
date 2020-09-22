@@ -35,7 +35,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idAddTaskName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Task Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -58,6 +59,7 @@
         android:layout_width="134dp"
         android:layout_height="47dp"
         android:ems="10"
+        android:hint="00/00/0000"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +86,7 @@
         android:layout_width="138dp"
         android:layout_height="56dp"
         android:ems="10"
+        android:hint="00:00"
         android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +115,7 @@
         android:layout_height="58dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Description"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -16,6 +16,7 @@ public class EventsMaster {
         public static final String COLUMN_NAME_TIME= "time";
         public static final String COLUMN_NAME_DESCRIPTION= "description";
         public static final String COLUMN_NAME_FINISHED= "finished";
+        public static final String COLUMN_NAME_EVENT_ID= "eventId";
 
         public static String getTableName() {
             return TABLE_NAME;
@@ -57,6 +58,7 @@ public class EventsMaster {
         public static final String COLUMN_NAME_GUEST_EMAIL = "guest_email";
         public static final String COLUMN_NAME_GUEST_INVITED = "invited";
         public static final String COLUMN_NAME_GUEST_NOTE = "note";
+        public static final String COLUMN_NAME_GUEST_EMP_ID = "EmpID";
 //>>>>>>> Integration
 
     }

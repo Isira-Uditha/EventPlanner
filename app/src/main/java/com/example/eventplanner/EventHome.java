@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import com.example.eventplanner.Database.GuestModel;
 import com.example.eventplanner.Database.DBHelper;
 import com.example.eventplanner.Database.Task;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 
@@ -35,7 +37,7 @@ import java.util.List;
 import com.example.eventplanner.Database.DBHelper;
 
 public class EventHome extends AppCompatActivity {
-  
+
     Button taskHome;
     ProgressBar taskProgress;
     //Context context;
@@ -61,6 +63,18 @@ public class EventHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final String eid = getIntent().getStringExtra("id");
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prf.edit();
+        editor.putString("eid",eid);
+        editor.commit();
+
+
+        //String eid1 = prf.getString("eid","no ID");
+        //System.out.println("EVENT HOME ID :" + eid1);
+
+
         btn = (Button) findViewById(R.id.button4);
 
         btnEvent = (Button) findViewById(R.id.btnEvent);
@@ -81,9 +95,11 @@ public class EventHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+                String eid = prf.getString("eid","no ID");
 
                 Intent myIntent = new Intent(EventHome.this,EventEdit.class);
-                myIntent.putExtra("id",String.valueOf(event.getId()));
+                myIntent.putExtra("id",String.valueOf(eid));
                 Context context = getApplicationContext();
                 CharSequence text = "Go to Event Details";
                 int duration = Toast.LENGTH_SHORT;
@@ -104,10 +120,10 @@ public class EventHome extends AppCompatActivity {
         //context = this;
         dbHelper = new DBHelper(context);
 
-       int countTasks = dbHelper.countTasks();
-      taskProgress.setMax(countTasks);
+       int countTasks = dbHelper.countTasks(eid);
+       taskProgress.setMax(countTasks);
 
-      int finished = dbHelper.countFinished(1);
+      int finished = dbHelper.countFinished(1 , eid);
 
       taskProgress.setProgress(finished);
 
@@ -120,9 +136,12 @@ public class EventHome extends AppCompatActivity {
 
         //context = this;
         dbGuest = new DBHelper(context);
+        SharedPreferences prf1 = getSharedPreferences("eid",MODE_PRIVATE);
+        String eid1 = prf.getString("eid","no ID");
 
-        int totalGuestsCount = dbGuest.totalGuest();
-        int invitedGuestsCount = dbGuest.invitedGuest();
+
+        int totalGuestsCount = dbGuest.totalGuest(eid);
+        int invitedGuestsCount = dbGuest.invitedGuest(eid);
 
         totalGuests.setText(String.valueOf(totalGuestsCount));
         invitedGuests.setText(String.valueOf(invitedGuestsCount));
