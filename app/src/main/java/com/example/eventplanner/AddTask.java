@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -79,8 +80,10 @@ public class AddTask extends AppCompatActivity {
     public void addData(View view){
 
         DBHelper dbHelper = new DBHelper(this);
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        String eid = prf.getString("eid", "No ID");
 
-        long value = dbHelper.addInfo( taskName.getText().toString(),date.getText().toString() ,time.getText().toString(),description.getText().toString(),checked);
+        long value = dbHelper.addInfo( taskName.getText().toString(),date.getText().toString() ,time.getText().toString(),description.getText().toString(),checked , Integer.parseInt(eid));
 
         if (value>0)
         {
@@ -116,7 +119,7 @@ public class AddTask extends AppCompatActivity {
 
         if(id == android.R.id.home){
 
-            Intent intent = new Intent(AddTask.this,MainActivity.class);
+            Intent intent = new Intent(AddTask.this,TaskHome.class);
 
             startActivity(intent);
 

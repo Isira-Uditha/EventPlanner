@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -61,6 +62,13 @@ public class EventHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final String eid = getIntent().getStringExtra("id");
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prf.edit();
+        editor.putString("eid",eid);
+        editor.commit();
+
         btn = (Button) findViewById(R.id.button4);
 
         btnEvent = (Button) findViewById(R.id.btnEvent);
@@ -104,10 +112,10 @@ public class EventHome extends AppCompatActivity {
         //context = this;
         dbHelper = new DBHelper(context);
 
-       int countTasks = dbHelper.countTasks();
-      taskProgress.setMax(countTasks);
+       int countTasks = dbHelper.countTasks(eid);
+       taskProgress.setMax(countTasks);
 
-      int finished = dbHelper.countFinished(1);
+      int finished = dbHelper.countFinished(1 , eid);
 
       taskProgress.setProgress(finished);
 

@@ -54,7 +54,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         EventsMaster.Tasks.COLUMN_NAME_DATE + " TEXT," +
                         EventsMaster.Tasks.COLUMN_NAME_TIME + " TEXT," +
                         EventsMaster.Tasks.COLUMN_NAME_DESCRIPTION + " TEXT," +
-                        EventsMaster.Tasks.COLUMN_NAME_FINISHED + " TEXT )";
+                        EventsMaster.Tasks.COLUMN_NAME_FINISHED + " TEXT," +
+                        EventsMaster.Tasks.COLUMN_NAME_EVENT_ID+ " TEXT)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_TASKS); //execute content of sql entries
 
@@ -88,7 +89,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public long addInfo(String taskName , String date , String time , String description , int finished){
+    public long addInfo(String taskName , String date , String time , String description , int finished , int eventId){
 
         //Gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
@@ -100,6 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(EventsMaster.Tasks.COLUMN_NAME_TIME,  time );
         values.put(EventsMaster.Tasks.COLUMN_NAME_DESCRIPTION,  description );
         values.put(EventsMaster.Tasks.COLUMN_NAME_FINISHED,  finished);
+        values.put(EventsMaster.Tasks.COLUMN_NAME_EVENT_ID,  eventId);
 
         //Insert the new row , returning the primary key value of the new row
         long newRowId= db.insert(EventsMaster.Tasks.TABLE_NAME,null, values);
@@ -113,24 +115,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int countTasks(){
+    public int countTasks(String eventId){
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
+     //   String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
 
-        Cursor cursor = db.rawQuery(query,null);
+      //  Cursor cursor = db.rawQuery(query,null);
         return cursor.getCount();
     }
 
-    public List<Task> readAll(){
+    public List<Task> readAll(String eventId){
 
         List<Task> tasks = new ArrayList();
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
 
-        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
-
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+       // String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
+       // String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID + "=" + eid;
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
+       // Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 
 
         if(cursor.moveToFirst()) {
@@ -236,15 +240,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int countFinished(int i) {
+    public int countFinished(int i , String eventId) {
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
-
+        //String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + " = ? AND " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + " =?",new String[]{String.valueOf(1),eventId});
 
         // Cursor cursor = db.rawQuery(query,null);
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
+       // Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
         return cursor.getCount();
     }
 
