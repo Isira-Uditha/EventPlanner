@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.CalendarContract;
 
 import com.example.eventplanner.BudgetDetails;
+import com.example.eventplanner.BudgetOne;
 import com.example.eventplanner.Budgets;
 
 import java.util.ArrayList;
@@ -120,8 +121,80 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Delete budget details
+    public  void deleteBudget(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_NAME, COLUMN_NAME_ID +" =?",new String[]{String.valueOf(id)});
+        db.close();
+
+    }
+
+    public Budgets getSingleBudget(int id){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor =  sqLiteDatabase.query(TABLE_NAME, new String[] {COLUMN_NAME_ID,COLUMN_NAME_EBNAME,COLUMN_NAME_EBPADIDA,COLUMN_NAME_EBAMOUNT,COLUMN_NAME_EBNOTE,} ,COLUMN_NAME_ID + " =?",new String[]{String.valueOf(id)},null , null,null );
+
+        Budgets budget;
+
+        if(cursor  != null){
+
+            cursor.moveToFirst();
+
+            budget = new Budgets(
+
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4)
+
+            );
+
+            return  budget;
+
+        }
+
+        return  null;
+
+    }
+
+
+    //Update budget Details
+   public int updateBudget(Budgets budget){
+        SQLiteDatabase db = getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+       values.put(EventsMaster.Budgets.COLUMN_NAME_EBNAME,budget.getBudgetName());
+       values.put(EventsMaster.Budgets.COLUMN_NAME_EBPADIDA,budget.getPadiAmount());
+       values.put(EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT,budget.getAmount());
+       values.put(EventsMaster.Budgets.COLUMN_NAME_EBNOTE,budget.getNote());
+
+       int status = db.update(EventsMaster.Budgets.TABLE_NAME,values,COLUMN_NAME_ID +" =?",new String[]{String.valueOf(budget.getId())});
+
+       db.close();
+       return status;
+
+   }
+
 }
 
+    /*public int updateGuest(GuestModel guest){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_NAME, guest.getGuestName());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER, guest.getGuestGender());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_AGE, guest.getGuestAge());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT, guest.getGuestContact());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL, guest.getGuestEmail());
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED, guest.getGuestCheck());
+
+        int status = db.update(EventsMaster.Guest.TABLE_NAME,values,EventsMaster.Guest._ID+" =?",new String[]{String.valueOf(guest.getGuestID())});
+
+        db.close();
+        return status;
+
+    }*/
 
 
 

@@ -1,6 +1,7 @@
 package com.example.eventplanner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
     private Context context;
     private int resource;
     List<Budgets> budgetz;
-    DBHelper dbHelper;
+    DBHelper dbBudget;
 
     public BudgetAdapter(@NonNull Context context, int resource, List<Budgets> budgetz) {
         super(context, resource, budgetz);
@@ -40,7 +41,7 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
         TextView budgetname = row.findViewById(R.id.idBudgetName);
         //ImageView imageView = row.findViewById(R.id.idCheck);
         ImageButton edit = row.findViewById(R.id.idEditBtn);
-        //final ImageButton delete = row.findViewById(R.id.idDeleteBtn);
+        final ImageButton delete = row.findViewById(R.id.idDeleteBtn);
         TextView paidAmount = row.findViewById((R.id.idPaidAmount));
 
 
@@ -51,16 +52,16 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
         paidAmount.setText(bud.getPadiAmount());
         //imageView.setVisibility(row.INVISIBLE);
 
-        // delete.setTag(position);
-        /*delete.setOnClickListener(new View.OnClickListener() {
+        //delete.setTag(position);
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                dbHelper = new DBHelper(context);
+                dbBudget = new DBHelper(context);
                 //Task task = tasks.get(position);
-                dbHelper.deleteTask(task.getId());
+                dbBudget.deleteBudget(bud.getId());
 
-                Intent myIntent = new Intent(context,TaskHome.class);
+                Intent myIntent = new Intent(context,BudgetDetails.class);
                 context.startActivity(myIntent);
 
             }
@@ -70,8 +71,8 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context , EditTask.class);
-                intent.putExtra("id",String.valueOf(task.getId()));
+                Intent intent = new Intent(context , EditBudget.class);
+                intent.putExtra("id",String.valueOf(bud.getId()));
                 context.startActivity(intent);
 
             }
@@ -79,7 +80,7 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
 
 
 
-        if(task.getFinished() > 0){
+        /*if(task.getFinished() > 0){
             imageView.setVisibility(View.VISIBLE);
         }*/
 

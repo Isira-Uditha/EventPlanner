@@ -4,18 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBudget">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABAmount"
-        android:layout_width="175dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="300dp"
-        android:background="#7963DFEF"
-        android:hint="Total Amount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".UpdateBudget">
 
     <TextView
         android:id="@+id/textView31"
@@ -33,13 +22,12 @@
         android:layout_height="47dp"
         android:layout_marginTop="608dp"
         android:background="#3caac1"
-        android:onClick="addData"
-        android:text="@string/add"
+        android:text="Update"
         android:textColor="#E1040101"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +36,19 @@
         android:layout_width="411dp"
         android:layout_height="61dp"
         android:background="#3caac1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="91dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="15dp"
+        android:text="- B1"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="200dp"
-        android:text="@string/add_price"
+        android:text="@string/ebd_pa"
         android:textColor="#E1040101"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -83,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="308dp"
-        android:text="@string/add_amount"
+        android:text="@string/ebd_a"
         android:textColor="#E1040101"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -115,41 +116,55 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="244dp"
-        android:layout_height="46dp"
+        android:layout_width="153dp"
+        android:layout_height="34dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="15dp"
-        android:text="Budget - Add Budget"
+        android:text="Update Budget"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABName"
+    <EditText
+        android:id="@+id/ideditBudgetName"
         android:layout_width="276dp"
         android:layout_height="39dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="132dp"
         android:background="#7963DFEF"
-        android:hint="Name"
+        android:hint="B1"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABPaidA"
-        android:layout_width="183dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="192dp"
+    <EditText
+        android:id="@+id/idEditPaidAmount"
+        android:layout_width="186dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="236dp"
         android:background="#7963DFEF"
-        android:hint="Paid Amount"
+        android:hint="120.00"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABNote"
+    <EditText
+        android:id="@+id/idEditAmount"
+        android:layout_width="178dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="305dp"
+        android:background="#7963DFEF"
+        android:hint="200.00"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/idEditNote"
         android:layout_width="292dp"
         android:layout_height="104dp"
         android:layout_marginStart="52dp"

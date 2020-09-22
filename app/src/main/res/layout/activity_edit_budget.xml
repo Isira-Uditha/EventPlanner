@@ -21,27 +21,12 @@
         android:layout_height="47dp"
         android:layout_marginTop="608dp"
         android:background="#3caac1"
-        android:text="@string/ebd_u"
+        android:text="Edit"
         android:textColor="#E1040101"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.827"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="110dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="608dp"
-        android:background="#3caac1"
-        android:text="@string/ebd_d"
-        android:textColor="#E1040101"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +126,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
+   <TextView
+       android:id="@+id/ideditBudgetName"
         android:layout_width="276dp"
         android:layout_height="39dp"
         android:layout_marginStart="44dp"
@@ -152,8 +138,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABPaidA"
+    <TextView
+        android:id="@+id/idEditPaidAmount"
         android:layout_width="186dp"
         android:layout_height="37dp"
         android:layout_marginStart="44dp"
@@ -164,8 +150,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABAmount"
+    <TextView
+        android:id="@+id/idEditAmount"
         android:layout_width="178dp"
         android:layout_height="37dp"
         android:layout_marginStart="148dp"
@@ -176,8 +162,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etABNote"
+    <TextView
+        android:id="@+id/idEditNote"
         android:layout_width="292dp"
         android:layout_height="104dp"
         android:layout_marginStart="52dp"

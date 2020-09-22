@@ -1,12 +1,15 @@
 package com.example.eventplanner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,8 +45,8 @@ public class BudgetDetails extends AppCompatActivity {
         budgetView = (ListView)findViewById(R.id.idBudgetView);
 
         bds = new ArrayList<>();
-
         bds = dbHelper.readAllBudgets();
+
        BudgetAdapter adapter = new BudgetAdapter(context , R.layout.single_budget, bds);
        budgetView.setAdapter(adapter);
 
@@ -90,6 +93,36 @@ public class BudgetDetails extends AppCompatActivity {
             }
         });*/
 
+        budgetView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                final Budgets buds = bds.get(position);
+                AlertDialog.Builder builder= new AlertDialog.Builder(context);
+                builder.setTitle(buds.getBudgetName());
+                builder.setMessage("Paid Amount :");
+                builder.setMessage(buds.getPadiAmount());
+                builder.setMessage("Amount :");
+                builder.setMessage(buds.getAmount());
+                builder.show();
+                builder.setPositiveButton("Finished", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        startActivity(new Intent(context,BudgetDetails.class));
+                    }
+                });
+
+                builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+
+                        dbHelper.deleteBudget(buds.getId());
+
+                    }
+                });
+
+            }
+        });
 
         //Edit shoppinglist
         imageView3 = (ImageView)findViewById(R.id.imageView3);

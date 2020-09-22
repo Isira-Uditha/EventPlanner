@@ -8,13 +8,18 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.eventplanner.Database.DBHelper;
 
 public class AddShoppingList extends AppCompatActivity {
 
     Button button1;
     ImageButton imageButton;
+
+    EditText etASName, etASQty, etASPrice, etASNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,12 @@ public class AddShoppingList extends AppCompatActivity {
         setContentView(R.layout.activity_add_shopping_list);
         //disable nagivation  bar
         getSupportActionBar().hide();
+
+        etASName=findViewById(R.id.etASName);
+        etASQty=findViewById(R.id.etASQty);
+        etASPrice=findViewById(R.id.etASPrice);
+        etASNote=findViewById(R.id.etASNote);
+
 
         //back button
         imageButton =(ImageButton)findViewById(R.id.imageButton);
@@ -36,6 +47,8 @@ public class AddShoppingList extends AppCompatActivity {
                 toast.show();
                 toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
                 startActivity(intent);
+
+
             }
         });
 
@@ -55,6 +68,11 @@ public class AddShoppingList extends AppCompatActivity {
             }
         });
 
+
+    }
+    public void addSData(View view){
+        DBHelper dbHelper= new DBHelper(this);
+        //long val= dbHelper.addSInfo(etASNamee.getText().toString(),etASQty.getText().toString(),etASPrice.getText().toString(),etASNote.getText().toString());
 
     }
 }

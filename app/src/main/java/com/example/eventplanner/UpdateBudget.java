@@ -15,23 +15,22 @@ import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBHelper;
 
-public class EditBudget extends AppCompatActivity {
+public class UpdateBudget extends AppCompatActivity {
 
     ImageButton imageButton;
     Button button1;
     Button button3;
 
-    TextView eBName, eBPadiA, eBAmount, eBNote;
+    EditText eBName, eBPadiA, eBAmount, eBNote;
 
     private DBHelper dbBudget;
     private Context context;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_budget);
+        setContentView(R.layout.activity_update_budget);
         getSupportActionBar().hide();
 
         //visit to the back page
@@ -39,7 +38,7 @@ public class EditBudget extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EditBudget.this, BudgetDetails.class);
+                Intent intent = new Intent(UpdateBudget.this, EditBudget.class);
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.click_back);
                 int duration = Toast.LENGTH_SHORT;
@@ -89,16 +88,32 @@ public class EditBudget extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EditBudget.this, UpdateBudget.class);
-                intent.putExtra("id",id);
+
+
+                String b_name = eBName.getText().toString();
+                String b_pamount = eBPadiA.getText().toString();
+                String b_amount = eBAmount.getText().toString();
+                String b_note = eBNote.getText().toString();
+                int id1 = Integer.parseInt(id);
+
+                System.out.println(b_name +", " + b_amount+ ", " + b_pamount  +  ", " + id1);
+
+                Budgets budget = new Budgets(id1,b_name,b_pamount,b_amount,b_note);
+                int status = dbBudget.updateBudget(budget);
+                //System.out.println("xxxxxxxxxxxxxx" + status);
+                startActivity(new Intent(context,BudgetDetails.class));
+
+
+                /*Intent intent = new Intent(UpdateBudget.this, BudgetDetails.class);
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.ebu_up_toast);
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
                 toast.show();
                 toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
+
     }
 }
