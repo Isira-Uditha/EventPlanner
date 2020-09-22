@@ -67,7 +67,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         EventsMaster.Guest.COLUMN_NAME_GUEST_CONTACT + " TEXT," +
                         EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL + " TEXT," +
                         EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED + " INTEGER," +
-                        EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE + " TEXT)";
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE + " TEXT," +
+                        EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID + " INTEGER)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_GUESTS);
 
@@ -252,7 +253,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //ISIRA - DATABASE
     ////////////////////
 
-    public long addInfo_guest(String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestInvited, String guestNote) {
+    public long addInfo_guest(String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestInvited, String guestNote, int EmpID) {
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -264,6 +265,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_EMAIL, guestEmail);
         values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED, guestInvited);
         values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE, guestNote);
+        values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID, EmpID);
 
         //Insert the new row
         long newRowId = db.insert(EventsMaster.Guest.TABLE_NAME, null, values);
@@ -271,12 +273,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<GuestModel> readAllGuest() {
+    public List<GuestModel> readAllGuest(String eid) {
 
         List<GuestModel> guests = new ArrayList<>();
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME;
+        String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID + "=" + eid;
+
+        //Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
 
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
@@ -366,10 +370,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int totalGuest(){
+    public int totalGuest(String EmpID){
 
+        System.out.println("DBHADLER EMPID " + EmpID);
         SQLiteDatabase db = getReadableDatabase();
-        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME;
+        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID+ " = " + EmpID ;
         Cursor cursor = db.rawQuery(count,null);
         int num = cursor.getCount();
         cursor.close();
@@ -377,11 +382,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int invitedGuest(){
+    public int invitedGuest(String EmpID){
 
         SQLiteDatabase db = getReadableDatabase();
-        String count = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED+ " = 1";
-        Cursor cursor = db.rawQuery(count,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_INVITED + " = ? AND " + EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID + " =?",new String[]{"1",EmpID});
+        //Cursor cursor = db.rawQuery(count,null);
         int num = cursor.getCount();
         cursor.close();
         return num;

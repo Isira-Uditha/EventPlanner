@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -160,12 +161,13 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
     public void addData(View view){
         DBHelper dbguest = new DBHelper(this);
 
-
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        String eid = prf.getString("eid", "No ID");
 
         //Toast.makeText(this, s1 + " Successfully Inserted", Toast.LENGTH_SHORT).show();
 
 
-        long val = dbguest.addInfo_guest(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString());
+        long val = dbguest.addInfo_guest(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString(),Integer.parseInt(eid));
 
         intent = new Intent(GuestAdd.this,GuestHome.class);
         startActivity(intent);
