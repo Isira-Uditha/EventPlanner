@@ -1,5 +1,6 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -181,5 +183,26 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
         }
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+
+            Intent intent = new Intent(GuestAdd.this,GuestHome.class);
+
+            startActivity(intent);
+
+        }
+        if(id == R.id.cancel){
+
+            finish();
+            startActivity(getIntent());
+
+        }
+        return true;
     }
 }

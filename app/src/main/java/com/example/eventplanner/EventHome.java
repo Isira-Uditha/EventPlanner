@@ -70,8 +70,10 @@ public class EventHome extends AppCompatActivity {
         editor.putString("eid",eid);
         editor.commit();
 
+
         //String eid1 = prf.getString("eid","no ID");
         //System.out.println("EVENT HOME ID :" + eid1);
+
 
         btn = (Button) findViewById(R.id.button4);
 
@@ -92,6 +94,9 @@ public class EventHome extends AppCompatActivity {
         btnEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+                String eid = prf.getString("eid","no ID");
 
                 Intent myIntent = new Intent(EventHome.this,EventEdit.class);
                 myIntent.putExtra("id",String.valueOf(eid));
