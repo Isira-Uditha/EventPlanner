@@ -46,7 +46,7 @@ public class BudgetOne extends AppCompatActivity {
         });
 
         //Visit to the Add shopping page
-        button2 = (Button)findViewById(R.id.button2);
+        button2 = (Button)findViewById(R.id.buttonAS);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

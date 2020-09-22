@@ -23,12 +23,21 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null ,  1);
     }
 
+    //budegt details table
     public static final String TABLE_NAME="budget";
     public static final String COLUMN_NAME_EBNAME="bname";
     public static final String COLUMN_NAME_EBPADIDA="bpadia";
     public static final String COLUMN_NAME_EBAMOUNT="bamount";
     public static final String COLUMN_NAME_EBNOTE="bnote";
     public static String COLUMN_NAME_ID="id";
+
+    //shoppingList table
+    public static final String TABLE_SNAME="shopping";
+    public static final String COLUMN_NAME_SNAME="sname";
+    public static final String COLUMN_NAME_SQTY="sqty";
+    public static final String COLUMN_NAME_SPRICE="sprice";
+    public static final String COLUMN_NAME_SNOTE="snote";
+    public static String COLUMN_NAME_SID="id";
 
 
     // @Override
@@ -41,16 +50,26 @@ public class DBHelper extends SQLiteOpenHelper {
                         COLUMN_NAME_EBAMOUNT + " TEXT," +
                         COLUMN_NAME_EBNOTE + " TEXT)";
 
+        String SQL_CREATE_ENTRIEZ =
+                "CREATE TABLE" + TABLE_SNAME+"(" +
+                        COLUMN_NAME_SID + " INTEGER PRIMARY KEY," +
+                            COLUMN_NAME_SNAME +"TEXT," +
+                        COLUMN_NAME_SQTY +"TEXT,"+
+                        COLUMN_NAME_SPRICE + "TEXT,"+
+                        COLUMN_NAME_SNOTE + "TEXT)";
+
         //execute the comtemts of  SQL_CREATE_ENTERIES
         db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_ENTRIEZ);
 
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-
+    //BUDGET
     public long addInfo(String bName, String bPadiAmount, String bAmount, String bNote) {
 
         SQLiteDatabase db = getWritableDatabase();
@@ -65,6 +84,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return  newRowId;
     }
+    //SHOPIING-LIST
+    public long addSLInfo(String sName, String bPadiAmount, String bAmount, String bNote) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        //values.put(COLUMN_NAME_EBNAME, bName);
+        values.put(COLUMN_NAME_EBPADIDA, bPadiAmount);
+        values.put(COLUMN_NAME_EBAMOUNT, bAmount);
+        values.put(COLUMN_NAME_EBNOTE, bNote);
+
+        long newRowId = db.insert(TABLE_NAME,null,values);
+
+        return  newRowId;
+    }
+
     public List<Budgets>readAllEvent(){
 
         List<Budgets> budget = new ArrayList();
