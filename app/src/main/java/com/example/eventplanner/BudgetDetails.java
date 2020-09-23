@@ -39,7 +39,11 @@ public class BudgetDetails extends AppCompatActivity {
 
 
     //for calculation
-    private int overTotal =0 ;
+    private int overTotal = 0 ;
+    private  int overPaid=0;
+
+    private  int overDue= 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +55,23 @@ public class BudgetDetails extends AppCompatActivity {
         context = this;
         dbHelper = new DBHelper(context);
         budgetView = (ListView)findViewById(R.id.idBudgetView);
+        btot = findViewById(R.id.tvTota);
+        bpaid = findViewById(R.id.tvPaidA);
+        bamount = findViewById(R.id.tvAmount);
 
 
         bds = new ArrayList<>();
         bds = dbHelper.readAllBudgets();
 
+        overTotal = dbHelper.sumBudget();
+        btot.setText(String.valueOf(overTotal));
+        System.out.println( "Summmmmmmmmmmmmmmmmmmmmm " + overTotal);
+
+        overPaid = dbHelper.sumBPaid();
+        bpaid.setText(String.valueOf(overPaid));
+
+        overDue = overTotal- overPaid ;
+        bamount.setText(String.valueOf(overDue));
 
 
         BudgetAdapter adapter = new BudgetAdapter(context , R.layout.single_budget, bds);

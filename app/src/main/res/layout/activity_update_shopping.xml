@@ -8,25 +8,11 @@
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="359dp"
-        android:layout_height="633dp"
+        android:layout_width="368dp"
+        android:layout_height="505dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="80dp"
         android:background="#3C819EAC"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="110dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="520dp"
-        android:background="#3caac1"
-        android:text="UPDATE"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,45 +21,6 @@
         android:layout_width="411dp"
         android:layout_height="61dp"
         android:background="#3caac1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="252dp"
-        android:text="Total  Quantity"
-        android:textColor="#E1040101"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="312dp"
-        android:text="@string/as_price"
-        android:textColor="#E1040101"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="372dp"
-        android:text="Note"
-        android:textColor="#E1040101"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,11 +49,11 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="244dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="15dp"
-        android:text="Update Shopping List"
+        android:layout_width="255dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:text="Update ShoppingList :"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -114,12 +61,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/ns"
         android:layout_width="91dp"
         android:layout_height="42dp"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="16dp"
-        android:text="- S1"
+        android:layout_marginStart="336dp"
+        android:layout_marginTop="12dp"
+        android:text="S1"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -139,14 +86,50 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/idEditSNote"
+        android:layout_width="266dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="372dp"
+        android:background="#7963DFEF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="212dp"
+        android:text="Total  Quantity"
+        android:textColor="#E1040101"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/idEditSQty"
         android:layout_width="112dp"
         android:layout_height="33dp"
         android:layout_marginStart="212dp"
-        android:layout_marginTop="249dp"
+        android:layout_marginTop="208dp"
         android:background="#7963DFEF"
         android:hint="1"
         android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="272dp"
+        android:text="@string/as_price"
+        android:textColor="#E1040101"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,36 +138,39 @@
         android:layout_width="178dp"
         android:layout_height="34dp"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="305dp"
+        android:layout_marginTop="264dp"
         android:background="#7963DFEF"
         android:hint="20.00"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/idEditSNote"
-        android:layout_width="266dp"
-        android:layout_height="90dp"
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="412dp"
-        android:background="#7963DFEF"
+        android:layout_marginTop="332dp"
+        android:text="Note"
+        android:textColor="#E1040101"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Purchased"
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="110dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="480dp"
+        android:background="#3caac1"
+        android:text="UPDATE"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

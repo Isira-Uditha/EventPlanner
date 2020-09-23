@@ -30,7 +30,7 @@ public class BudgetOne extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BudgetOne.this,MainActivity.class);
+                Intent intent = new Intent(BudgetOne.this,EventHome.class);
                 startActivity(intent);
             }
         });

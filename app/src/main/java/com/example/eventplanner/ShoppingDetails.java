@@ -32,27 +32,34 @@ public class ShoppingDetails extends AppCompatActivity {
     private DBHelper dbHelper;
     private List<ShoppingLists> sls;
 
+    private  int sOverTot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_details);
         //disable nagvi. Bar
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
 
         context = this;
         dbHelper = new DBHelper(context);
+
+        stot = findViewById(R.id.tvSTot);
 
         shoppingView = (ListView)findViewById(R.id.idShoppingView);
         sls = new ArrayList<>();
         sls = dbHelper.readAllShoppings();
         System.out.println("fffffff" + sls);
 
+        sOverTot =dbHelper.sumShopping();
+        stot.setText(String.valueOf(sOverTot));
+
         ShoppingAdapter adapter = new ShoppingAdapter(context,R.layout.single_shopping,sls);
         shoppingView.setAdapter(adapter);
 
         //visit to the back page
-      /*  imageButton = (ImageButton)findViewById(R.id.imageButton);
+        imageButton = (ImageButton)findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +72,7 @@ public class ShoppingDetails extends AppCompatActivity {
                 toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
                 startActivity(intent);
             }
-        });*/
+        });
 
         //Add Shopping
         button = (Button)findViewById(R.id.button);

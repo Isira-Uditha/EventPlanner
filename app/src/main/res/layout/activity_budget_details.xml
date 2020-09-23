@@ -41,42 +41,29 @@
         android:id="@+id/textView3"
         android:layout_width="412dp"
         android:layout_height="37dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="60dp"
         android:background="#8554B3BF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="412dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="252dp"
+        android:layout_width="463dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="544dp"
         android:background="#412F575C"
         android:textColor="#E1040101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:text="@string/bd_details"
-        android:textColor="#120202"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="548dp"
         android:text="Total : "
         android:textColor="#E1040101"
         android:textStyle="bold"
@@ -84,11 +71,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tvTota"
+        android:layout_width="38dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="548dp"
+        android:text="TA"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="548dp"
         android:text="Paid:"
         android:textColor="#070707"
         android:textStyle="bold"
@@ -96,14 +93,48 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tvPaidA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="548dp"
+        android:text="PAmount"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="272dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="548dp"
         android:text="Due to pay: "
         android:textColor="#E1040101"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="548dp"
+        android:text="Amount"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/bd_details"
+        android:textColor="#120202"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,8 +142,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="472dp"
         android:background="#3CAAC1"
         android:text="@string/add"
         android:textStyle="bold"
@@ -130,42 +161,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
-    <TextView
-        android:id="@+id/tvTota"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="264dp"
-        android:text="ToatalAmount"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvPaidA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="264dp"
-        android:text="PAmount"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="348dp"
-        android:layout_marginTop="264dp"
-        android:text="Amount"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ListView
         android:id="@+id/idBudgetView"
-        android:layout_width="409dp"
-        android:layout_height="125dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="126dp" />
+        android:layout_width="408dp"
+        android:layout_height="357dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full A."
+        android:textColor="#0C0202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid A."
+        android:textColor="#0C0202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

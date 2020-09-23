@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBHelper;
@@ -18,6 +19,7 @@ public class UpdateShopping extends AppCompatActivity {
 
     ImageButton imageButton;
     Button button1;
+    TextView eSN;
 
     EditText eSName, eSQty,eSPrice,eSNote;
     private DBHelper dbShopping;
@@ -27,10 +29,13 @@ public class UpdateShopping extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_shopping);
+        //disable nagivation  bar
+        getSupportActionBar().hide();
 
         context =this;
         dbShopping = new DBHelper(context);
 
+        eSN = findViewById(R.id.ns);
         eSName = findViewById(R.id.idEditSName);
         eSQty = findViewById(R.id.idEditSQty);
         eSPrice =findViewById(R.id.idEditSPrice);
@@ -39,6 +44,7 @@ public class UpdateShopping extends AppCompatActivity {
        final String ids = getIntent().getStringExtra("ids");
         ShoppingLists shoppingLists= dbShopping.getSingleShopping(Integer.parseInt(ids));
 
+        eSN.setText(shoppingLists.getShoppingName());
         eSName.setText(shoppingLists.getShoppingName());
         eSQty.setText(shoppingLists.getQty());
         eSPrice.setText(shoppingLists.getPrice());
@@ -49,7 +55,7 @@ public class UpdateShopping extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UpdateShopping.this, EditShoppingList.class);
+                Intent intent = new Intent(UpdateShopping.this, ShoppingDetails.class);
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.click_back);
                 int duration = Toast.LENGTH_SHORT;

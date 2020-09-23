@@ -21,6 +21,7 @@ public class EditShoppingList extends AppCompatActivity {
     ImageButton imageButton;
 
     TextView eSName, eSQty,eSPrice,eSNote;
+    TextView eSN;
 
     private DBHelper dbShopping;
     private Context context;
@@ -35,6 +36,7 @@ public class EditShoppingList extends AppCompatActivity {
         context= this;
         dbShopping = new DBHelper(context);
 
+        eSN = findViewById(R.id.ns);
         eSName = findViewById(R.id.idEditSName);
         eSQty = findViewById(R.id.idEditSQty);
         eSPrice =findViewById(R.id.idEditSPrice);
@@ -44,6 +46,7 @@ public class EditShoppingList extends AppCompatActivity {
         System.out.println( "Check xxxxxxxxx " + ids);
        ShoppingLists shoppingLists= dbShopping.getSingleShopping(Integer.parseInt(ids));
 
+       eSN.setText(shoppingLists.getShoppingName());
        eSName.setText(shoppingLists.getShoppingName());
         eSQty.setText(shoppingLists.getQty());
         eSPrice.setText(shoppingLists.getPrice());

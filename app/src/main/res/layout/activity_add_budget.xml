@@ -10,20 +10,10 @@
         android:id="@+id/etABAmount"
         android:layout_width="175dp"
         android:layout_height="39dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="272dp"
         android:background="#7963DFEF"
         android:hint="Total Amount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="359dp"
-        android:layout_height="633dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="80dp"
-        android:background="#3C819EAC"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +21,7 @@
         android:id="@+id/button1"
         android:layout_width="110dp"
         android:layout_height="47dp"
-        android:layout_marginTop="608dp"
+        android:layout_marginTop="500dp"
         android:background="#3caac1"
         android:onClick="addData"
         android:text="@string/add"
@@ -39,7 +29,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="272dp"
         android:text="@string/add_amount"
         android:textColor="#E1040101"
         android:textSize="18sp"
@@ -91,15 +81,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="412dp"
-        android:text="@string/b_note"
-        android:textColor="#E1040101"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:id="@+id/textView31"
+        android:layout_width="371dp"
+        android:layout_height="485dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="84dp"
+        android:background="#3C819EAC"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,9 +139,22 @@
         android:id="@+id/etABNote"
         android:layout_width="292dp"
         android:layout_height="104dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="452dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="376dp"
         android:background="#7963DFEF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="344dp"
+        android:text="@string/b_note"
+        android:textColor="#E1040101"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

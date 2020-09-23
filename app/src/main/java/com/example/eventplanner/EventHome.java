@@ -8,12 +8,24 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.eventplanner.Database.DBHelper;
 
 public class EventHome extends AppCompatActivity {
 
     Button btn;
     Button button;
+
+
+    TextView btot, bpaid, bamount ;
+    private DBHelper dbHelper;
+    private int overTotal = 0 ;
+    private  int overPaid=0;
+
+    private  int overDue= 0;
+    Context context;
 
 
     @Override
@@ -27,6 +39,22 @@ public class EventHome extends AppCompatActivity {
         button = (Button) findViewById(R.id.button9);
 
 
+        btot = findViewById(R.id.editTextTextPersonName11);
+        bpaid = findViewById(R.id.editTextTextPersonName12);
+        bamount = findViewById(R.id.editTextTextPersonName13);
+
+        context = this;
+         dbHelper = new DBHelper(context);
+
+        overTotal = dbHelper.sumBudget();
+        btot.setText(String.valueOf(overTotal));
+        System.out.println( "Summmmmmmmmmmmmmmmmmmmmm " + overTotal);
+
+        overPaid = dbHelper.sumBPaid();
+        bpaid.setText(String.valueOf(overPaid));
+
+        overDue = overTotal- overPaid ;
+        bamount.setText(String.valueOf(overDue));
 
 
     }

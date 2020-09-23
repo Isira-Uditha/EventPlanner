@@ -17,43 +17,43 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "EventInfo.db";
     private SQLiteDatabase db;
 
-    public DBHelper(Context context){
-        super(context, DATABASE_NAME, null ,  1);
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
     }
 
     //budegt details table
-    public static final String TABLE_NAME="budget";
-    public static final String COLUMN_NAME_EBNAME="bname";
-    public static final String COLUMN_NAME_EBPADIDA="bpadia";
-    public static final String COLUMN_NAME_EBAMOUNT="bamount";
-    public static final String COLUMN_NAME_EBNOTE="bnote";
-    public static String COLUMN_NAME_ID="id";
+    public static final String TABLE_NAME = "budget";
+    public static final String COLUMN_NAME_EBNAME = "bname";
+    public static final String COLUMN_NAME_EBPADIDA = "bpadia";
+    public static final String COLUMN_NAME_EBAMOUNT = "bamount";
+    public static final String COLUMN_NAME_EBNOTE = "bnote";
+    public static String COLUMN_NAME_ID = "id";
 
     //shoppingList table
-    public static final String TABLE_SNAME="shopping";
-    public static final String COLUMN_NAME_SNAME="sname";
-    public static final String COLUMN_NAME_SQTY="sqty";
-    public static final String COLUMN_NAME_SPRICE="sprice";
-    public static final String COLUMN_NAME_SNOTE="snote";
-    public static String COLUMN_NAME_SID="ids";
+    public static final String TABLE_SNAME = "shopping";
+    public static final String COLUMN_NAME_SNAME = "sname";
+    public static final String COLUMN_NAME_SQTY = "sqty";
+    public static final String COLUMN_NAME_SPRICE = "sprice";
+    public static final String COLUMN_NAME_SNOTE = "snote";
+    public static String COLUMN_NAME_SID = "ids";
 
 
     // @Override
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                COLUMN_NAME_ID     + " INTEGER PRIMARY KEY," +
+                        COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
                         COLUMN_NAME_EBNAME + " TEXT," +
                         COLUMN_NAME_EBPADIDA + " TEXT," +
                         COLUMN_NAME_EBAMOUNT + " TEXT," +
                         COLUMN_NAME_EBNOTE + " TEXT)";
 
         String SQL_CREATE_ENTRIEZ =
-                "CREATE TABLE " + TABLE_SNAME+"(" +
+                "CREATE TABLE " + TABLE_SNAME + "(" +
                         COLUMN_NAME_SID + " INTEGER PRIMARY KEY," +
-                            COLUMN_NAME_SNAME + " TEXT," +
-                        COLUMN_NAME_SQTY + " TEXT,"+
-                        COLUMN_NAME_SPRICE + " TEXT,"+
+                        COLUMN_NAME_SNAME + " TEXT," +
+                        COLUMN_NAME_SQTY + " TEXT," +
+                        COLUMN_NAME_SPRICE + " TEXT," +
                         COLUMN_NAME_SNOTE + " TEXT)";
 
         //execute the comtemts of  SQL_CREATE_ENTERIES
@@ -67,6 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
     //BUDGET
     public long addInfo(String bName, String bPadiAmount, String bAmount, String bNote) {
 
@@ -78,9 +79,9 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME_EBAMOUNT, bAmount);
         values.put(COLUMN_NAME_EBNOTE, bNote);
 
-        long newRowId = db.insert(TABLE_NAME,null,values);
+        long newRowId = db.insert(TABLE_NAME, null, values);
 
-        return  newRowId;
+        return newRowId;
     }
 
     //SHOPIING-LIST
@@ -94,21 +95,21 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME_SPRICE, sPrice);
         values.put(COLUMN_NAME_SNOTE, sNote);
 
-        long newRowId = db.insert(TABLE_SNAME,null,values);
+        long newRowId = db.insert(TABLE_SNAME, null, values);
 
-        return  newRowId;
+        return newRowId;
     }
 
-    public List<Budgets>readAllEvent(){
+    public List<Budgets> readAllEvent() {
 
         List<Budgets> budget = new ArrayList();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
 
         String query = "SELECT * FROM " + EventsMaster.Budgets.TABLE_NAME;
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
-        if(cursor.moveToFirst()){
-            do{
+        if (cursor.moveToFirst()) {
+            do {
                 Budgets budgets = new Budgets();
 
                 budgets.setId((cursor.getInt(0)));
@@ -118,14 +119,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 budgets.setNote((cursor.getString(4)));
 
                 budget.add(budgets);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         return budget;
 
     }
 
 
-    public List<Budgets>  readAllBudgets(){
+    public List<Budgets> readAllBudgets() {
 
         List<Budgets> bajs = new ArrayList();
 
@@ -133,10 +134,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String query = "SELECT * FROM " + EventsMaster.Budgets.TABLE_NAME;
 
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
 
             do {
                 Budgets baj = new Budgets();
@@ -144,6 +145,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 baj.setId((cursor.getInt(0)));
                 baj.setBudgetName((cursor.getString(1)));
                 baj.setPadiAmount((cursor.getString(2)));
+                baj.setAmount((cursor.getString(3)));
 
                 bajs.add(baj);
 
@@ -177,15 +179,15 @@ public class DBHelper extends SQLiteOpenHelper {
        }
         return  shopping;
     }*/
-    public List<ShoppingLists> readAllShoppings(){
-        List<ShoppingLists> shpls=new ArrayList<>();
+    public List<ShoppingLists> readAllShoppings() {
+        List<ShoppingLists> shpls = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String query ="SELECT * FROM "+ EventsMaster.Shoppings.TABLE_SNAME;
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        String query = "SELECT * FROM " + EventsMaster.Shoppings.TABLE_SNAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
-        if (cursor.moveToFirst()){
-            do{
-                ShoppingLists shpl= new ShoppingLists();
+        if (cursor.moveToFirst()) {
+            do {
+                ShoppingLists shpl = new ShoppingLists();
                 shpl.setId(cursor.getInt(0));
                 shpl.setShoppingName(cursor.getString(1));
                 shpl.setQty(cursor.getString(2));
@@ -193,29 +195,29 @@ public class DBHelper extends SQLiteOpenHelper {
                 shpl.setNote(cursor.getString(4));
 
                 shpls.add(shpl);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
 
         }
-        System.out.println("jjjjjjjjjjjjj "+ shpls);
-        return  shpls;
+        System.out.println("jjjjjjjjjjjjj " + shpls);
+        return shpls;
 
     }
 
     //Delete budget details
-    public  void deleteBudget(int id){
+    public void deleteBudget(int id) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, COLUMN_NAME_ID +" =?",new String[]{String.valueOf(id)});
+        db.delete(TABLE_NAME, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(id)});
         db.close();
 
     }
 
-    public Budgets getSingleBudget(int id){
+    public Budgets getSingleBudget(int id) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        Cursor cursor =  sqLiteDatabase.query(TABLE_NAME, new String[] {COLUMN_NAME_ID,COLUMN_NAME_EBNAME,COLUMN_NAME_EBPADIDA,COLUMN_NAME_EBAMOUNT,COLUMN_NAME_EBNOTE,} ,COLUMN_NAME_ID + " =?",new String[]{String.valueOf(id)},null , null,null );
+        Cursor cursor = sqLiteDatabase.query(TABLE_NAME, new String[]{COLUMN_NAME_ID, COLUMN_NAME_EBNAME, COLUMN_NAME_EBPADIDA, COLUMN_NAME_EBAMOUNT, COLUMN_NAME_EBNOTE,}, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(id)}, null, null, null);
 
         Budgets budget;
 
-        if(cursor  != null){
+        if (cursor != null) {
 
             cursor.moveToFirst();
 
@@ -229,29 +231,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
             );
 
-            return  budget;
+            return budget;
 
         }
 
-        return  null;
+        return null;
 
     }
 
     //Retreive shopping List
-    public ShoppingLists getSingleShopping(int ids){
+    public ShoppingLists getSingleShopping(int ids) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        Cursor cursor =  sqLiteDatabase.query(TABLE_SNAME, new String[] {
+        Cursor cursor = sqLiteDatabase.query(TABLE_SNAME, new String[]{
                 COLUMN_NAME_SID,
                 COLUMN_NAME_SNAME,
                 COLUMN_NAME_SQTY,
                 COLUMN_NAME_SPRICE,
                 COLUMN_NAME_SNOTE,
-        } ,COLUMN_NAME_SID + " =?",new String[]{String.valueOf(ids)},null , null,null );
+        }, COLUMN_NAME_SID + " =?", new String[]{String.valueOf(ids)}, null, null, null);
 
 
         ShoppingLists shoppingList;
 
-        if(cursor  != null){
+        if (cursor != null) {
 
             cursor.moveToFirst();
 
@@ -265,36 +267,36 @@ public class DBHelper extends SQLiteOpenHelper {
 
             );
             System.out.println("fggggggggdasasas sxxxx" + shoppingList);
-            return  shoppingList;
+            return shoppingList;
 
         }
 
-        return  null;
+        return null;
 
     }
 
     //Update budget Details
-   public int updateBudget(Budgets budget){
+    public int updateBudget(Budgets budget) {
         SQLiteDatabase db = getReadableDatabase();
 
         ContentValues values = new ContentValues();
-       values.put(EventsMaster.Budgets.COLUMN_NAME_EBNAME,budget.getBudgetName());
-       values.put(EventsMaster.Budgets.COLUMN_NAME_EBPADIDA,budget.getPadiAmount());
-       values.put(EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT,budget.getAmount());
-       values.put(EventsMaster.Budgets.COLUMN_NAME_EBNOTE,budget.getNote());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBNAME, budget.getBudgetName());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBPADIDA, budget.getPadiAmount());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT, budget.getAmount());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBNOTE, budget.getNote());
 
-       int status = db.update(EventsMaster.Budgets.TABLE_NAME,values,COLUMN_NAME_ID +" =?",new String[]{String.valueOf(budget.getId())});
+        int status = db.update(EventsMaster.Budgets.TABLE_NAME, values, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(budget.getId())});
 
-       db.close();
-       return status;
+        db.close();
+        return status;
 
-   }
+    }
 
 
-   //Delete Shpooing Details
-    public void  deleteShopping(int ids){
+    //Delete Shpooing Details
+    public void deleteShopping(int ids) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_SNAME,COLUMN_NAME_SID+"=?",new String[]{String.valueOf(ids)});
+        db.delete(TABLE_SNAME, COLUMN_NAME_SID + "=?", new String[]{String.valueOf(ids)});
         db.close();
     }
 
@@ -326,7 +328,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }*/
 
     //Update shopiing list details
-    public  int updateShopping(ShoppingLists shoppingList) {
+    public int updateShopping(ShoppingLists shoppingList) {
         SQLiteDatabase db = getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(EventsMaster.Shoppings.COLUMN_NAME_SNAME, shoppingList.getShoppingName());
@@ -334,12 +336,72 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(EventsMaster.Shoppings.COLUMN_NAME_SPRICE, shoppingList.getPrice());
         values.put(EventsMaster.Shoppings.COLUMN_NAME_SNOTE, shoppingList.getNote());
 
-        int status =db.update(EventsMaster.Shoppings.TABLE_SNAME,values,COLUMN_NAME_SID+" =?",new String[]{String.valueOf(shoppingList.getId())});
+        int status = db.update(EventsMaster.Shoppings.TABLE_SNAME, values, COLUMN_NAME_SID + " =?", new String[]{String.valueOf(shoppingList.getId())});
         db.close();
         return status;
 
     }
+
+    public int sumBudget() {
+
+        SQLiteDatabase db = getReadableDatabase();
+        int total;
+
+        //Cursor cursor = db.rawQuery("SELECT SUM( " + COLUMN_NAME_EBAMOUNT + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + COLUMN_NAME_EBAMOUNT + ") as Total FROM " + TABLE_NAME, null);
+
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            //  Cursor cursor = db.rawQuery(query,null);
+            return total;
+
+        }
+
+        return 0;
+
+    }
+
+    public int sumBPaid() {
+
+        SQLiteDatabase db = getReadableDatabase();
+        int total;
+
+        //Cursor cursor = db.rawQuery("SELECT SUM( " + COLUMN_NAME_EBAMOUNT + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + COLUMN_NAME_EBPADIDA + ") as Total FROM " + TABLE_NAME, null);
+
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            //  Cursor cursor = db.rawQuery(query,null);
+            return total;
+
+        }
+
+        return 0;
+
+    }
+    public int sumShopping(){
+        SQLiteDatabase db = getReadableDatabase();
+        int total ;
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + COLUMN_NAME_SQTY + " * " + COLUMN_NAME_SPRICE + ") as Total FROM " + TABLE_SNAME, null);
+
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            //  Cursor cursor = db.rawQuery(query,null);
+            return total;
+
+        }
+
+        return 0;
+    }
+
 }
+
 
     /*public int updateGuest(GuestModel guest){
 

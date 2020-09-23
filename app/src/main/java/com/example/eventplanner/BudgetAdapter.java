@@ -43,13 +43,15 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
         ImageButton edit = row.findViewById(R.id.idEditBtn);
         final ImageButton delete = row.findViewById(R.id.idDeleteBtn);
         TextView paidAmount = row.findViewById((R.id.idPaidAmount));
-
+        TextView amount = row.findViewById(R.id.idAmount);
 
 
 
         final Budgets bud = budgetz.get(position);
         budgetname.setText(bud.getBudgetName());
         paidAmount.setText(bud.getPadiAmount());
+        amount.setText(bud.getAmount());
+
         //imageView.setVisibility(row.INVISIBLE);
 
         //delete.setTag(position);

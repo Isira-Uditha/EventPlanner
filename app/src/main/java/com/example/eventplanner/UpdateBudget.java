@@ -22,6 +22,7 @@ public class UpdateBudget extends AppCompatActivity {
     Button button3;
 
     EditText eBName, eBPadiA, eBAmount, eBNote;
+    TextView eB;
 
     private DBHelper dbBudget;
     private Context context;
@@ -38,7 +39,7 @@ public class UpdateBudget extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UpdateBudget.this, EditBudget.class);
+                Intent intent = new Intent(UpdateBudget.this, BudgetDetails.class);
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.click_back);
                 int duration = Toast.LENGTH_SHORT;
@@ -52,6 +53,7 @@ public class UpdateBudget extends AppCompatActivity {
         context =this;
         dbBudget = new DBHelper(context);
 
+        eB= findViewById(R.id.nb);
         eBName=findViewById(R.id.ideditBudgetName);
         eBPadiA = findViewById(R.id.idEditPaidAmount);
         eBAmount =findViewById(R.id.idEditAmount);
@@ -60,6 +62,7 @@ public class UpdateBudget extends AppCompatActivity {
         final String id = getIntent().getStringExtra("id");
         Budgets budgets = dbBudget.getSingleBudget(Integer.parseInt(id));
 
+        eB.setText(budgets.getBudgetName());
         eBName.setText(budgets.getBudgetName());
         eBPadiA.setText(budgets.getPadiAmount());
         eBAmount.setText(budgets.getAmount());

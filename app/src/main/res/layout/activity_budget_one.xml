@@ -8,10 +8,12 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_width="132dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="208dp"
+        android:background="#6EADDF"
         android:text="Budget"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -20,13 +22,15 @@
 
     <Button
         android:id="@+id/buttonAS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_width="184dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="372dp"
+        android:background="#6EADDF"
         android:text="Shopping List"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

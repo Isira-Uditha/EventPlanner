@@ -22,6 +22,7 @@ public class EditBudget extends AppCompatActivity {
     Button button3;
 
     TextView eBName, eBPadiA, eBAmount, eBNote;
+    TextView eB;
 
     private DBHelper dbBudget;
     private Context context;
@@ -53,6 +54,7 @@ public class EditBudget extends AppCompatActivity {
         context =this;
         dbBudget = new DBHelper(context);
 
+        eB= findViewById(R.id.nb);
         eBName=findViewById(R.id.ideditBudgetName);
         eBPadiA = findViewById(R.id.idEditPaidAmount);
         eBAmount =findViewById(R.id.idEditAmount);
@@ -61,6 +63,7 @@ public class EditBudget extends AppCompatActivity {
         final String id = getIntent().getStringExtra("id");
         Budgets budgets = dbBudget.getSingleBudget(Integer.parseInt(id));
 
+        eB.setText(budgets.getBudgetName());
         eBName.setText(budgets.getBudgetName());
         eBPadiA.setText(budgets.getPadiAmount());
         eBAmount.setText(budgets.getAmount());
