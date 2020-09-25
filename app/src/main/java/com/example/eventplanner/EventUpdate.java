@@ -124,9 +124,10 @@ public class EventUpdate extends AppCompatActivity {
                 System.out.println(state);
 
                 if(state>0){
-                    Intent intent = new Intent(context , Home.class);
+                    Intent intent = new Intent(context, EventHome.class);
+                    intent.putExtra("id",id);
                     Toast.makeText(context,"Data successfully Updated",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(context,Home.class));
+                    startActivity(intent);
                 }
             }
         });
