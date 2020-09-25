@@ -1,11 +1,13 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class ShoppingDetails extends AppCompatActivity {
 
-    ImageButton imageButton;
+
     Button button;
     ImageView imageView;
 
@@ -39,7 +41,9 @@ public class ShoppingDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_details);
         //disable nagvi. Bar
-        getSupportActionBar().hide();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Shopping Info");
+        //getSupportActionBar().hide();
 
 
         context = this;
@@ -58,21 +62,7 @@ public class ShoppingDetails extends AppCompatActivity {
         ShoppingAdapter adapter = new ShoppingAdapter(context,R.layout.single_shopping,sls);
         shoppingView.setAdapter(adapter);
 
-        //visit to the back page
-        imageButton = (ImageButton)findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShoppingDetails.this,BudgetOne.class);
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.click_back);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
-                toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
-                startActivity(intent);
-            }
-        });
+
 
         //Add Shopping
         button = (Button)findViewById(R.id.button);
@@ -81,7 +71,7 @@ public class ShoppingDetails extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ShoppingDetails.this, AddShoppingList.class);
                 Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.bd_toast);
+                CharSequence text = "Now you can Shooping Details";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
                 toast.show();
@@ -89,5 +79,26 @@ public class ShoppingDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    //visit to the back page
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+
+            Intent intent = new Intent(ShoppingDetails.this,BudgetOne.class);
+
+            /*Context context = getApplicationContext();
+            CharSequence text = context.getString(R.string.g_toast_redirect);
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+            toast.show();*/
+
+            startActivity(intent);
+
+        }
+        return true;
     }
 }

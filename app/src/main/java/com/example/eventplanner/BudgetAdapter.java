@@ -72,9 +72,11 @@ public class BudgetAdapter extends ArrayAdapter<Budgets> {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Check 123 " + bud.getBudgetName());
 
                 Intent intent = new Intent(context , EditBudget.class);
                 intent.putExtra("id",String.valueOf(bud.getId()));
+                intent.putExtra("title",String.valueOf((bud.getBudgetName())));
                 context.startActivity(intent);
 
             }

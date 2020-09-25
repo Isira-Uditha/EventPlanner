@@ -61,6 +61,7 @@ public class ShoppingAdapter extends ArrayAdapter<ShoppingLists> {
                 dbShopping.deleteShopping(shoppingList.getId());
 
                 Intent myIntent = new Intent(context,ShoppingDetails.class);
+
                 context.startActivity(myIntent);
 
             }
@@ -72,6 +73,7 @@ public class ShoppingAdapter extends ArrayAdapter<ShoppingLists> {
 
                 Intent intent = new Intent(context , EditShoppingList.class);
                 intent.putExtra("ids",String.valueOf(shoppingList.getId()));
+                intent.putExtra("title",String.valueOf((shoppingList.getShoppingName())));
                 System.out.println("IDDDDDDDDDD" + shoppingList.getId());
                 context.startActivity(intent);
 

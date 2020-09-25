@@ -1,5 +1,6 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,7 +26,7 @@ import java.util.List;
 
 public class BudgetDetails extends AppCompatActivity {
 
-    ImageButton imageButton;
+
     Button button;
     ImageView imageView;
     ImageView imageView3;
@@ -49,8 +51,10 @@ public class BudgetDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget_details);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Budget Info");
         //disable nagivation  bar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         context = this;
         dbHelper = new DBHelper(context);
@@ -77,21 +81,6 @@ public class BudgetDetails extends AppCompatActivity {
         BudgetAdapter adapter = new BudgetAdapter(context , R.layout.single_budget, bds);
         budgetView.setAdapter(adapter);
 
-        //visit to the back page
-        imageButton = (ImageButton)findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BudgetDetails.this,BudgetOne.class);
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.click_back);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
-                toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
-                startActivity(intent);
-            }
-        });
 
         //Add Budget
         button = (Button)findViewById(R.id.button);
@@ -163,6 +152,27 @@ public class BudgetDetails extends AppCompatActivity {
         });*/
 
         //Calculation
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+
+            Intent intent = new Intent(BudgetDetails.this,BudgetOne.class);
+
+            /*Context context = getApplicationContext();
+            CharSequence text = context.getString(R.string.g_toast_redirect);
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+            toast.show();*/
+
+            startActivity(intent);
+
+        }
+        return true;
     }
 
 

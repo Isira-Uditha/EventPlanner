@@ -10,12 +10,13 @@
         android:id="@+id/button1"
         android:layout_width="185dp"
         android:layout_height="60dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="160dp"
         android:background="#6EADDF"
         android:text="Budget"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,43 +24,13 @@
         android:id="@+id/buttonAS"
         android:layout_width="184dp"
         android:layout_height="65dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="316dp"
         android:background="#6EADDF"
         android:text="Shopping List"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="410dp"
-        android:layout_height="61dp"
-        android:background="#3caac1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="55dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="79dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="16dp"
-        android:text="Budget"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

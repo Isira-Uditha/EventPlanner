@@ -1,11 +1,13 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,48 +27,13 @@ public class AddShoppingList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shopping_list);
-        //disable nagivation  bar
-       // getSupportActionBar().hide();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Add Shopiing List");
 
         etASName=findViewById(R.id.etASName);
         etASQty=findViewById(R.id.etASQty);
         etASPrice=findViewById(R.id.etASPrice);
         etASNote=findViewById(R.id.etASNote);
-
-
-        //back button
-        imageButton =(ImageButton)findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddShoppingList.this, ShoppingDetails.class);
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.click_back);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
-                toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
-                startActivity(intent);
-
-
-            }
-        });
-
-        //Afer adding list details
-        /*button1 = (Button)findViewById(R.id.button1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddShoppingList.this, BudgetDetails.class);
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.adds_toast);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
-                toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
-                startActivity(intent);
-            }
-        });*/
 
 
     }
@@ -82,5 +49,26 @@ public class AddShoppingList extends AppCompatActivity {
         else {
             Toast.makeText(this, "Shopping Details not inserted", Toast.LENGTH_SHORT).show();
         }
+    }
+    //back button
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+
+            Intent intent = new Intent(AddShoppingList.this,ShoppingDetails.class);
+
+            Context context = getApplicationContext();
+            CharSequence text = "Nothing Added";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+            toast.show();
+
+            startActivity(intent);
+
+        }
+        return true;
     }
 }

@@ -1,11 +1,13 @@
 package com.example.eventplanner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +19,7 @@ import com.example.eventplanner.Database.DBHelper;
 
 public class UpdateShopping extends AppCompatActivity {
 
-    ImageButton imageButton;
+
     Button button1;
     TextView eSN;
 
@@ -29,13 +31,14 @@ public class UpdateShopping extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_shopping);
-        //disable nagivation  bar
-        getSupportActionBar().hide();
+        String title = getIntent().getExtras().getString("title");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Shopping List : " + title);
 
         context =this;
         dbShopping = new DBHelper(context);
 
-        eSN = findViewById(R.id.ns);
+
         eSName = findViewById(R.id.idEditSName);
         eSQty = findViewById(R.id.idEditSQty);
         eSPrice =findViewById(R.id.idEditSPrice);
@@ -44,27 +47,13 @@ public class UpdateShopping extends AppCompatActivity {
        final String ids = getIntent().getStringExtra("ids");
         ShoppingLists shoppingLists= dbShopping.getSingleShopping(Integer.parseInt(ids));
 
-        eSN.setText(shoppingLists.getShoppingName());
+        //eSN.setText(shoppingLists.getShoppingName());
         eSName.setText(shoppingLists.getShoppingName());
         eSQty.setText(shoppingLists.getQty());
         eSPrice.setText(shoppingLists.getPrice());
         eSNote.setText(shoppingLists.getNote());
 
-        //visit to the back page
-        imageButton = (ImageButton)findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UpdateShopping.this, ShoppingDetails.class);
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.click_back);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
-                toast.setGravity(Gravity.BOTTOM| Gravity.CENTER, 0, 10);
-                startActivity(intent);
-            }
-        });
+
 
         //update Shopping Details
         button1 = (Button)findViewById(R.id.button1);
@@ -81,12 +70,40 @@ public class UpdateShopping extends AppCompatActivity {
                 int status = dbShopping.updateShopping(shoppingList);
 
                 Intent intent = new Intent(UpdateShopping.this,ShoppingDetails.class);
-                intent.putExtra("ids",ids);
+                String title = getIntent().getExtras().getString("title");
+                final String ids = getIntent().getStringExtra("id");
+                intent.putExtra("id",id2);
+                intent.putExtra("title",title);
                 startActivity(intent);
 
 
             }
         });
 
+    }
+    //back button
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int ids = item.getItemId();
+
+        if(ids == android.R.id.home){
+
+            Intent intent = new Intent(UpdateShopping.this,EditShoppingList.class);
+            String title = getIntent().getExtras().getString("title");
+            final String id2 = getIntent().getStringExtra("ids");
+            intent.putExtra("ids",id2);
+            intent.putExtra("title",title);
+
+            Context context = getApplicationContext();
+            CharSequence text = "Nothing Updated";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+            toast.show();
+
+            startActivity(intent);
+
+        }
+        return true;
     }
 }
