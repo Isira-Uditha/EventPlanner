@@ -9,7 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home"></activity>
+        <activity android:name=".InputValidatorHelper"></activity>
+        <activity android:name=".EventUpdate" />
+        <activity android:name=".EventEdit" />
+
+        <activity android:name=".EventAdd" /> <!-- <<<<<<< Kasuni -->
+        <activity android:name=".UpdateTask" />
+        <activity android:name=".EditTask" />
+        <activity android:name=".AddTask" />
+        <activity android:name=".TaskHome" /> <!-- <activity android:name=".Home" /> -->
+
+        <activity android:name=".Home" /> <!-- >>>>>>> Integration -->
+
+
+        <activity android:name=".ShoppingDetails"/>
+        <activity android:name=".BudgetDetails" />
+        <activity android:name=".UpdateShopping" />
+        <activity android:name=".UpdateBudget" />
+        <activity android:name=".BudgetOne" />
+        <activity android:name=".EditBudget" />
+        <activity android:name=".AddBudget" />
+        <activity android:name=".AddShoppingList" />
+        <activity android:name=".EditShoppingList" />
+
+
         <activity
             android:name=".EventHome"
             android:parentActivityName=".MainActivity" />
