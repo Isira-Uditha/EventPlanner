@@ -78,7 +78,7 @@ public class BudgetDetails extends AppCompatActivity {
         overPaid = dbHelper.sumBPaid(eid);
         bpaid.setText(String.valueOf(overPaid));
 
-        overDue = overTotal- overPaid ;
+        overDue = calculateOverDue(overTotal,overPaid) ;
         bamount.setText(String.valueOf(overDue));
 
 
@@ -177,6 +177,13 @@ public class BudgetDetails extends AppCompatActivity {
 
         }
         return true;
+    }
+
+    public int calculateOverDue(int total , int paid){
+
+        int duePay = total - paid;
+        return duePay;
+
     }
 
 

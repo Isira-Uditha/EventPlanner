@@ -60,6 +60,53 @@ public class UpdateShopping extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+
+                boolean allowSave = true;
+
+                if(inputValidatorHelper.isNullOrEmpty(eSName.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Shipping Name Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+
+                if(inputValidatorHelper.isNullOrEmpty(eSQty.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Quantity Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if(!inputValidatorHelper.isNumeric(eSQty.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText( context,"Enter only numeric values", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+
+                if(inputValidatorHelper.isNullOrEmpty(eSPrice.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Price Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if(!inputValidatorHelper.isNumeric(eSPrice.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Enter only numeric values", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
                 String s_name= eSName.getText().toString();
                 String s_qty= eSQty.getText().toString();
                 String s_price= eSPrice.getText().toString();
@@ -67,18 +114,23 @@ public class UpdateShopping extends AppCompatActivity {
                 int id2 = Integer.parseInt(ids);
 
                 ShoppingLists shoppingList = new ShoppingLists(id2,s_name,s_qty,s_price,s_note);
-                int status = dbShopping.updateShopping(shoppingList);
 
-                Intent intent = new Intent(UpdateShopping.this,ShoppingDetails.class);
-                String title = getIntent().getExtras().getString("title");
-                final String ids = getIntent().getStringExtra("id");
-                intent.putExtra("id",id2);
-                intent.putExtra("title",title);
-                startActivity(intent);
+                if(allowSave) {
+
+                    int status = dbShopping.updateShopping(shoppingList);
 
 
+                    Intent intent = new Intent(UpdateShopping.this, ShoppingDetails.class);
+                    String title = getIntent().getExtras().getString("title");
+                    final String ids = getIntent().getStringExtra("id");
+                    intent.putExtra("id", id2);
+                    intent.putExtra("title", title);
+                    startActivity(intent);
+
+                }
             }
         });
+
 
     }
     //back button
