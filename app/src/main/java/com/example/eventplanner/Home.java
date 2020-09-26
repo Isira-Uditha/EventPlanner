@@ -27,7 +27,7 @@ public class Home extends AppCompatActivity {
     Button btn;
     private ImageButton addBtn;
     private ListView listView;
-    private TextView count;
+    private TextView count , countIndoorView , countOutdoorView;
     Context context;
     private List<com.example.eventplanner.Database.Event> events;
 
@@ -44,6 +44,8 @@ public class Home extends AppCompatActivity {
         addBtn = (ImageButton)findViewById(R.id.button);
         listView = findViewById(R.id.eventList);
         count = findViewById(R.id.eventCount);
+        countIndoorView = (TextView)findViewById(R.id.eventCountIndoor);
+        countOutdoorView = findViewById(R.id.eventCountOutdoor);
         events = new ArrayList<>();
 
         events = dbevent.readAllEvent();
@@ -52,7 +54,16 @@ public class Home extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         int countEvents = dbevent.countEvents();
-        count.setText("You have "+countEvents+" Events");
+        count.setText("Total Events: "+countEvents);
+
+        int countIndoor = dbevent.countIndoor("Indoor");
+        countIndoorView.setText("Indoor :"+countIndoor);
+
+        int countOutdoor = calculateOutdoor(countEvents,countIndoor);
+        countOutdoorView.setText("Outdoor: "+countOutdoor);
+
+
+
 
         addBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -79,6 +90,13 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+    }
+
+    public int calculateOutdoor(int totalEvents , int indoorEvents){
+
+        int outdoorEvents = totalEvents-indoorEvents;
+        return outdoorEvents;
 
     }
 }

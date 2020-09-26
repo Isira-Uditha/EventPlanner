@@ -41,15 +41,65 @@ public class AddBudget extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper(this);
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
-        long val= dbHelper.addBInfo(etABName.getText().toString(),etABPaidA.getText().toString(),etABAmount.getText().toString(),etABNote.getText().toString(),Integer.parseInt(eid));
 
-        if (val>0){
-            Intent intent = new Intent(AddBudget.this , BudgetDetails.class);
-            Toast.makeText(this, "New Budget Details inserted", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
+        InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+
+        boolean allowSave = true;
+
+        if(inputValidatorHelper.isNullOrEmpty(etABName.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Budget Name Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
         }
-        else {
-            Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
+
+
+        if(inputValidatorHelper.isNullOrEmpty(etABAmount.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Total Amount Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(!inputValidatorHelper.isNumeric(etABAmount.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Enter only numeric values", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+
+        if(inputValidatorHelper.isNullOrEmpty(etABPaidA.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Paid Amount Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(!inputValidatorHelper.isNumeric(etABPaidA.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Enter only numeric values", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(allowSave) {
+
+            long val = dbHelper.addBInfo(etABName.getText().toString(), etABPaidA.getText().toString(), etABAmount.getText().toString(), etABNote.getText().toString(), Integer.parseInt(eid));
+
+            if (val > 0) {
+                Intent intent = new Intent(AddBudget.this, BudgetDetails.class);
+                Toast.makeText(this, "New Budget Details inserted", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

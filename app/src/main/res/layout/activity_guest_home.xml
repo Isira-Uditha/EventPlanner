@@ -10,13 +10,50 @@
     <ListView
         android:id="@+id/guestList"
         android:layout_width="409dp"
-        android:layout_height="601dp"
+        android:layout_height="500dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/idGuestCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total : x"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idGuestInvited"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/guestList" />
+
+    <TextView
+        android:id="@+id/idGuestInvited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invited : x"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idGuestNotInvited"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/idGuestCount"
+        app:layout_constraintTop_toBottomOf="@+id/guestList" />
+
+    <TextView
+        android:id="@+id/idGuestNotInvited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Invited : x"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/idGuestInvited"
+        app:layout_constraintTop_toBottomOf="@+id/guestList" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

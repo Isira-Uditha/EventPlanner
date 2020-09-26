@@ -53,7 +53,7 @@
     <string name="edit">You are going to edit your event</string>
     <string name="eventDes">Description</string>
 
-<!--<<<<<<< Kasuni-->
+    <!--<<<<<<< Kasuni-->
     <string name="tName">Task</string>
     <string name="tTime">Time</string>
     <string name="tDescription">Description</string>
@@ -89,7 +89,5 @@
 
     <string name="click_back">Nothing Changed</string>
 
-<!--=======-->
-<!-->>>>>>> Integration-->
 </resources>
 

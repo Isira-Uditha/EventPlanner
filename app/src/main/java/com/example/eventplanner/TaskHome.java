@@ -24,7 +24,7 @@ import java.util.List;
 public class TaskHome extends AppCompatActivity {
 
     private ListView taskView;
-    private TextView count;
+    private TextView count , completed , incompleted;
     Context context;
     private DBHelper dbHelper;
     private List<Task> tasks;
@@ -43,6 +43,8 @@ public class TaskHome extends AppCompatActivity {
         dbHelper = new DBHelper(context);
         taskView = (ListView)findViewById(R.id.idTaskView);
         count = (TextView)findViewById(R.id.idTaskCount);
+        completed = (TextView)findViewById(R.id.idTaskCompleted);
+        incompleted = (TextView)findViewById(R.id.idTaskIncompleted);
         tasks = new ArrayList<>();
 
         tasks = dbHelper.readAll(eid);
@@ -51,7 +53,16 @@ public class TaskHome extends AppCompatActivity {
 
         //get the number of tasks from the table
         int countTasks = dbHelper.countTasks(eid);
-        count.setText("You have "+countTasks+" Tasks");
+        count.setText("Total: "+countTasks);
+
+        int completedTasks = dbHelper.countFinished(1,eid);
+        completed.setText("Completed:"+completedTasks);
+
+        int ToDo = TasksToDo(countTasks , completedTasks);
+        incompleted.setText("Incompleted: " + ToDo);
+
+
+
 
     }
 
@@ -100,5 +111,11 @@ public class TaskHome extends AppCompatActivity {
 
 
         return true;
+    }
+
+    public int TasksToDo(int x , int y){
+
+        int toDo = x - y;
+        return toDo;
     }
 }
