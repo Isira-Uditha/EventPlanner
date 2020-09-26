@@ -166,20 +166,52 @@ public class GuestAdd extends AppCompatActivity implements AdapterView.OnItemSel
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
 
+        InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+
+        boolean allowSave = true;
+
+        if(inputValidatorHelper.isNullOrEmpty(etGuestName.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Guest Name Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+
+        if(inputValidatorHelper.ischeckContact(etGuestContact.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Please Insert a Correct Contact Number", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(!inputValidatorHelper.isValidGuestEmail(etGuestEmail.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Please Insert a Correct E-mail Address", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+
         //Toast.makeText(this, s1 + " Successfully Inserted", Toast.LENGTH_SHORT).show();
+        if(allowSave) {
+
+            long val = dbguest.addInfo_guest(etGuestName.getText().toString(), s1, s2, etGuestContact.getText().toString(), etGuestEmail.getText().toString(), checked, etGuestNote.getText().toString(), Integer.parseInt(eid));
+
+            intent = new Intent(GuestAdd.this, GuestHome.class);
+            startActivity(intent);
 
 
-        long val = dbguest.addInfo_guest(etGuestName.getText().toString(),s1,s2,etGuestContact.getText().toString(),etGuestEmail.getText().toString(),checked,etGuestNote.getText().toString(),Integer.parseInt(eid));
+            if (val > 0) {
+                Toast.makeText(this, "Successfully Inserted", Toast.LENGTH_SHORT).show();
 
-        intent = new Intent(GuestAdd.this,GuestHome.class);
-        startActivity(intent);
+            } else {
+                Toast.makeText(this, "Insertion Unsuccessful", Toast.LENGTH_SHORT).show();
+            }
 
-
-        if(val>0){
-            Toast.makeText(this, "Successfully Inserted", Toast.LENGTH_SHORT).show();
-
-        }else{
-            Toast.makeText(this, "Insertion Unsuccessful", Toast.LENGTH_SHORT).show();
         }
 
 
