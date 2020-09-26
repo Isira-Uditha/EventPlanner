@@ -13,17 +13,30 @@
         <activity android:name=".EventUpdate"></activity>
         <activity android:name=".EventEdit" />
         <activity android:name=".EventAdd" />
-       
 
-<!--<<<<<<< Kasuni-->
+
+        <!-- Anuththara-->
+
+        <activity android:name=".ShoppingDetails"/>
+        <activity android:name=".BudgetDetails" />
+        <activity android:name=".UpdateShopping" />
+        <activity android:name=".UpdateBudget" />
+        <activity android:name=".BudgetOne" />
+        <activity android:name=".EditBudget" />
+        <activity android:name=".AddBudget" />
+        <activity android:name=".AddShoppingList" />
+        <activity android:name=".EditShoppingList" />
+
+
+<!-- Kasuni-->
         <activity android:name=".UpdateTask"></activity>
         <activity android:name=".EditTask" />
         <activity android:name=".AddTask" />
         <activity android:name=".TaskHome" />
-        <!--<activity android:name=".Home" />-->
-<!--=======-->
+
+
         <activity android:name=".Home"></activity>
-<!-->>>>>>> Integration-->
+
 
         <activity
             android:name=".EventHome"

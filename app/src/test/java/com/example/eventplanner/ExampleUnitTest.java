@@ -1,8 +1,8 @@
 package com.example.eventplanner;
 
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.eventplanner.Database.DBHelper;
 
 import org.junit.Before;
@@ -22,16 +22,20 @@ public class ExampleUnitTest {
 
 
 
-   private DBHelper dbHelper;
+
+    private DBHelper dbHelper;
     private Context context;
     TaskHome taskHome;
-
-
+    BudgetDetails budgetDetails;
+    Home home;
 
     @Before
-    public void setUp() {
+    public void setUp(){
 
-       taskHome = new TaskHome();
+        budgetDetails = new BudgetDetails();
+        home = new Home();
+        taskHome = new TaskHome();
+
     }
 
     @Test
@@ -40,10 +44,25 @@ public class ExampleUnitTest {
     }
 
     @Test
+
     public void test_checkTasks(){
      int results = taskHome.TasksToDo(4,2);
      assertEquals(2,results);
      }
 
+
+    @Test
+    public void test_calculateOverDue(){
+
+        int result = budgetDetails.calculateOverDue(20,10);
+        assertEquals(10,result);
+}
+    @Test
+    public void test_calculateOutdoor(){
+
+        int result = home.calculateOutdoor(4,2);
+        assertEquals(2,result);
+
+    }
 
 }

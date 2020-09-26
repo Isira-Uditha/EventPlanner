@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -82,7 +83,10 @@ public class EventEdit extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(EventEdit.this,Home.class);
+            Intent intent = new Intent(EventEdit.this,EventHome.class);
+            SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+            String eid = prf.getString("eid", "No ID");
+            intent.putExtra("id",eid);
             startActivity(intent);
         }
         return true;

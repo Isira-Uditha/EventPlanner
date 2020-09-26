@@ -70,14 +70,43 @@ public class EventAdd extends AppCompatActivity {
 
     public void addData(View view){
         DBHelper dbevent = new DBHelper(this);
-        long val =dbevent.addInfo_event(etEventName.getText().toString(),etEventDate.getText().toString(),etEventTime.getText().toString(),tietLocation.getText().toString(),tietTheme.getText().toString(),etDressCode.getText().toString(),etPhotographer.getText().toString(),etDescription.getText().toString(),radioButton.getText().toString());
-        if (val>0){
-            Intent intent = new Intent(EventAdd.this , Home.class);
-            Toast.makeText(this, "Data successfully inserted", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
+
+        InputValidatorHelper inputEventValidatorHelper = new InputValidatorHelper();
+        boolean allowSave = true;
+
+        if(inputEventValidatorHelper.isNullOrEmpty(etEventName.getText().toString())){
+
+
+            Toast.makeText(this, "Event  Name Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
         }
-        else {
-            Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
+
+        if(inputEventValidatorHelper.ischeckText(etEventName.getText().toString())){
+
+
+            Toast.makeText(this, "Event name should have at least five characters ", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(inputEventValidatorHelper.isNullOrEmpty(etDescription.getText().toString())){
+
+
+            Toast.makeText(this, "Description Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(allowSave) {
+            long val = dbevent.addInfo_event(etEventName.getText().toString(), etEventDate.getText().toString(), etEventTime.getText().toString(), tietLocation.getText().toString(), tietTheme.getText().toString(), etDressCode.getText().toString(), etPhotographer.getText().toString(), etDescription.getText().toString(), radioButton.getText().toString());
+            if (val > 0) {
+                Intent intent = new Intent(EventAdd.this, Home.class);
+                Toast.makeText(this, "Data successfully inserted", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Data not inserted", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
