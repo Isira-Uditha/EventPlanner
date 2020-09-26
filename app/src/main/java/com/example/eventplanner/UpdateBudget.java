@@ -66,6 +66,52 @@ public class UpdateBudget extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+
+                boolean allowSave = true;
+
+                if(inputValidatorHelper.isNullOrEmpty(eBName.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Budget Name Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+
+                if(inputValidatorHelper.isNullOrEmpty(eBAmount.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Total Amount Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if(!inputValidatorHelper.isNumeric(eBAmount.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText( context,"Enter only numeric values", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+
+                if(inputValidatorHelper.isNullOrEmpty(eBPadiA.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Paid Amount Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if(!inputValidatorHelper.isNumeric(eBPadiA.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Enter only numeric values", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
 
                 String b_name = eBName.getText().toString();
                 String b_pamount = eBPadiA.getText().toString();
@@ -76,9 +122,14 @@ public class UpdateBudget extends AppCompatActivity {
                 System.out.println(b_name +", " + b_amount+ ", " + b_pamount  +  ", " + id1);
 
                 Budgets budget = new Budgets(id1,b_name,b_pamount,b_amount,b_note);
-                int status = dbBudget.updateBudget(budget);
-                //System.out.println("xxxxxxxxxxxxxx" + status);
-                startActivity(new Intent(context,BudgetDetails.class));
+
+                if(allowSave) {
+
+                    int status = dbBudget.updateBudget(budget);
+                    //System.out.println("xxxxxxxxxxxxxx" + status);
+                    startActivity(new Intent(context, BudgetDetails.class));
+
+                }
 
 
                 /*Intent intent = new Intent(UpdateBudget.this, BudgetDetails.class);
