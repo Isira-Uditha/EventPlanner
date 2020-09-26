@@ -22,9 +22,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "EventPlanner.db";
 
+
+
     public DBHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
     }
+
+
+
 
     /*public static final String TABLE_NAME = "tasks";
     public static String COLUMN_NAME_ID= "id";
