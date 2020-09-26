@@ -22,9 +22,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "EventPlanner.db";
 
+
+
     public DBHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
     }
+
+
+
 
     /*public static final String TABLE_NAME = "tasks";
     public static String COLUMN_NAME_ID= "id";
@@ -559,6 +564,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return status;
 
 
+    }
+
+    public int countIndoor(String place) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        //String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Events.TABLE_NAME + " WHERE " + EventsMaster.Events.COLUMN_NAME_PLACE + "=?" , new String[]{String.valueOf(place)});
+
+        // Cursor cursor = db.rawQuery(query,null);
+
+        // Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
+        return cursor.getCount();
     }
 
 

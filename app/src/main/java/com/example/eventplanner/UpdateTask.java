@@ -85,46 +85,49 @@ public class UpdateTask extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Intent intent = new Intent(UpdateTask.this, MainActivity.class);
 
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.toast_updated);
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                InputValidatorHelper inputTaskValidatorHelper = new InputValidatorHelper();
+                boolean allowSave = true;
 
-                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 10);
-                startActivity(intent);*/
 
                 String taskName = updateTaskName.getText().toString();
                 String date = updateDate.getText().toString();
                 String time = updateTime.getText().toString();
                 String description = updateDescription.getText().toString();
-               /* updateFinished.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                        if(isChecked){
-                            checked = 1;
-                        }else{
-                            checked = 0;
-                        }
 
-                    }
-                });*/
-                updateDate1 = System.currentTimeMillis();
+                if (inputTaskValidatorHelper.isNullOrEmpty(taskName)) {
 
-                Task task = new Task(Integer.parseInt(id),taskName,date,time,description,checked);
-
-                int state = dbHelper.updateTask(task);
-                System.out.println(state);
-
-                if(state>0){
-                    Intent intent = new Intent(context , TaskHome.class);
-                    Toast.makeText(context,"Data successfully Updated",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(context,TaskHome.class));
+                    Toast.makeText(context, "Task Name Should Not Be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
                 }
-                // startActivity(new Intent(context,MainActivity.class));
+                if(inputTaskValidatorHelper.ischeckText(taskName)){
 
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(context, "Task Name Should be more than 5 characters", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+                if(inputTaskValidatorHelper.isNullOrEmpty(description)){
+                    Toast.makeText(context, "Description Should Not Be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+                }
+
+                if (allowSave) {
+                    updateDate1 = System.currentTimeMillis();
+
+                    Task task = new Task(Integer.parseInt(id), taskName, date, time, description, checked);
+
+                    int state = dbHelper.updateTask(task);
+                    System.out.println(state);
+
+                    if (state > 0) {
+                        Intent intent = new Intent(context, TaskHome.class);
+                        Toast.makeText(context, "Data successfully Updated", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(context, TaskHome.class));
+                    }
+                    // startActivity(new Intent(context,MainActivity.class));
+
+                }
             }
         });
 
