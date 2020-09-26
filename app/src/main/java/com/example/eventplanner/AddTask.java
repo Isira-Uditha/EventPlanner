@@ -150,6 +150,12 @@ public class AddTask extends AppCompatActivity {
             startActivity(intent);
 
         }
+        if(id == R.id.cancel){
+
+            finish();
+            startActivity(getIntent());
+
+        }
         return true;
     }
 }

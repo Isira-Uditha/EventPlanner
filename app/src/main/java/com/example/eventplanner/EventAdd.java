@@ -129,6 +129,12 @@ public class EventAdd extends AppCompatActivity {
             startActivity(intent);
 
         }
+        if(id == R.id.cancel){
+
+            finish();
+            startActivity(getIntent());
+
+        }
         return true;
     }
 
