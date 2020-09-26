@@ -1,6 +1,5 @@
 package com.example.eventplanner;
 
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import com.example.eventplanner.Database.DBHelper;
@@ -20,9 +19,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
 
 
-
-
-
+    GuestHome guestHome;
     private DBHelper dbHelper;
     private Context context;
     TaskHome taskHome;
@@ -35,6 +32,7 @@ public class ExampleUnitTest {
         budgetDetails = new BudgetDetails();
         home = new Home();
         taskHome = new TaskHome();
+        guestHome = new GuestHome();
 
     }
 
@@ -44,7 +42,14 @@ public class ExampleUnitTest {
     }
 
     @Test
+    public void testNotInvitedCount(){
 
+        int results = guestHome.GuestNotInvited(4,2);
+        assertEquals(2,results);
+
+    }
+
+    @Test
     public void test_checkTasks(){
      int results = taskHome.TasksToDo(4,2);
      assertEquals(2,results);

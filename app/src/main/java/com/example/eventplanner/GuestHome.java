@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventplanner.Database.DBGuest;
@@ -35,6 +36,8 @@ public class GuestHome extends AppCompatActivity {
     private ListView guestList;
     Context context;
     ImageButton delete;
+    TextView Total,Invited,NotInvited;
+    int total,invited,notInvited;
 
     public GuestHome() {
     }
@@ -51,6 +54,10 @@ public class GuestHome extends AppCompatActivity {
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
 
+        Total = findViewById(R.id.idGuestCount);
+        Invited = findViewById(R.id.idGuestInvited);
+        NotInvited = findViewById(R.id.idGuestNotInvited);
+
         delete = findViewById(R.id.idDeleteBtn);
         context = this;
         dbGuest = new DBHelper(context);
@@ -62,6 +69,17 @@ public class GuestHome extends AppCompatActivity {
         GuestAdapter adapter = new GuestAdapter(context,R.layout.single_guest,guests);
 
         guestList.setAdapter(adapter);
+
+        total = dbGuest.totalGuest(eid);
+        invited = dbGuest.invitedGuest(eid);
+
+        notInvited = GuestNotInvited(total,invited);
+
+        Total.setText(String.valueOf("Total : " + total));
+        Invited.setText(String.valueOf("Invited : " + invited));
+        NotInvited.setText(String.valueOf("Not Invited : " + notInvited));
+
+
 
     }
 
@@ -157,5 +175,11 @@ public class GuestHome extends AppCompatActivity {
         });*/
 
 
+    }
+
+    public int GuestNotInvited(int x , int y){
+
+        int notinvited = x - y;
+        return notinvited;
     }
 }

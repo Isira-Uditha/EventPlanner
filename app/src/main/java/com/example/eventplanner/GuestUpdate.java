@@ -150,6 +150,38 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View view) {
 
+                InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+
+                boolean allowSave = true;
+
+                if(inputValidatorHelper.isNullOrEmpty(guest_Name.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    Toast.makeText(GuestUpdate.this, "Guest Name Should not be Empty", Toast.LENGTH_LONG).show();
+                    allowSave = false;
+
+                }
+
+
+                if(inputValidatorHelper.ischeckContact(guest_Contact.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    //Toast.makeText(this, "Please Insert a Correct Contact Number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GuestUpdate.this, "Please Insert a Correct Contact Number", Toast.LENGTH_LONG).show();
+
+                    allowSave = false;
+
+                }
+
+                if(!inputValidatorHelper.isValidGuestEmail(guest_Email.getText().toString())){
+
+                    // errMsg.append("Task Name Should not be Empty.\n");
+                    //Toast.makeText(this, "Please Insert a Correct E-mail Address", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GuestUpdate.this, "Please Insert a Correct E-mail Address", Toast.LENGTH_LONG).show();
+                    allowSave = false;
+
+                }
+
                 String g_name = guest_Name.getText().toString();
                 String g_contact = guest_Contact.getText().toString();
                 String g_email = guest_Email.getText().toString();
@@ -159,11 +191,15 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
                 int g_invited = checked;
                 int id1 = Integer.parseInt(id);
 
+                if(allowSave) {
 
-                GuestModel guest = new GuestModel(id1,g_name,g_gender,g_age,g_contact,g_email,g_invited,g_note);
-                int status = dbGuest.updateGuest(guest);
-                //System.out.println("xxxxxxxxxxxxxx" + status);
-                startActivity(new Intent(context,GuestHome.class));
+
+                    GuestModel guest = new GuestModel(id1, g_name, g_gender, g_age, g_contact, g_email, g_invited, g_note);
+                    int status = dbGuest.updateGuest(guest);
+                    //System.out.println("xxxxxxxxxxxxxx" + status);
+                    startActivity(new Intent(context, GuestHome.class));
+
+                }
 
 
 
