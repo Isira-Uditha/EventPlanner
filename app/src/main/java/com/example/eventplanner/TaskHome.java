@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -35,6 +36,8 @@ public class TaskHome extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("To Do List");
+        SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+        String eid = prf.getString("eid", "No ID");
 
         context = this;
         dbHelper = new DBHelper(context);
@@ -42,12 +45,12 @@ public class TaskHome extends AppCompatActivity {
         count = (TextView)findViewById(R.id.idTaskCount);
         tasks = new ArrayList<>();
 
-        tasks = dbHelper.readAll();
+        tasks = dbHelper.readAll(eid);
         TasksAdapter adapter = new TasksAdapter(context , R.layout.single_task, tasks);
         taskView.setAdapter(adapter);
 
         //get the number of tasks from the table
-        int countTasks = dbHelper.countTasks();
+        int countTasks = dbHelper.countTasks(eid);
         count.setText("You have "+countTasks+" Tasks");
 
     }
@@ -84,8 +87,11 @@ public class TaskHome extends AppCompatActivity {
         if(id == android.R.id.home){
 
             Intent intent = new Intent(TaskHome.this,EventHome.class);
-            final String id1 = getIntent().getStringExtra("id");
-            intent.putExtra("id",id1);
+            SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
+            String eid = prf.getString("eid", "No ID");
+            intent.putExtra("id",eid);
+           // final String id1 = getIntent().getStringExtra("id");
+           // intent.putExtra("id",id1);
 
 
             startActivity(intent);

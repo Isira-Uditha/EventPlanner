@@ -10,6 +10,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.eventplanner.Budgets;
+import com.example.eventplanner.ShoppingLists;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +47,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static  String COLUMN_NAME_ID= "id";
 
 
+
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
@@ -54,7 +59,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         EventsMaster.Tasks.COLUMN_NAME_DATE + " TEXT," +
                         EventsMaster.Tasks.COLUMN_NAME_TIME + " TEXT," +
                         EventsMaster.Tasks.COLUMN_NAME_DESCRIPTION + " TEXT," +
-                        EventsMaster.Tasks.COLUMN_NAME_FINISHED + " TEXT )";
+                        EventsMaster.Tasks.COLUMN_NAME_FINISHED + " TEXT," +
+                        EventsMaster.Tasks.COLUMN_NAME_EVENT_ID+ " TEXT)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_TASKS); //execute content of sql entries
 
@@ -86,10 +92,36 @@ public class DBHelper extends SQLiteOpenHelper {
                         EventsMaster.Events.COLUMN_NAME_PLACE + " TEXT )";
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_EVENTS);
 
+
+        //Anuththara's
+
+        String SQL_CREATE_ENTRIES_BUDGETS =
+                "CREATE TABLE " + EventsMaster.Budgets.TABLE_NAME + " (" +
+                        COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
+                        EventsMaster.Budgets.COLUMN_NAME_EBNAME + " TEXT," +
+                        EventsMaster.Budgets.COLUMN_NAME_EBPADIDA + " TEXT," +
+                        EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT + " TEXT," +
+                        EventsMaster.Budgets.COLUMN_NAME_EBNOTE + " TEXT," +
+                        EventsMaster.Budgets.COLUMN_NAME_EMP_ID + " TEXT)";
+
+        String SQL_CREATE_ENTRIEZ_SHOPPING =
+                "CREATE TABLE " + EventsMaster.Shoppings.TABLE_SNAME + "(" +
+                        COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
+                        EventsMaster.Shoppings.COLUMN_NAME_SNAME + " TEXT," +
+                        EventsMaster.Shoppings.COLUMN_NAME_SQTY + " TEXT," +
+                        EventsMaster.Shoppings.COLUMN_NAME_SPRICE + " TEXT," +
+                        EventsMaster.Shoppings.COLUMN_NAME_SNOTE + " TEXT," +
+                        EventsMaster.Shoppings.COLUMN_NAME_EMP_ID + " TEXT)";
+
+        //execute the comtemts of  SQL_CREATE_ENTERIES
+        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_BUDGETS);
+        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIEZ_SHOPPING);
+
+
     }
 
 
-    public long addInfo(String taskName , String date , String time , String description , int finished){
+    public long addInfo(String taskName , String date , String time , String description , int finished , int eventId){
 
         //Gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
@@ -101,6 +133,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(EventsMaster.Tasks.COLUMN_NAME_TIME,  time );
         values.put(EventsMaster.Tasks.COLUMN_NAME_DESCRIPTION,  description );
         values.put(EventsMaster.Tasks.COLUMN_NAME_FINISHED,  finished);
+        values.put(EventsMaster.Tasks.COLUMN_NAME_EVENT_ID,  eventId);
 
         //Insert the new row , returning the primary key value of the new row
         long newRowId= db.insert(EventsMaster.Tasks.TABLE_NAME,null, values);
@@ -114,24 +147,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int countTasks(){
+    public int countTasks(String eventId){
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
+     //   String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
 
-        Cursor cursor = db.rawQuery(query,null);
+      //  Cursor cursor = db.rawQuery(query,null);
         return cursor.getCount();
     }
 
-    public List<Task> readAll(){
+    public List<Task> readAll(String eventId){
 
         List<Task> tasks = new ArrayList();
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
 
-        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
-
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+       // String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
+       // String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID + "=" + eid;
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
+       // Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 
 
         if(cursor.moveToFirst()) {
@@ -237,15 +272,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int countFinished(int i) {
+    public int countFinished(int i , String eventId) {
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
-
+        //String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + " = ? AND " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + " =?",new String[]{String.valueOf(1),eventId});
 
         // Cursor cursor = db.rawQuery(query,null);
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
+       // Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
         return cursor.getCount();
     }
 
@@ -524,6 +559,298 @@ public class DBHelper extends SQLiteOpenHelper {
         return status;
 
 
+    }
+
+
+    //BUDGET
+    public long addBInfo(String bName, String bPadiAmount, String bAmount, String bNote, int eid) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBNAME, bName);
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBPADIDA, bPadiAmount);
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT, bAmount);
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBNOTE, bNote);
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EMP_ID, eid);
+
+        long newRowId = db.insert(EventsMaster.Budgets.TABLE_NAME, null, values);
+
+        return newRowId;
+    }
+
+    //SHOPIING-LIST
+    public long addSLInfo(String sName, String sQty, String sPrice, String sNote, int eid) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SNAME, sName);
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SQTY, sQty);
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SPRICE, sPrice);
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SNOTE, sNote);
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_EMP_ID, eid);
+
+        long newRowId = db.insert(EventsMaster.Shoppings.TABLE_SNAME, null, values);
+
+        return newRowId;
+    }
+
+
+
+    public List<Budgets> readAllBudgets(String eid) {
+
+        List<Budgets> bajs = new ArrayList();
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+
+        Cursor cursor  = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Budgets.TABLE_NAME + " WHERE " + EventsMaster.Budgets.COLUMN_NAME_EMP_ID + "=?", new String[]{String.valueOf(eid)});
+
+       // Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+
+        if (cursor.moveToFirst()) {
+
+            do {
+                Budgets baj = new Budgets();
+
+                baj.setId((cursor.getInt(0)));
+                baj.setBudgetName((cursor.getString(1)));
+                baj.setPadiAmount((cursor.getString(2)));
+                baj.setAmount((cursor.getString(3)));
+
+                bajs.add(baj);
+
+
+            } while (cursor.moveToNext());
+        }
+
+        return bajs;
+
+    }
+
+    //ShoppingList
+    public List<ShoppingLists> readAllShoppings(String eid) {
+        List<ShoppingLists> shpls = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor  = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Shoppings.TABLE_SNAME + " WHERE " + EventsMaster.Shoppings.COLUMN_NAME_EMP_ID + "=?", new String[]{String.valueOf(eid)});
+
+       // String query = "SELECT * FROM " + EventsMaster.Shoppings.TABLE_SNAME;
+       // Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ShoppingLists shpl = new ShoppingLists();
+                shpl.setId(cursor.getInt(0));
+                shpl.setShoppingName(cursor.getString(1));
+                shpl.setQty(cursor.getString(2));
+                shpl.setPrice(cursor.getString(3));
+                shpl.setNote(cursor.getString(4));
+
+                shpls.add(shpl);
+            } while (cursor.moveToNext());
+
+        }
+        System.out.println("jjjjjjjjjjjjj " + shpls);
+        return shpls;
+
+    }
+
+    //Delete budget details
+    public void deleteBudget(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(EventsMaster.Budgets.TABLE_NAME, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(id)});
+        db.close();
+
+    }
+
+    public Budgets getSingleBudget(int id) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.query(EventsMaster.Budgets.TABLE_NAME, new String[]{COLUMN_NAME_ID, EventsMaster.Budgets.COLUMN_NAME_EBNAME, EventsMaster.Budgets.COLUMN_NAME_EBPADIDA, EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT, EventsMaster.Budgets.COLUMN_NAME_EBNOTE,}, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(id)}, null, null, null);
+
+        Budgets budget;
+
+        if (cursor != null) {
+
+            cursor.moveToFirst();
+
+            budget = new Budgets(
+
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4)
+
+            );
+
+            return budget;
+
+        }
+
+        return null;
+
+    }
+
+    //Retreive shopping List
+    public ShoppingLists getSingleShopping(int ids) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.query(EventsMaster.Shoppings.TABLE_SNAME, new String[]{
+                COLUMN_NAME_ID,
+                EventsMaster.Shoppings.COLUMN_NAME_SNAME,
+                EventsMaster.Shoppings.COLUMN_NAME_SQTY,
+                EventsMaster.Shoppings.COLUMN_NAME_SPRICE,
+                EventsMaster.Shoppings.COLUMN_NAME_SNOTE,
+        }, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(ids)}, null, null, null);
+
+
+        ShoppingLists shoppingList;
+
+        if (cursor != null) {
+
+            cursor.moveToFirst();
+
+            shoppingList = new ShoppingLists(
+
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4)
+
+            );
+            System.out.println("fggggggggdasasas sxxxx" + shoppingList);
+            return shoppingList;
+
+        }
+
+        return null;
+
+    }
+
+    //Update budget Details
+    public int updateBudget(Budgets budget) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBNAME, budget.getBudgetName());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBPADIDA, budget.getPadiAmount());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT, budget.getAmount());
+        values.put(EventsMaster.Budgets.COLUMN_NAME_EBNOTE, budget.getNote());
+
+        int status = db.update(EventsMaster.Budgets.TABLE_NAME, values, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(budget.getId())});
+
+        db.close();
+        return status;
+
+    }
+
+
+    //Delete Shpooing Details
+    public void deleteShopping(int ids) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(EventsMaster.Shoppings.TABLE_SNAME, COLUMN_NAME_ID + "=?", new String[]{String.valueOf(ids)});
+        db.close();
+    }
+
+   /* public ShoppingLists getSingleShopping(int id){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor =sqLiteDatabase.query(TABLE_SNAME,new String[}{ COLUMN_NAME_SID,COLUMN_NAME_SNAME,COLUMN_NAME_SQTY,COLUMN_NAME_SPRICE,COLUMN_NAME_SNOTE,},COLUMN_NAME_SID + " =?",new String[]{String.valueOf(id)},null , null,null );
+
+        ShoppingLists shoppingList;
+
+        if(ursor  != null){
+
+        cursor.moveToFirst();
+
+        shoppingList = new ShoppingLists(
+
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4)
+
+        );
+
+        return  shoppingList;
+
+    }
+
+        return  null;
+    }*/
+
+    //Update shopiing list details
+    public int updateShopping(ShoppingLists shoppingList) {
+        SQLiteDatabase db = getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SNAME, shoppingList.getShoppingName());
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SQTY, shoppingList.getQty());
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SPRICE, shoppingList.getPrice());
+        values.put(EventsMaster.Shoppings.COLUMN_NAME_SNOTE, shoppingList.getNote());
+
+        int status = db.update(EventsMaster.Shoppings.TABLE_SNAME, values, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(shoppingList.getId())});
+        db.close();
+        return status;
+
+    }
+
+    public int sumBudget(String eid) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        int total;
+
+        //Cursor cursor = db.rawQuery("SELECT SUM( " + COLUMN_NAME_EBAMOUNT + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT + ") as Total FROM " + EventsMaster.Budgets.TABLE_NAME + " WHERE " + EventsMaster.Budgets.COLUMN_NAME_EMP_ID+ " =?",new String[]{eid});
+
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            //  Cursor cursor = db.rawQuery(query,null);
+            return total;
+
+        }
+
+        return 0;
+
+    }
+
+    public int sumBPaid(String eid) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        int total;
+
+        //Cursor cursor = db.rawQuery("SELECT SUM( " + COLUMN_NAME_EBAMOUNT + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + EventsMaster.Budgets.COLUMN_NAME_EBPADIDA + ") as Total FROM " + EventsMaster.Budgets.TABLE_NAME + " WHERE " +  EventsMaster.Shoppings.COLUMN_NAME_EMP_ID + " =?",new String[]{eid});
+
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            //  Cursor cursor = db.rawQuery(query,null);
+            return total;
+
+        }
+
+        return 0;
+
+    }
+    public int sumShopping(String eid){
+        SQLiteDatabase db = getReadableDatabase();
+        int total ;
+
+        Cursor cursor = db.rawQuery("SELECT SUM(" + EventsMaster.Shoppings.COLUMN_NAME_SQTY + " * " + EventsMaster.Shoppings.COLUMN_NAME_SPRICE + ") as Total FROM " + EventsMaster.Shoppings.TABLE_SNAME +  " WHERE " +  EventsMaster.Shoppings.COLUMN_NAME_EMP_ID + " =?",new String[]{eid});
+
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            //  Cursor cursor = db.rawQuery(query,null);
+            return total;
+
+        }
+
+        return 0;
     }
 
 }

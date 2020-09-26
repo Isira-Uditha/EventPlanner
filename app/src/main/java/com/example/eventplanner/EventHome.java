@@ -38,7 +38,7 @@ import com.example.eventplanner.Database.DBHelper;
 
 public class EventHome extends AppCompatActivity {
 
-    Button taskHome;
+    Button taskHome,budgetHome;
     ProgressBar taskProgress;
     //Context context;
     private DBHelper dbHelper;
@@ -76,6 +76,7 @@ public class EventHome extends AppCompatActivity {
 
 
         btn = (Button) findViewById(R.id.button4);
+        budgetHome = (Button) findViewById(R.id.button9);
 
         btnEvent = (Button) findViewById(R.id.btnEvent);
         viewEventDateTime = (TextView) findViewById(R.id.idViewEventDateTime);
@@ -120,10 +121,10 @@ public class EventHome extends AppCompatActivity {
         //context = this;
         dbHelper = new DBHelper(context);
 
-       int countTasks = dbHelper.countTasks();
-      taskProgress.setMax(countTasks);
+       int countTasks = dbHelper.countTasks(eid);
+       taskProgress.setMax(countTasks);
 
-      int finished = dbHelper.countFinished(1);
+      int finished = dbHelper.countFinished(1 , eid);
 
       taskProgress.setProgress(finished);
 
@@ -145,6 +146,23 @@ public class EventHome extends AppCompatActivity {
 
         totalGuests.setText(String.valueOf(totalGuestsCount));
         invitedGuests.setText(String.valueOf(invitedGuestsCount));
+
+        TextView btot = findViewById(R.id.editTextTextPersonName11);
+        TextView bpaid = findViewById(R.id.editTextTextPersonName12);
+        TextView bamount = findViewById(R.id.editTextTextPersonName13);
+
+        context = this;
+        dbHelper = new DBHelper(context);
+
+        int overTotal = dbHelper.sumBudget(eid);
+        btot.setText(String.valueOf(overTotal));
+        System.out.println( "Summmmmmmmmmmmmmmmmmmmmm " + overTotal);
+
+        int overPaid = dbHelper.sumBPaid(eid);
+        bpaid.setText(String.valueOf(overPaid));
+
+        int overDue = overTotal- overPaid ;
+        bamount.setText(String.valueOf(overDue));
 
 
 
@@ -190,6 +208,15 @@ public class EventHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+              budgetHome.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      Intent intent = new Intent(EventHome.this,BudgetOne.class);
+                      startActivity(intent);
+
+                  }
+              });
 
     }
 
