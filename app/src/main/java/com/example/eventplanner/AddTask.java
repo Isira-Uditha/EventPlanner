@@ -83,24 +83,50 @@ public class AddTask extends AppCompatActivity {
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
 
-        long value = dbHelper.addInfo( taskName.getText().toString(),date.getText().toString() ,time.getText().toString(),description.getText().toString(),checked , Integer.parseInt(eid));
+        InputValidatorHelper inputTaskValidatorHelper = new InputValidatorHelper();
+       // StringBuilder errMsg = new StringBuilder("Unable to save.Please fix the following errors and try again");
 
-        if (value>0)
-        {
-            Intent intent = new Intent(AddTask.this , TaskHome.class);
-            Toast.makeText(this,"Data successfully inserted",Toast.LENGTH_SHORT).show();
-            //List unames = dbHelper.readInfo("tasks");
+        //Validate and Save
+        boolean allowSave = true;
+        if(inputTaskValidatorHelper.isNullOrEmpty(taskName.getText().toString())){
 
-            // Toast.makeText(this,  unames.toString(),Toast.LENGTH_SHORT).show();
-            startActivity(intent);
-
-
-
-
+           // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Task Name Should not be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
 
         }
-        else {
-            Toast.makeText(this,"Data not successfully inserted",Toast.LENGTH_SHORT).show();
+
+        if(inputTaskValidatorHelper.ischeckText(taskName.getText().toString())){
+
+            // errMsg.append("Task Name Should not be Empty.\n");
+            Toast.makeText(this, "Task Name Should be more than 5 characters", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+
+        if(inputTaskValidatorHelper.isNullOrEmpty(description.getText().toString())){
+            Toast.makeText(this, "Description Should Not Be Empty", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+        }
+
+        if(allowSave) {
+
+            long value = dbHelper.addInfo(taskName.getText().toString(), date.getText().toString(), time.getText().toString(), description.getText().toString(), checked, Integer.parseInt(eid));
+
+
+            if (value > 0) {
+                Intent intent = new Intent(AddTask.this, TaskHome.class);
+                Toast.makeText(this, "Data successfully inserted", Toast.LENGTH_SHORT).show();
+                //List unames = dbHelper.readInfo("tasks");
+
+                // Toast.makeText(this,  unames.toString(),Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+
+
+            } else {
+                Toast.makeText(this, "Data not successfully inserted", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
