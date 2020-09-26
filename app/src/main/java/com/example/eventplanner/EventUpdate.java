@@ -106,6 +106,8 @@ public class EventUpdate extends AppCompatActivity {
             public void onClick(View view) {
 
                 final String id = getIntent().getStringExtra("id");
+                InputValidatorHelper inputEventValidatorHelper = new InputValidatorHelper();
+                boolean allowSave = true;
 
                 String eventName = updateEventName.getText().toString();
                 String eventDate = updateDate.getText().toString();
@@ -117,17 +119,43 @@ public class EventUpdate extends AppCompatActivity {
                 String eventDescription = updateDescription.getText().toString();
                 String place = radioButton.getText().toString();
 
-                System.out.println("newwwwwwwwww " + place);
 
-                Event event = new Event(Integer.parseInt(id), eventName, eventDate, eventTime, eventLocation, eventTheme, eventDressCode, eventPhotographer, eventDescription , place);
-                int state = dbevent.updateSingleEvent(event);
-                System.out.println(state);
+                if (inputEventValidatorHelper.isNullOrEmpty(eventName)) {
 
-                if(state>0){
-                    Intent intent = new Intent(context, EventHome.class);
-                    intent.putExtra("id",id);
-                    Toast.makeText(context,"Data successfully Updated",Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+
+                    Toast.makeText(context, "Event  Name Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if (inputEventValidatorHelper.ischeckText(eventName)) {
+
+
+                    Toast.makeText(context, "Event name should have minimum five characters", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if (inputEventValidatorHelper.isNullOrEmpty(eventDescription)) {
+
+
+                    Toast.makeText(context, "Description Should not be Empty", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if (allowSave) {
+
+                    Event event = new Event(Integer.parseInt(id), eventName, eventDate, eventTime, eventLocation, eventTheme, eventDressCode, eventPhotographer, eventDescription, place);
+                    int state = dbevent.updateSingleEvent(event);
+                    System.out.println(state);
+
+                    if (state > 0) {
+                        Intent intent = new Intent(context, EventHome.class);
+                        intent.putExtra("id", id);
+                        Toast.makeText(context, "Data successfully Updated", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
                 }
             }
         });
