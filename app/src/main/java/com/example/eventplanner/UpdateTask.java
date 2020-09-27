@@ -122,7 +122,7 @@ public class UpdateTask extends AppCompatActivity {
 
                     if (state > 0) {
                         Intent intent = new Intent(context, TaskHome.class);
-                        Toast.makeText(context, "Task Data successfully Updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Data successfully Updated", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(context, TaskHome.class));
                     }
                     // startActivity(new Intent(context,MainActivity.class));
