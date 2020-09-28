@@ -77,7 +77,7 @@ public class EventAdd extends AppCompatActivity {
         if(inputEventValidatorHelper.isNullOrEmpty(etEventName.getText().toString())){
 
 
-            Toast.makeText(this, "Event  Name Should not be Empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter the event name", Toast.LENGTH_SHORT).show();
             allowSave = false;
 
         }
@@ -90,13 +90,32 @@ public class EventAdd extends AppCompatActivity {
 
         }
 
-        if(inputEventValidatorHelper.isNullOrEmpty(etDescription.getText().toString())){
+        if(inputEventValidatorHelper.isNullOrEmpty(tietLocation.getText().toString())){
 
 
-            Toast.makeText(this, "Description Should not be Empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter your location", Toast.LENGTH_SHORT).show();
             allowSave = false;
 
         }
+
+
+        if(inputEventValidatorHelper.isNullOrEmpty(etEventDate.getText().toString())){
+
+
+            Toast.makeText(this, "Please enter the event date", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+        if(inputEventValidatorHelper.isNullOrEmpty(etEventTime.getText().toString())){
+
+
+            Toast.makeText(this, "Please enter the Time", Toast.LENGTH_SHORT).show();
+            allowSave = false;
+
+        }
+
+
 
         if(allowSave) {
             long val = dbevent.addInfo_event(etEventName.getText().toString(), etEventDate.getText().toString(), etEventTime.getText().toString(), tietLocation.getText().toString(), tietTheme.getText().toString(), etDressCode.getText().toString(), etPhotographer.getText().toString(), etDescription.getText().toString(), radioButton.getText().toString());

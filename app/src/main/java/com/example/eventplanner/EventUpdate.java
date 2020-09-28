@@ -120,14 +120,6 @@ public class EventUpdate extends AppCompatActivity {
                 String place = radioButton.getText().toString();
 
 
-                if (inputEventValidatorHelper.isNullOrEmpty(eventName)) {
-
-
-                    Toast.makeText(context, "Event  Name Should not be Empty", Toast.LENGTH_SHORT).show();
-                    allowSave = false;
-
-                }
-
                 if (inputEventValidatorHelper.ischeckText(eventName)) {
 
 
@@ -136,12 +128,36 @@ public class EventUpdate extends AppCompatActivity {
 
                 }
 
-                if (inputEventValidatorHelper.isNullOrEmpty(eventDescription)) {
+
+                if(inputEventValidatorHelper.isNullOrEmpty(eventLocation)){
 
 
-                    Toast.makeText(context, "Description Should not be Empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Please input the location", Toast.LENGTH_SHORT).show();
                     allowSave = false;
 
+                }
+
+                if(inputEventValidatorHelper.isNullOrEmpty(eventName)){
+
+
+                    Toast.makeText(context, "Please input your event name", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if(inputEventValidatorHelper.isNullOrEmpty(eventDate)){
+
+
+                    Toast.makeText(context, "Please input the date", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
+
+                }
+
+                if(inputEventValidatorHelper.isNullOrEmpty(eventTime)){
+
+
+                    Toast.makeText(context, "Please input the time", Toast.LENGTH_SHORT).show();
+                    allowSave = false;
                 }
 
                 if (allowSave) {
@@ -159,7 +175,6 @@ public class EventUpdate extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     @Override
