@@ -49,7 +49,7 @@ public class AddBudget extends AppCompatActivity {
         if(inputValidatorHelper.isNullOrEmpty(etABName.getText().toString())){
 
             // errMsg.append("Task Name Should not be Empty.\n");
-            Toast.makeText(this, "Budget's Name Should not be Empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Budget Name Should not be Empty", Toast.LENGTH_SHORT).show();
             allowSave = false;
 
         }
