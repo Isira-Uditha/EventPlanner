@@ -9,7 +9,7 @@
 
     <ListView
         android:id="@+id/guestList"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="500dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
