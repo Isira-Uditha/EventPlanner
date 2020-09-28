@@ -75,6 +75,7 @@
         android:id="@+id/spinner2"
         android:layout_width="128dp"
         android:layout_height="28dp"
+        android:background="#1A63DFEF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.78"
@@ -86,6 +87,7 @@
         android:id="@+id/spinner1"
         android:layout_width="128dp"
         android:layout_height="28dp"
+        android:background="#1A63DFEF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
@@ -136,8 +138,10 @@
 
     <EditText
         android:id="@+id/edtxtname"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="365dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:hint="name"
         android:inputType="textPersonName"
@@ -146,8 +150,10 @@
 
     <EditText
         android:id="@+id/edtxtcontact"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="365dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:hint="contact"
         android:inputType="phone"
@@ -156,8 +162,10 @@
 
     <EditText
         android:id="@+id/edtxtemail"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="365dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:hint="e-mail"
         android:inputType="textEmailAddress"
@@ -166,8 +174,10 @@
 
     <EditText
         android:id="@+id/edtxtnote"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="365dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:hint="note"
         android:inputType="textPersonName"

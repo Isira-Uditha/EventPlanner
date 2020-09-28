@@ -34,7 +34,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idUpdateTaskName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="58dp"
+            android:background="#1A63DFEF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -56,6 +57,7 @@
         android:id="@+id/idUpdateDate"
         android:layout_width="134dp"
         android:layout_height="47dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,6 +84,7 @@
         android:id="@+id/idUpdateTime"
         android:layout_width="138dp"
         android:layout_height="56dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,7 +110,8 @@
     <EditText
         android:id="@+id/idUpdateDescription"
         android:layout_width="376dp"
-        android:layout_height="58dp"
+        android:layout_height="45dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -136,7 +140,7 @@
         android:id="@+id/button4"
         android:layout_width="101dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="44dp"
         android:background="#3caac1"
         android:text="Update"
         android:textAllCaps="false"

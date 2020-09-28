@@ -6,34 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".UpdateBudget">
 
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="380dp"
-        android:layout_height="525dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
-        android:background="#3C819EAC"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
-        android:id="@+id/idEditPaidAmount"
-        android:layout_width="186dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="192dp"
-        android:background="#7963DFEF"
-        android:textAlignment="center"
+        android:id="@+id/idEditNote"
+        android:layout_width="309dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="408dp"
+        android:background="#1A63DFEF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="320dp"
-        android:text="@string/b_note"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/ebd_a"
         android:textColor="#E1040101"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -41,11 +30,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="@string/b_name"
+        android:textColor="#E1040101"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/idEditAmount"
+        android:layout_width="190dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="308dp"
+        android:background="#1A63DFEF"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="252dp"
         android:text="@string/ebd_pa"
         android:textColor="#E1040101"
         android:textSize="18sp"
@@ -54,46 +66,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/idEditAmount"
-        android:layout_width="190dp"
+        android:id="@+id/idEditPaidAmount"
+        android:layout_width="186dp"
         android:layout_height="37dp"
         android:layout_marginStart="172dp"
-        android:layout_marginTop="260dp"
-        android:background="#7963DFEF"
+        android:layout_marginTop="240dp"
+        android:background="#1A63DFEF"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="268dp"
-        android:text="@string/ebd_a"
-        android:textColor="#E1040101"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/idEditNote"
-        android:layout_width="309dp"
-        android:layout_height="106dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="360dp"
-        android:background="#7963DFEF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="64dp"
-        android:text="@string/b_name"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="368dp"
+        android:text="@string/b_note"
         android:textColor="#E1040101"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -104,27 +93,28 @@
         android:id="@+id/ideditBudgetName"
         android:layout_width="314dp"
         android:layout_height="36dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="108dp"
-        android:background="#7963DFEF"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="156dp"
+        android:background="#1A63DFEF"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="110dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="500dp"
-        android:background="#3caac1"
+        android:layout_width="101dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#3CAAC1"
         android:text="Update"
-        android:textColor="#E1040101"
+        android:textColor="#E1FDFDFD"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.838"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
 
     <TextView
         android:id="@+id/nb"

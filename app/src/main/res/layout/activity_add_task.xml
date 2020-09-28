@@ -35,7 +35,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idAddTaskName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:background="#1A63DFEF"
             android:hint="Task Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,15 +59,14 @@
         android:id="@+id/idAddTaskDate"
         android:layout_width="134dp"
         android:layout_height="47dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:hint="00/00/0000"
         android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/idAddTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintStart_toStartOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView2"
@@ -85,6 +85,7 @@
         android:id="@+id/idAddTime"
         android:layout_width="138dp"
         android:layout_height="56dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:hint="00:00"
         android:inputType="time"
@@ -112,7 +113,8 @@
         android:id="@+id/idAddDescription"
 
         android:layout_width="376dp"
-        android:layout_height="58dp"
+        android:layout_height="45dp"
+        android:background="#1A63DFEF"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Description"
