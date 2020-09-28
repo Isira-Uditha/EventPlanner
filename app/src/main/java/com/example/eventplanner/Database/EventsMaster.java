@@ -58,7 +58,7 @@ public class EventsMaster {
         public static final String COLUMN_NAME_GUEST_EMAIL = "guest_email";
         public static final String COLUMN_NAME_GUEST_INVITED = "invited";
         public static final String COLUMN_NAME_GUEST_NOTE = "note";
-        public static final String COLUMN_NAME_GUEST_EMP_ID = "EmpID";
+        public static final String COLUMN_NAME_GUEST_EVENT_ID = "EmpID";
 //>>>>>>> Integration
 
     }

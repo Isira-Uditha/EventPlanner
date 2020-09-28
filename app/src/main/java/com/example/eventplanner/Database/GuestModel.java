@@ -6,9 +6,9 @@ public class GuestModel {
         private String guestName,guestGender,guestAge,guestContact,guestEmail;
         private int guestCheck;
         private String guestNote;
-        private int EmpID;
+        private int EID;
 
-    public GuestModel(int guestID, String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestCheck, String guestNote, int empID) {
+    public GuestModel(int guestID, String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestCheck, String guestNote, int eID) {
         this.guestID = guestID;
         this.guestName = guestName;
         this.guestGender = guestGender;
@@ -17,7 +17,7 @@ public class GuestModel {
         this.guestEmail = guestEmail;
         this.guestCheck = guestCheck;
         this.guestNote = guestNote;
-        EmpID = empID;
+        EID = eID;
     }
 
     public GuestModel() {
@@ -109,10 +109,10 @@ public class GuestModel {
     }
 
     public int getEmpID() {
-        return EmpID;
+        return EID;
     }
 
-    public void setEmpID(int empID) {
-        EmpID = empID;
+    public void setEmpID(int eID) {
+        EID = eID;
     }
 }
