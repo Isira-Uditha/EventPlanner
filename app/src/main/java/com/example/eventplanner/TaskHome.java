@@ -113,9 +113,9 @@ public class TaskHome extends AppCompatActivity {
         return true;
     }
 
-    public int TasksToDo(int x , int y){
+    public int TasksToDo(int allTasks , int completedTasks){
 
-        int toDo = x - y;
+        int toDo = allTasks - completedTasks;
         return toDo;
     }
 }
