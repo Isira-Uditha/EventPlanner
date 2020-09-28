@@ -7,39 +7,32 @@
     tools:context=".BudgetOne">
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="185dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="160dp"
-        android:background="#6EADDF"
-        android:text="Budget"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/buttonAS"
         android:layout_width="184dp"
         android:layout_height="65dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="388dp"
         android:background="#6EADDF"
         android:text="Shopping List"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="185dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="232dp"
+        android:background="#6EADDF"
+        android:text="Budget"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
