@@ -505,7 +505,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.delete(TABLE_NAME, COLUMN_NAME_ID + " =?",new String[]{String.valueOf(id)});
-
+        sqLiteDatabase.delete(EventsMaster.Tasks.TABLE_NAME, EventsMaster.Tasks.COLUMN_NAME_EVENT_ID+ " =?",new String[]{String.valueOf(id)});
+        sqLiteDatabase.delete(EventsMaster.Guest.TABLE_NAME, EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID+ " =?",new String[]{String.valueOf(id)});
+        sqLiteDatabase.delete(EventsMaster.Budgets.TABLE_NAME, EventsMaster.Budgets.COLUMN_NAME_EMP_ID+ " =?",new String[]{String.valueOf(id)});
+        sqLiteDatabase.delete(EventsMaster.Shoppings.TABLE_SNAME, EventsMaster.Shoppings.COLUMN_NAME_EMP_ID+ " =?",new String[]{String.valueOf(id)});
 
         sqLiteDatabase.close();
 
