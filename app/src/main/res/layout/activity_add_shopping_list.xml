@@ -9,24 +9,24 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etASNote"
-        android:layout_width="266dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="412dp"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="136dp"
         android:text="@string/b_name"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,89 +34,87 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
         android:text="@string/as_qty"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etASName" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
         android:text="@string/as_price"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etASPrice"
-        android:layout_width="178dp"
+        android:layout_width="match_parent"
         android:layout_height="34dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Price"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etASQty" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etASName"
-        android:layout_width="276dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
         android:text="@string/b_note"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etASQty"
-        android:layout_width="98dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_marginStart="236dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Qty"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etASName" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="101dp"
         android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="56dp"
         android:backgroundTint="#3CAAC1"
         android:onClick="addSData"
         android:text="Add"
         android:textColor="#E1FDFDFD"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.874"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875" />
+        app:layout_constraintTop_toBottomOf="@+id/etASNote" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

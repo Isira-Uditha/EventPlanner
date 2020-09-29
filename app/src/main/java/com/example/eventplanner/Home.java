@@ -54,7 +54,7 @@ public class Home extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         int countEvents = dbevent.countEvents();
-        count.setText("Total Events: "+countEvents);
+        count.setText("Total : "+countEvents);
 
         int countIndoor = dbevent.countIndoor("Indoor");
         countIndoorView.setText("Indoor :"+countIndoor);

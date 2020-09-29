@@ -8,11 +8,13 @@
 
     <EditText
         android:id="@+id/idEditNote"
-        android:layout_width="309dp"
+        android:layout_width="match_parent"
         android:layout_height="106dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="408dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,12 +22,10 @@
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="316dp"
-        android:text="@string/ebd_a"
-        android:textColor="#E1040101"
+        android:text="Total Amount"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,22 +33,23 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="112dp"
         android:text="@string/b_name"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/idEditAmount"
-        android:layout_width="190dp"
+        android:layout_width="match_parent"
         android:layout_height="37dp"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="180dp"
         android:layout_marginTop="308dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,23 +57,23 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="252dp"
         android:text="@string/ebd_pa"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/idEditPaidAmount"
-        android:layout_width="186dp"
+        android:layout_width="match_parent"
         android:layout_height="37dp"
         android:layout_marginStart="172dp"
         android:layout_marginTop="240dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,23 +81,23 @@
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="368dp"
         android:text="@string/b_note"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ideditBudgetName"
-        android:layout_width="314dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="156dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,29 +105,14 @@
         android:id="@+id/button1"
         android:layout_width="101dp"
         android:layout_height="50dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="#3CAAC1"
         android:text="Update"
         android:textColor="#E1FDFDFD"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.838"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875" />
-
-    <TextView
-        android:id="@+id/nb"
-        android:layout_width="107dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="264dp"
-        android:layout_marginTop="16dp"
-        android:text="- B1"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/idEditNote" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

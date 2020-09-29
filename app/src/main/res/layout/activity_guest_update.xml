@@ -23,6 +23,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
         android:text="@string/g_contact"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,44 +103,53 @@
 
     <EditText
         android:id="@+id/guest_Name"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:gravity="center_vertical"
         android:inputType="textPersonName"
         android:textColor="#60000000"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/guest_Contact"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:gravity="center_vertical"
         android:inputType="phone"
         android:textColor="#60000000"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 
     <EditText
         android:id="@+id/guest_Email"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:gravity="center_vertical"
         android:inputType="textEmailAddress"
         android:textColor="#60000000"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -157,15 +167,18 @@
 
     <EditText
         android:id="@+id/guest_Note"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:gravity="center_vertical"
         android:inputType="textPersonName"
         android:textColor="#60000000"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 

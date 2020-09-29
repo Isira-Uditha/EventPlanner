@@ -8,44 +8,56 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etDressCode"
-        android:layout_width="347dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:hint="Dress Code"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.612" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etPhotographer"
-        android:layout_width="347dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:hint="Photographers"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.728" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etEventName"
-        android:layout_width="351dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:hint="Event Name"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etDescription"
-        android:layout_width="347dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:hint="Description"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/etEventName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.838" />
@@ -54,7 +66,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="17dp"
         android:text="@string/eventName"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -160,42 +172,46 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/tietTheme"
-        android:layout_width="349dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:hint="Theme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/tietLocation"
-        android:layout_width="349dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:hint="Location"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+        app:layout_constraintVertical_bias="0.374" />
 
     <Button
         android:id="@+id/addEvent"
         android:layout_width="114dp"
         android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="17dp"
         android:backgroundTint="#3caac1"
         android:onClick="addData"
         android:text="Add"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.863"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97" />
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
     <EditText
         android:id="@+id/etEventDate"
@@ -235,8 +251,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Outdoor"
             android:onClick="checkButton"
+            android:text="Outdoor"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

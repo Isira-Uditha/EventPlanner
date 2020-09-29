@@ -8,33 +8,39 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etABNote"
-        android:layout_width="292dp"
+        android:layout_width="match_parent"
         android:layout_height="104dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etABAmount"
-        android:layout_width="138dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_marginStart="216dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Total Amount"
+        app:layout_constraintEnd_toEndOf="@+id/etABPaidA"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etABPaidA" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etABName"
-        android:layout_width="297dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="184dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,9 +51,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="148dp"
         android:text="@string/b_name"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,9 +62,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="252dp"
         android:text="Paid Amount"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,9 +73,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="324dp"
         android:text="Total Amount"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,39 +84,37 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="396dp"
         android:text="@string/b_note"
-        android:textColor="#E1040101"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etABPaidA"
-        android:layout_width="138dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_marginStart="216dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Paid Amount"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etABName" />
 
 
     <Button
         android:id="@+id/button1"
         android:layout_width="101dp"
         android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="56dp"
         android:backgroundTint="#3CAAC1"
         android:onClick="addData"
         android:text="@string/add"
         android:textColor="#E1FDFDFD"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintTop_toBottomOf="@+id/etABNote" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,11 +23,10 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="@string/g_contact"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.355" />
@@ -130,49 +129,61 @@
 
     <EditText
         android:id="@+id/edtxtname"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:hint="name"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/edtxtcontact"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:hint="contact"
         android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <EditText
         android:id="@+id/edtxtemail"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:hint="e-mail"
         android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <EditText
         android:id="@+id/edtxtnote"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="17dp"
         android:background="#1A63DFEF"
         android:ems="10"
         android:hint="note"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
