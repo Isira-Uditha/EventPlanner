@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="23dp"
         android:text="Date"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,11 +70,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
-        android:layout_marginTop="24dp"
         android:text="@string/tTime"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <EditText
         android:id="@+id/idAddTime"
@@ -92,8 +91,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="37dp"
         android:text="@string/tDescription"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,25 +119,28 @@
         android:id="@+id/idAddFinished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="35dp"
         android:text="Finished"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/idAddDescription"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idAddDescription" />
 
     <Button
         android:id="@+id/idAddButton"
         android:layout_width="101dp"
         android:layout_height="50dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="17dp"
-        android:background="#3caac1"
-        android:onClick="addData"
-        android:text="Add"
+        android:backgroundTint="#3CAAC1"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idAddFinished" />
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947"
+        android:onClick="addData"
+        android:text="Add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

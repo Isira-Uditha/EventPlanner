@@ -118,6 +118,7 @@ public class UpdateShopping extends AppCompatActivity {
                 if(allowSave) {
 
                     int status = dbShopping.updateShopping(shoppingList);
+                    Toast.makeText(context, "Successfully Updated", Toast.LENGTH_SHORT).show();
 
 
                     Intent intent = new Intent(UpdateShopping.this, ShoppingDetails.class);

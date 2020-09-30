@@ -36,7 +36,7 @@ public class UpdateBudget extends AppCompatActivity {
         String title = getIntent().getExtras().getString("title");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Budget :" + title);
+        getSupportActionBar().setTitle("Budget : " + title);
 
         context =this;
         dbBudget = new DBHelper(context);
@@ -124,6 +124,7 @@ public class UpdateBudget extends AppCompatActivity {
 
                     int status = dbBudget.updateBudget(budget);
                     //System.out.println("xxxxxxxxxxxxxx" + status);
+                    Toast.makeText(context, "Successfully Updated", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(context, BudgetDetails.class));
 
                 }

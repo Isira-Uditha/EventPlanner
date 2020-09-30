@@ -43,7 +43,7 @@ public class ShoppingDetails extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_details);
         //disable nagvi. Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Shopping Info");
+        getSupportActionBar().setTitle("Shopping Information");
         //getSupportActionBar().hide();
 
 

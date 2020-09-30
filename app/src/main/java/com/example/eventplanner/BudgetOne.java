@@ -28,7 +28,7 @@ public class BudgetOne extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget_one);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Budget Info");
+        getSupportActionBar().setTitle("Budget Information");
 
         //getSupportActionBar().hide();
 

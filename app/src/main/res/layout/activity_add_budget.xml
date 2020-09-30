@@ -27,6 +27,7 @@
         android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Total Amount"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/etABPaidA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etABPaidA" />
@@ -36,67 +37,69 @@
         android:layout_width="match_parent"
         android:layout_height="39dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="148dp"
         android:text="@string/b_name"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="32dp"
         android:text="Paid Amount"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etABName" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="324dp"
+        android:layout_marginTop="40dp"
         android:text="Total Amount"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="396dp"
+        android:layout_marginTop="25dp"
         android:text="@string/b_note"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etABPaidA"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Paid Amount"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etABName" />

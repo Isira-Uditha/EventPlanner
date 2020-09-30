@@ -53,7 +53,7 @@ public class BudgetDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Budget Info");
+        getSupportActionBar().setTitle("Budget Information");
         //disable nagivation  bar
         //getSupportActionBar().hide();
 

@@ -24,11 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="136dp"
         android:text="@string/b_name"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
 
     <TextView
         android:id="@+id/textView25"
@@ -61,6 +62,7 @@
         android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Price"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etASQty" />
@@ -98,6 +100,7 @@
         android:layout_marginEnd="56dp"
         android:background="#1A63DFEF"
         android:hint="Qty"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etASName" />
@@ -106,7 +109,7 @@
         android:id="@+id/button1"
         android:layout_width="101dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="56dp"
         android:backgroundTint="#3CAAC1"
         android:onClick="addSData"
