@@ -45,11 +45,7 @@ public class EventsMaster {
         }
     }
 
-//=======
-
-    /*public EventsMaster() {
-    }*/
-
+    //Initializing the column names of the Guest table
     public static class Guest implements BaseColumns{
 
         public static final String TABLE_NAME = "guest";
@@ -61,7 +57,7 @@ public class EventsMaster {
         public static final String COLUMN_NAME_GUEST_INVITED = "invited";
         public static final String COLUMN_NAME_GUEST_NOTE = "note";
         public static final String COLUMN_NAME_GUEST_EVENT_ID = "EmpID";
-//>>>>>>> Integration
+
 
     }
   
