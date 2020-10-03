@@ -1,3 +1,4 @@
+// This is the class use for display all Guest records related to the specific event
 package com.example.eventplanner;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,7 @@ public class GuestHome extends AppCompatActivity {
     public GuestHome() {
     }
 
+    //This is the onCreate function in GuestHome class
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,27 +56,29 @@ public class GuestHome extends AppCompatActivity {
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
 
+        //Call to a function by a reference of the View class
         Total = findViewById(R.id.idGuestCount);
         Invited = findViewById(R.id.idGuestInvited);
         NotInvited = findViewById(R.id.idGuestNotInvited);
-
         delete = findViewById(R.id.idDeleteBtn);
         context = this;
         dbGuest = new DBHelper(context);
         guestList = findViewById(R.id.guestList);
         guests = new ArrayList<>();
-
         guests = dbGuest.readAllGuest(eid);
 
+        //This is an object created by GuestAdapter class
         GuestAdapter adapter = new GuestAdapter(context,R.layout.single_guest,guests);
 
         guestList.setAdapter(adapter);
 
+        //calling the totalGuest function to get the count of guests in a specific event
         total = dbGuest.totalGuest(eid);
+        //calling the invitedGuest function to get the count of invited guests in a specific event
         invited = dbGuest.invitedGuest(eid);
-
+        //calling the invitedGuest function to calculate Not_invited guests in a specific event
         notInvited = GuestNotInvited(total,invited);
-
+        //Display the details in the View page
         Total.setText(String.valueOf("Total : " + total));
         Invited.setText(String.valueOf("Invited : " + invited));
         NotInvited.setText(String.valueOf("Not Invited : " + notInvited));
@@ -82,7 +86,7 @@ public class GuestHome extends AppCompatActivity {
 
 
     }
-
+    //This code segment is required to display the navigation bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -91,6 +95,7 @@ public class GuestHome extends AppCompatActivity {
 
     }
 
+    //This code segment is required to functioning the Navigation Bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -177,6 +182,7 @@ public class GuestHome extends AppCompatActivity {
 
     }
 
+    //This function is required to calculate the total number of guests which are not invited to the event
     public int GuestNotInvited(int x , int y){
 
         int notinvited = x - y;

@@ -20,6 +20,7 @@ import static android.service.controls.ControlsProviderService.TAG;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    //Declaring the database
     public static final String DATABASE_NAME = "EventPlanner.db";
 
 
@@ -69,6 +70,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_TASKS); //execute content of sql entries
 
+        //Implementing the Guest table inside the database
         String SQL_CREATE_ENTRIES_GUESTS =
                 "CREATE TABLE " + EventsMaster.Guest.TABLE_NAME + "(" +
                         EventsMaster.Guest._ID + " INTEGER PRIMARY KEY," +
@@ -81,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         EventsMaster.Guest.COLUMN_NAME_GUEST_NOTE + " TEXT," +
                         EventsMaster.Guest.COLUMN_NAME_GUEST_EVENT_ID + " INTEGER)";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_GUESTS);
+        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_GUESTS); //execute content of sql entries
 
         String SQL_CREATE_ENTRIES_EVENTS =
                 "CREATE TABLE " + EventsMaster.Events.TABLE_NAME + " (" +
@@ -293,10 +295,13 @@ public class DBHelper extends SQLiteOpenHelper {
     //ISIRA - DATABASE
     ////////////////////
 
+    //This function is required to add a new Guest record to the application
     public long addInfo_guest(String guestName, String guestGender, String guestAge, String guestContact, String guestEmail, int guestInvited, String guestNote, int eID) {
 
+        //Gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
 
+        //Create a new map of values, where column names the keys
         ContentValues values = new ContentValues();
         values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_NAME, guestName);
         values.put(EventsMaster.Guest.COLUMN_NAME_GUEST_GENDER, guestGender);
@@ -313,14 +318,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //This function is required to fetch all Guest records from the database
     public List<GuestModel> readAllGuest(String eid) {
 
         List<GuestModel> guests = new ArrayList<>();
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_EVENT_ID + "=" + eid;
-
-        //Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
 
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
@@ -343,6 +347,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return guests;
     }
 
+    //This function is required to delete a Guest record from the database
     public void deleteGuest(int id){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
@@ -353,6 +358,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //This function is required to select a specific Guest record from the database
     public GuestModel readSelectedGuest(int id) {
 
 
@@ -391,6 +397,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    //This function is required to Update a specific Guest record
     public int updateGuest(GuestModel guest){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -411,6 +418,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //This function is required to calculate the total number of Guest related to specific event.
     public int totalGuest(String eID){
 
         System.out.println("DBHADLER EMPID " + eID);
@@ -423,6 +431,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //This function is required to calculate the total number of invited Guest related to specific event.
     public int invitedGuest(String eID){
 
         SQLiteDatabase db = getReadableDatabase();

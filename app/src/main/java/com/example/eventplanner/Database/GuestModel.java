@@ -1,7 +1,9 @@
+// This is the class use to initialize the constructors
 package com.example.eventplanner.Database;
 
 public class GuestModel {
 
+        //Declaring the variables relative to the columns in the Guest table
         private int guestID;
         private String guestName,guestGender,guestAge,guestContact,guestEmail;
         private int guestCheck;
@@ -20,6 +22,7 @@ public class GuestModel {
         EID = eID;
     }
 
+    //Default constructor of the GuestModel class
     public GuestModel() {
     }
 
@@ -44,6 +47,7 @@ public class GuestModel {
         this.guestNote = guestNote;
     }
 
+    //Initializing the getters and setter
     public int getGuestID() {
         return guestID;
     }

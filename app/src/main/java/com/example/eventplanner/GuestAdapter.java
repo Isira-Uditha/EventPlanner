@@ -1,3 +1,4 @@
+//This is the GuestAdapter class
 package com.example.eventplanner;
 
 import android.content.Context;
@@ -44,6 +45,7 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
         LayoutInflater inflater = LayoutInflater.from(context);
         View row = inflater.inflate(resource,parent,false);
 
+        //Call to a function by a reference of the View class
         TextView title = row.findViewById((R.id.title));
         TextView description = row.findViewById(R.id.idDescription);
         ImageView imageView = row.findViewById(R.id.idCheck);
@@ -51,21 +53,24 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
         ImageButton delete = row.findViewById(R.id.idDeleteBtn);
         TextView taskView = row.findViewById((R.id.idTaskName));
 
-
+        //Get the positions of all records in the Guest table
         final GuestModel g_model = guests.get(position);
         taskView.setText(g_model.getGuestName());
         description.setText(g_model.getGuestContact());
+        //Make image view of the check icon invisible to the user
         imageView.setVisibility(row.INVISIBLE);
 
         if(g_model.getGuestCheck() > 0){
             imageView.setVisibility(View.VISIBLE);
         }
 
+        //This onclickListener is required to call the deleteGuest function
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 dbGuest = new DBHelper(context);
+                //calling deleteGuest function
                 dbGuest.deleteGuest(g_model.getGuestID());
                 Intent myIntent = new Intent(context,GuestHome.class);
                 context.startActivity(myIntent);
@@ -74,10 +79,12 @@ public class GuestAdapter extends ArrayAdapter<GuestModel> {
             }
         });
 
+        //This onclickListener is required to call when the user click the edit icon
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //This is required to navigate the user to the GuestEdit class
                 Intent intent = new Intent(context , GuestEdit.class);
                 intent.putExtra("id",String.valueOf(g_model.getGuestID()));
                 intent.putExtra("g_name",g_model.getGuestName());

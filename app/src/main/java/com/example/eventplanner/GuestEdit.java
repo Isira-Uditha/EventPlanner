@@ -1,3 +1,4 @@
+// This is the class use for Edit a Guest record
 package com.example.eventplanner;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
     String title;
 
 
+    //This is the onCreate function in GuestEdit class
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         context = this;
         dbGuest = new DBHelper(context);
 
+        //Call to a function by a reference of the View class
         btn1 = (Button) findViewById(R.id.button2);
         guest_Name = findViewById(R.id.guest_Name);
         guest_Contact = findViewById(R.id.guest_Contact);
@@ -63,21 +66,12 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
        // guest_Age.setEnabled(false);
 
 
-        /*Spinner spinner1 = findViewById(R.id.spinner1);
-        Spinner spinner2 = findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.Spinner_Gender, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter1);
-        spinner1.setOnItemSelectedListener(this);
-
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.Spinner_Age, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
-        spinner2.setOnItemSelectedListener(this);*/
-
         final String id = getIntent().getStringExtra("id");
+
+        //Calling the readSelectedGuest function to fetch details of the selected Guest
         GuestModel guest = dbGuest.readSelectedGuest(Integer.parseInt(id));
 
+        //Display those details in the View page
         guest_Name.setText(guest.getGuestName());
         guest_Contact.setText(guest.getGuestContact());
         guest_Email.setText(guest.getGuestEmail());
@@ -103,6 +97,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
 
     }
 
+    //This is the onResume function in GuestAdd class
     @Override
     protected void onResume() {
         super.onResume();
@@ -111,10 +106,13 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
             public void onClick(View view) {
                 final String id = getIntent().getStringExtra("id");
                 final String title = getIntent().getExtras().getString("g_name");
+
+                //Directing the user to GuestUpdate View
                 Intent intent = new Intent(GuestEdit.this,GuestUpdate.class);
                 intent.putExtra("id",id);
                 intent.putExtra("title",title);
 
+                //This code segment is required to display a toast message when click the Edit button
                 Context context = getApplicationContext();
                 CharSequence text = context.getString(R.string.g_toast_edit);
                 int duration = Toast.LENGTH_SHORT;
@@ -127,6 +125,7 @@ public class GuestEdit extends AppCompatActivity implements AdapterView.OnItemSe
         });
     }
 
+    //This code segment is required to functioning the Navigation Bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 

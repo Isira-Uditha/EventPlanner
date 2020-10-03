@@ -1,3 +1,4 @@
+// This is the class use for Update a Guest record
 package com.example.eventplanner;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
     String compareValueGender;
     String compareValueAge;
 
+    //This is the onCreate function in GuestUpdate class
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,8 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
         context = this;
         dbGuest = new DBHelper(context);
+
+        //Call to a function by a reference of the View class
         guest_Name = findViewById(R.id.guest_Name);
         guest_Contact = findViewById(R.id.guest_Contact);
         guest_Email = findViewById(R.id.guest_Email);
@@ -74,7 +78,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
         compareValueGender = guest.getGuestGender();
         compareValueAge = guest.getGuestAge();
-//Spinner Gender
+        //Spinner Gender
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.Spinner_Gender, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter1);
@@ -83,7 +87,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
             spinner1.setSelection(spinnerPosition);
         }
         spinner1.setOnItemSelectedListener(this);
-//Spinner Age
+        //Spinner Age
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.Spinner_Age, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
@@ -117,7 +121,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
 
 
-
+        //Display the details in the View page
         guest_Name.setText(guest.getGuestName());
         guest_Contact.setText(guest.getGuestContact());
         guest_Email.setText(guest.getGuestEmail());
@@ -154,6 +158,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
                 boolean allowSave = true;
 
+                //This is a validation used for the Guest name
                 if(inputValidatorHelper.isNullOrEmpty(guest_Name.getText().toString())){
 
                     // errMsg.append("Task Name Should not be Empty.\n");
@@ -162,7 +167,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
                 }
 
-
+                //This is a validation used for the Contact number
                 if(inputValidatorHelper.ischeckContact(guest_Contact.getText().toString())){
 
                     // errMsg.append("Task Name Should not be Empty.\n");
@@ -173,6 +178,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
                 }
 
+                //This is a validation used for the Email address
                 if(!inputValidatorHelper.isValidGuestEmail(guest_Email.getText().toString())){
 
                     // errMsg.append("Task Name Should not be Empty.\n");
@@ -191,28 +197,17 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
                 int g_invited = checked;
                 int id1 = Integer.parseInt(id);
 
+                //This condition statement is check whether the allowSave is True
                 if(allowSave) {
 
-
                     GuestModel guest = new GuestModel(id1, g_name, g_gender, g_age, g_contact, g_email, g_invited, g_note);
+                    //calling the updateGuest function
                     int status = dbGuest.updateGuest(guest);
-                    //System.out.println("xxxxxxxxxxxxxx" + status);
                     startActivity(new Intent(context, GuestHome.class));
 
                 }
 
 
-
-                /*Intent intent = new Intent(GuestUpdate.this,GuestEdit.class);
-
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.g_toast_update);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
-                toast.show();
-
-                startActivity(intent);*/
             }
         });
     }
@@ -235,6 +230,7 @@ public class GuestUpdate extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+    //This code segment is required to functioning the Navigation Bar
     @Override
     public boolean onOptionsItemSelected (@NonNull MenuItem item){
 
