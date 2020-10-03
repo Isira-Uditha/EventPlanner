@@ -1,3 +1,4 @@
+//This class is to take the user input values and inserts those are into the database
 package com.example.eventplanner;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.example.eventplanner.Database.DBHelper;
 
 public class AddTask extends AppCompatActivity {
 
+    //Create objects of the elements that are used in the xml file
     Button b1;
     EditText taskName , date , time , description;
     CheckBox addFinished;
@@ -27,13 +29,12 @@ public class AddTask extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_add_task);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Add Task");
+
 
         b1 = (Button)findViewById(R.id.idAddButton);
         taskName = (EditText)findViewById(R.id.idAddTaskName);
@@ -42,6 +43,7 @@ public class AddTask extends AppCompatActivity {
         description = (EditText)findViewById(R.id.idAddDescription);
         addFinished = (CheckBox)findViewById(R.id.idAddFinished);
 
+        //Set the check button values.If user checks the button, checked will be equal to 1.
         addFinished.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -54,57 +56,40 @@ public class AddTask extends AppCompatActivity {
             }
         });
 
-       /* b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(AddTask.this , MainActivity.class);
-
-                Context context = getApplicationContext();
-                CharSequence text = context.getString(R.string.toast_add);
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context,text,duration);
-                toast.show();
-
-                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
-
-                startActivity(intent);
-            }
-        });*/
-
-
-
-
     }
 
+    //This function executes when user clicks the Add button in the view
     public void addData(View view){
 
         DBHelper dbHelper = new DBHelper(this);
+
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
 
         InputValidatorHelper inputTaskValidatorHelper = new InputValidatorHelper();
-       // StringBuilder errMsg = new StringBuilder("Unable to save.Please fix the following errors and try again");
+
 
         //Validate and Save
         boolean allowSave = true;
+        //Validate the taskName.It should not be null
         if(inputTaskValidatorHelper.isNullOrEmpty(taskName.getText().toString())){
 
-           // errMsg.append("Task Name Should not be Empty.\n");
+
             Toast.makeText(this, "Task Name Should not be Empty", Toast.LENGTH_SHORT).show();
             allowSave = false;
 
         }
 
+        //Validate the taskName.Task Name should be has at least 5 characters.
         if(inputTaskValidatorHelper.ischeckText(taskName.getText().toString())){
 
-            // errMsg.append("Task Name Should not be Empty.\n");
+
             Toast.makeText(this, "Task Name Should be more than 5 characters", Toast.LENGTH_SHORT).show();
             allowSave = false;
 
         }
 
-
+        //Validate the description.Description should not be null.
         if(inputTaskValidatorHelper.isNullOrEmpty(description.getText().toString())){
             Toast.makeText(this, "Description Should Not Be Empty", Toast.LENGTH_SHORT).show();
             allowSave = false;
@@ -112,15 +97,14 @@ public class AddTask extends AppCompatActivity {
 
         if(allowSave) {
 
+            //Call to the addInfo function inside the DBHelper to inserts the  data that are entered bu user into the database
             long value = dbHelper.addInfo(taskName.getText().toString(), date.getText().toString(), time.getText().toString(), description.getText().toString(), checked, Integer.parseInt(eid));
 
 
             if (value > 0) {
                 Intent intent = new Intent(AddTask.this, TaskHome.class);
                 Toast.makeText(this, "Data successfully inserted", Toast.LENGTH_SHORT).show();
-                //List unames = dbHelper.readInfo("tasks");
 
-                // Toast.makeText(this,  unames.toString(),Toast.LENGTH_SHORT).show();
                 startActivity(intent);
 
 
@@ -143,13 +127,15 @@ public class AddTask extends AppCompatActivity {
 
         int id = item.getItemId();
 
+        //If user clicks on the back button
         if(id == android.R.id.home){
 
             Intent intent = new Intent(AddTask.this,TaskHome.class);
 
             startActivity(intent);
-
         }
+
+        //If user clicks on the cross button in the top right corner of AddTask interface
         if(id == R.id.cancel){
 
             finish();

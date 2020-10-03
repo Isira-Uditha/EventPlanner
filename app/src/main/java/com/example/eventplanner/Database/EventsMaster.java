@@ -8,8 +8,10 @@ public class EventsMaster {
     public EventsMaster() {
     }
 
+    //This static class for the Task table in the Database.
     public static class Tasks implements BaseColumns{
 
+        //Define the column names of the Task Table
         public static final String TABLE_NAME = "tasks";
         public static final String COLUMN_NAME_TASK_NAME= "taskName";
         public static final String COLUMN_NAME_DATE="date";
@@ -77,6 +79,7 @@ public class EventsMaster {
       }
 
       //Anuththara's
+      //This static class for the Budget table in the Database.
       public static class Budgets implements BaseColumns{
           public static final String TABLE_NAME="budget";
           public static final String COLUMN_NAME_EBNAME="bname";
@@ -86,6 +89,8 @@ public class EventsMaster {
           public static final String COLUMN_NAME_EMP_ID="emp";
 
       }
+
+    //This static class for the Shopping List table in the Database.
     public static class Shoppings implements  BaseColumns{
         public static final  String TABLE_SNAME="shopping";
         public static final String COLUMN_NAME_SNAME="sname";

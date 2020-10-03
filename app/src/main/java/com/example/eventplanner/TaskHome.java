@@ -23,6 +23,7 @@ import java.util.List;
 
 public class TaskHome extends AppCompatActivity {
 
+    //Create objects of the elements that are used in the xml file
     private ListView taskView;
     private TextView count , completed , incompleted;
     Context context;
@@ -36,33 +37,38 @@ public class TaskHome extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("To Do List");
+
         SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
         String eid = prf.getString("eid", "No ID");
 
         context = this;
         dbHelper = new DBHelper(context);
+
         taskView = (ListView)findViewById(R.id.idTaskView);
         count = (TextView)findViewById(R.id.idTaskCount);
         completed = (TextView)findViewById(R.id.idTaskCompleted);
         incompleted = (TextView)findViewById(R.id.idTaskIncompleted);
+
         tasks = new ArrayList<>();
 
+        //Call to the readAll function that is in the DBHelper class to get the task records in the table
         tasks = dbHelper.readAll(eid);
+
+        //Assign the tasks into the adapter view
         TasksAdapter adapter = new TasksAdapter(context , R.layout.single_task, tasks);
         taskView.setAdapter(adapter);
 
-        //get the number of tasks from the table
+        //count the all tasks from the table by calling countTasks method inside the DBHelper class
         int countTasks = dbHelper.countTasks(eid);
-        count.setText("Total: "+countTasks);
+        count.setText("Total: "+countTasks);//Set the number of tasks into the text View
 
+        //count the tasks that are completed by calling the completedTasks method inside the DBHelper class
         int completedTasks = dbHelper.countFinished(1,eid);
         completed.setText("Completed:"+completedTasks);
 
+        //count the tasks that are not done up to now by calling the TasksToDo method inside the TaskHome.java(this class)
         int ToDo = TasksToDo(countTasks , completedTasks);
         incompleted.setText("Incompleted: " + ToDo);
-
-
-
 
     }
 
@@ -79,6 +85,7 @@ public class TaskHome extends AppCompatActivity {
 
         int id = item.getItemId();
 
+        //When click on the Add button in the interface user navigates to the Add task interface
         if(id == R.id.add){
 
             Intent intent = new Intent(TaskHome.this,AddTask.class);
@@ -95,15 +102,15 @@ public class TaskHome extends AppCompatActivity {
             startActivity(intent);
         }
 
+        //If user clicks on back button it navigates to the EventHome interface
         if(id == android.R.id.home){
 
             Intent intent = new Intent(TaskHome.this,EventHome.class);
+
+            //Passed the selected Event Id of the task
             SharedPreferences prf = getSharedPreferences("eid",MODE_PRIVATE);
             String eid = prf.getString("eid", "No ID");
             intent.putExtra("id",eid);
-           // final String id1 = getIntent().getStringExtra("id");
-           // intent.putExtra("id",id1);
-
 
             startActivity(intent);
 
@@ -113,6 +120,7 @@ public class TaskHome extends AppCompatActivity {
         return true;
     }
 
+    //Calculates the amount of tasks that are not done
     public int TasksToDo(int allTasks , int completedTasks){
 
         int toDo = allTasks - completedTasks;

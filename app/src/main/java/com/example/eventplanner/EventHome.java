@@ -112,7 +112,6 @@ public class EventHome extends AppCompatActivity {
             }
         });
 
-
         taskHome = (Button) findViewById(R.id.button8);
         taskProgress = (ProgressBar) findViewById(R.id.idprogressBarTask);
         showCount = (TextView)findViewById(R.id.idShowCountTasks);
@@ -121,12 +120,15 @@ public class EventHome extends AppCompatActivity {
         //context = this;
         dbHelper = new DBHelper(context);
 
+        //count the all tasks from the table by calling countTasks method inside the DBHelper class
        int countTasks = dbHelper.countTasks(eid);
-       taskProgress.setMax(countTasks);
 
-      int finished = dbHelper.countFinished(1 , eid);
+       taskProgress.setMax(countTasks);//According to the amount of counted tasks , sets the maximum level of the progress bar
 
-      taskProgress.setProgress(finished);
+        //count the tasks that are completed by calling the completedTasks method inside the DBHelper class
+       int finished = dbHelper.countFinished(1 , eid);
+
+      taskProgress.setProgress(finished);//According to the amount of completed tasks , sets the progress of the progress bar
 
       showCount.setText(finished + "/" + countTasks);
 
@@ -190,7 +192,8 @@ public class EventHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-      
+
+        //When user clicks on task  button inside EventHome, user navigates to the TaskHome page
               taskHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

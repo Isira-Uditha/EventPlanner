@@ -1,7 +1,9 @@
+//This is the model class for the Task table in the Database
 package com.example.eventplanner.Database;
 
 public class Task {
 
+    //Declare variables relative to the columns in the Task table
     private int id;
     private String taskName , description;
     private int finished;
@@ -11,6 +13,7 @@ public class Task {
     public Task() {
     }
 
+    //Overloaded Constructor without id and eventId variables
     public Task(String taskName, String description, String date, int finished, String time) {
         this.taskName = taskName;
         this.description = description;
@@ -19,6 +22,7 @@ public class Task {
         this.time = time;
     }
 
+    //Overloaded Constructor without eventId variable
     public Task(int id, String taskName,String date,String time, String description, int finished) {
         this.id = id;
         this.taskName = taskName;
@@ -29,6 +33,7 @@ public class Task {
 
     }
 
+    //Overloaded Constructor with all declared variables
     public Task(int id, String taskName,String date,String time, String description, int finished , int eventId) {
         this.id = id;
         this.taskName = taskName;
@@ -39,6 +44,8 @@ public class Task {
         this.eventId = eventId;
 
     }
+
+    //Setters and Getter for the all variables
 
     public int getId() {
         return id;

@@ -1,4 +1,6 @@
+//This class for Edit Task
 package com.example.eventplanner;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import com.example.eventplanner.Database.Task;
 
 public class EditTask extends AppCompatActivity {
 
+    //Create objects of the elements that are used in the xml file
     Button b1;
     TextView editDescription , editTime;
     CheckBox editFinished;
@@ -32,9 +35,8 @@ public class EditTask extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // getSupportActionBar().setTitle(R.string.task1);
+
 
         context = this;
         dbHelper = new DBHelper(context);
@@ -45,14 +47,18 @@ public class EditTask extends AppCompatActivity {
         editDate = (TextView)findViewById(R.id.idEditDate);
         editTime = (TextView)findViewById(R.id.idEditTime);
         editFinished = (CheckBox) findViewById(R.id.idEditFinished);
+
+        //Set the checkBox as not clickable to the user since this page is only retrieve the task details and can not be changed
         editFinished.setClickable(false);
 
 
         final String id = getIntent().getStringExtra("id");
 
+        //Call the getSingleTask function in the DBHelper class to retrieve a task details
         final Task task = dbHelper.getSingleTask(Integer.parseInt(id));
 
         getSupportActionBar().setTitle(task.getTaskName());
+
         editTaskName.setText(task.getTaskName());
         editDescription.setText(task.getDescription());
         editDate.setText(task.getDate());
@@ -62,11 +68,12 @@ public class EditTask extends AppCompatActivity {
 
 
 
-
+        //If the task is done the value of the checkId is greater than 0.If it is Checkbox marked as checked
         if(checkId > 0){
 
             editFinished.setChecked(true);
         }
+
         System.out.println(id);
         System.out.println(task.getDescription());
         System.out.println(task.getFinished());
@@ -75,10 +82,12 @@ public class EditTask extends AppCompatActivity {
 
 
 
-
+        //This executes when user clicks on Edit button in the EditTask interface
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //User navigates to the UpdateTask interface
                 Intent intent = new Intent(EditTask.this , UpdateTask.class);
                 intent.putExtra("id",String.valueOf(task.getId()));
 

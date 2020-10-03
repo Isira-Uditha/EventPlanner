@@ -1,3 +1,4 @@
+//This is the model class for the Budget table in the Database
 package com.example.eventplanner;
 
 public class Budgets {

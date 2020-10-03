@@ -57,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        //Create the Task Table
         String SQL_CREATE_ENTRIES_TASKS =
                 "CREATE TABLE " + EventsMaster.Tasks.TABLE_NAME + " (" +
                         COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
@@ -125,7 +126,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-
+    //Insert Tasks Information to the database
     public long addInfo(String taskName , String date , String time , String description , int finished , int eventId){
 
         //Gets the data repository in write mode
@@ -152,27 +153,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Calculates the amount of all Tasks
     public int countTasks(String eventId){
 
         SQLiteDatabase db = getReadableDatabase();
      //   String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
         Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
 
-      //  Cursor cursor = db.rawQuery(query,null);
         return cursor.getCount();
     }
 
+    //Retrieve all Task Records
     public List<Task> readAll(String eventId){
 
         List<Task> tasks = new ArrayList();
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
 
-       // String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME;
-       // String query = "SELECT * FROM " + EventsMaster.Guest.TABLE_NAME + " WHERE " + EventsMaster.Guest.COLUMN_NAME_GUEST_EMP_ID + "=" + eid;
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
-       // Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 
+
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
 
         if(cursor.moveToFirst()) {
 
@@ -196,32 +196,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Delete a Task
     public void deleteTask(int id){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.delete(EventsMaster.Tasks.TABLE_NAME,COLUMN_NAME_ID+" =?",new String[]{String.valueOf(id)});
 
-        //sqLiteDatabase.delete(TABLE_NAME,COLUMN_NAME_TASK_NAME+" =?");
+
         sqLiteDatabase.close();
-
-        //Define 'where' part of query
-        //String selection = EventsMaster.Tasks._ID+ " LIKE ?" ;
-
-        //Specify arguments n placeholder order
-        // int[] selectionArgs = {id};
-
-        //Issue SQL statement
-        //sqLiteDatabase.delete( EventsMaster.Tasks._ID,selection, selectionArgs);
     }
 
-   /* public void deleteTask (SQLiteDatabase db , String deleted){
-        String selection = Contracts.achieveTaskClass.ID+" LIKE ?";
-        String[] selectionArgs = {deleted};
-        db.delete(Contracts.achieveTaskClass.ACHIEVETASK_TABLE,selection,selectionArgs);
-    }*/
 
-    //Get a single task
-
+    //Retrieve a Single Task
     public Task getSingleTask(int id){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor cursor =  sqLiteDatabase.query(EventsMaster.Tasks.TABLE_NAME, new String[] {COLUMN_NAME_ID,EventsMaster.Tasks.COLUMN_NAME_TASK_NAME,EventsMaster.Tasks.COLUMN_NAME_DATE,EventsMaster.Tasks.COLUMN_NAME_TIME,EventsMaster.Tasks.COLUMN_NAME_DESCRIPTION,EventsMaster.Tasks.COLUMN_NAME_FINISHED} ,COLUMN_NAME_ID + " =?",new String[]{String.valueOf(id)},null , null,null );
@@ -241,15 +227,9 @@ public class DBHelper extends SQLiteOpenHelper {
                     cursor.getString(4),
                     cursor.getInt(5)
 
-
-
-
             );
-
             return  task;
-
         }
-
         return  null;
 
     }
@@ -273,19 +253,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return status;
 
-
-
     }
 
+    //Calculates the amount of completed Tasks
     public int countFinished(int i , String eventId) {
 
         SQLiteDatabase db = getReadableDatabase();
-        //String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
         Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + " = ? AND " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + " =?",new String[]{String.valueOf(1),eventId});
-
-        // Cursor cursor = db.rawQuery(query,null);
-
-       // Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
         return cursor.getCount();
     }
 
@@ -685,6 +659,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Retrieve a single budget details
     public Budgets getSingleBudget(int id) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor cursor = sqLiteDatabase.query(EventsMaster.Budgets.TABLE_NAME, new String[]{COLUMN_NAME_ID, EventsMaster.Budgets.COLUMN_NAME_EBNAME, EventsMaster.Budgets.COLUMN_NAME_EBPADIDA, EventsMaster.Budgets.COLUMN_NAME_EBAMOUNT, EventsMaster.Budgets.COLUMN_NAME_EBNOTE,}, COLUMN_NAME_ID + " =?", new String[]{String.valueOf(id)}, null, null, null);
@@ -816,6 +791,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Calculates the summation of the whole budgets
     public int sumBudget(String eid) {
 
         SQLiteDatabase db = getReadableDatabase();
@@ -837,13 +813,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //Calculates the summation of the all paid amounts of the budget
     public int sumBPaid(String eid) {
 
         SQLiteDatabase db = getReadableDatabase();
         int total;
 
         //Cursor cursor = db.rawQuery("SELECT SUM( " + COLUMN_NAME_EBAMOUNT + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_EVENT_ID + "=?", new String[]{String.valueOf(eventId)});
-
         Cursor cursor = db.rawQuery("SELECT SUM(" + EventsMaster.Budgets.COLUMN_NAME_EBPADIDA + ") as Total FROM " + EventsMaster.Budgets.TABLE_NAME + " WHERE " +  EventsMaster.Shoppings.COLUMN_NAME_EMP_ID + " =?",new String[]{eid});
 
         if (cursor.moveToFirst()) {
@@ -857,6 +833,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return 0;
 
     }
+
+    //Calculates the summation of all item quantity in the shopping list
     public int sumShopping(String eid){
         SQLiteDatabase db = getReadableDatabase();
         int total ;
