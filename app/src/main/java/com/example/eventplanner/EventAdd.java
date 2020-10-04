@@ -1,3 +1,5 @@
+//This class is the EventAdd.java class.
+//Getting user inputs for all event details and insert it in the database is done by this class.
 package com.example.eventplanner;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import com.example.eventplanner.Database.DBHelper;
 
 public class EventAdd extends AppCompatActivity {
 
+    //create objects
     EditText etEventName,etEventDate,etEventTime,tietLocation,tietTheme,etDressCode,etPhotographer,etDescription;
     public String myExtra = "text";
     Button btn;
@@ -35,6 +38,7 @@ public class EventAdd extends AppCompatActivity {
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
         textView=findViewById(R.id.selectedtxt);
 
+        //link java button with xml button
         Button buttonApply = findViewById(R.id.choicebtn);
         buttonApply.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +51,7 @@ public class EventAdd extends AppCompatActivity {
             }
         });
 
-
+        //Call to a function by a reference of the View class
         etEventName=findViewById(R.id.etEventName);
         etEventDate=findViewById(R.id.etEventDate);
         etEventTime=findViewById(R.id.etEventTime);
@@ -60,6 +64,7 @@ public class EventAdd extends AppCompatActivity {
 
     }
 
+    //select the radio button option
     public void checkButton(View v){
         int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
@@ -67,13 +72,14 @@ public class EventAdd extends AppCompatActivity {
     }
 
 
-
+    //check the validations and display relevant toast messages.
     public void addData(View view){
         DBHelper dbevent = new DBHelper(this);
 
         InputValidatorHelper inputEventValidatorHelper = new InputValidatorHelper();
         boolean allowSave = true;
 
+        //validate the event name.Event name can not be null.
         if(inputEventValidatorHelper.isNullOrEmpty(etEventName.getText().toString())){
 
 
@@ -82,6 +88,7 @@ public class EventAdd extends AppCompatActivity {
 
         }
 
+        //validate the event name. There should have at least five characters.
         if(inputEventValidatorHelper.ischeckText(etEventName.getText().toString())){
 
 
@@ -90,6 +97,7 @@ public class EventAdd extends AppCompatActivity {
 
         }
 
+        //validate the location. It can not be null.
         if(inputEventValidatorHelper.isNullOrEmpty(tietLocation.getText().toString())){
 
 
@@ -98,7 +106,7 @@ public class EventAdd extends AppCompatActivity {
 
         }
 
-
+        //validate the event date. Event date can not be null.
         if(inputEventValidatorHelper.isNullOrEmpty(etEventDate.getText().toString())){
 
 
@@ -107,6 +115,7 @@ public class EventAdd extends AppCompatActivity {
 
         }
 
+        //validate the event time. It can not be null.
         if(inputEventValidatorHelper.isNullOrEmpty(etEventTime.getText().toString())){
 
 
@@ -141,6 +150,7 @@ public class EventAdd extends AppCompatActivity {
 
         int id = item.getItemId();
 
+        //click back arrow in the navigation bar
         if(id == android.R.id.home){
 
             Intent intent = new Intent(EventAdd.this,Home.class);
@@ -148,6 +158,8 @@ public class EventAdd extends AppCompatActivity {
             startActivity(intent);
 
         }
+
+        //click cross icon in the navigation bar
         if(id == R.id.cancel){
 
             finish();

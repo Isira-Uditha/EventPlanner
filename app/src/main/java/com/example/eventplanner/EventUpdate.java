@@ -1,3 +1,4 @@
+//This is the update event class
 package com.example.eventplanner;
 
 import android.content.Context;
@@ -21,10 +22,12 @@ import com.example.eventplanner.R;
 
 public class EventUpdate extends AppCompatActivity {
     public String myExtra = "text";
-    Button btn;
-    EditText updateEventName , updateDate , updateTime , updateLocation , updateTheme , updatePhotographer , updateDescription , updateDressCode ;
     private DBHelper dbevent;
     private Context context;
+
+    //create objects
+    Button btn;
+    EditText updateEventName , updateDate , updateTime , updateLocation , updateTheme , updatePhotographer , updateDescription , updateDressCode ;
     RadioGroup radioGroup;
     RadioButton radioButton1;
     RadioButton radioButton2;
@@ -91,6 +94,7 @@ public class EventUpdate extends AppCompatActivity {
 
     }
 
+    //select the location type that should be updated
     public void checkButton(View v){
         int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
@@ -101,6 +105,7 @@ public class EventUpdate extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        //executes by clicking the update button.
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +124,7 @@ public class EventUpdate extends AppCompatActivity {
                 String eventDescription = updateDescription.getText().toString();
                 String place = radioButton.getText().toString();
 
-
+                //check validations of the inserted data that are going to update
                 if (inputEventValidatorHelper.ischeckText(eventName)) {
 
 
@@ -166,6 +171,7 @@ public class EventUpdate extends AppCompatActivity {
                     int state = dbevent.updateSingleEvent(event);
                     System.out.println(state);
 
+                    //checking whether the data is successfully update by checking the state >0 and display the toast message.
                     if (state > 0) {
                         Intent intent = new Intent(context, EventHome.class);
                         intent.putExtra("id", id);

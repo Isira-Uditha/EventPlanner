@@ -1,3 +1,4 @@
+//This class is the EventsAdapter class.
 package com.example.eventplanner;
 
 import android.content.Context;
@@ -40,6 +41,7 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Databas
             LayoutInflater inflater = LayoutInflater.from(context);
             View row = inflater.inflate(resource,parent,false);
 
+            //creating object and reference the ids.
             TextView eventName = row.findViewById(R.id.eventDisplay);
             TextView description = row.findViewById((R.id.descriptionDisplay));
             ImageView completed = row.findViewById(R.id.completed);
@@ -54,6 +56,7 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Databas
            description.setText(event.getDescription());
            completed.setVisibility(row.INVISIBLE);
 
+            //executes when clicking the delete image button
            delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -68,7 +71,8 @@ public class EventsAdapter extends ArrayAdapter<com.example.eventplanner.Databas
                 }
             });
 
-         edit.setOnClickListener(new View.OnClickListener() {
+           //executes when clicking edit image button
+            edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 

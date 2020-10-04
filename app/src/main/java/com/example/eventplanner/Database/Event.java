@@ -1,15 +1,17 @@
 package com.example.eventplanner.Database;
-
+//This is the event model class
 public class Event {
 
+    //variable declaration
     private int id;
     private String eventName, date, time, location, theme, dressCode, photographer, description, place;
 
 
-
+    //default constructor
     public Event() {
     }
 
+    //overloaded constructor
     public Event(int id, String eventName, String date, String time, String location, String theme, String dressCode, String photographer,  String description, String place) {
         this.id = id;
         this.eventName = eventName;
@@ -25,6 +27,7 @@ public class Event {
 
     }
 
+    //overloaded constructor without id.
     public Event(String eventName, String date, String time, String location, String theme, String dressCode, String photographer, String description, String place) {
         this.eventName = eventName;
         this.date = date;
@@ -38,6 +41,7 @@ public class Event {
 
     }
 
+    //setters and getters for the variables.
     public int getId() {
         return id;
     }

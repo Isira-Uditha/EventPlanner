@@ -1,3 +1,4 @@
+//This page displays the list of event names with the description.
 package com.example.eventplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class Home extends AppCompatActivity {
 
+    //create objects
     ImageButton edit1;
     ImageButton edit2;
     public String myExtra = "text";
@@ -64,7 +66,7 @@ public class Home extends AppCompatActivity {
 
 
 
-
+        //executes when user clicks add event button.
         addBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
@@ -92,7 +94,7 @@ public class Home extends AppCompatActivity {
         super.onResume();
 
     }
-
+    //calculate the outdoor events.
     public int calculateOutdoor(int totalEvents , int indoorEvents){
 
         int outdoorEvents = totalEvents-indoorEvents;

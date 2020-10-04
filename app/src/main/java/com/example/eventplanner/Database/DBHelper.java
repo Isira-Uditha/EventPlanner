@@ -86,6 +86,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES_GUESTS); //execute content of sql entries
 
+        //creating the event table.
         String SQL_CREATE_ENTRIES_EVENTS =
                 "CREATE TABLE " + EventsMaster.Events.TABLE_NAME + " (" +
                         COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -417,7 +418,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-
+    //Add event details to the database
     public long addInfo_event(String eventName,String eventDate,String eventTime,String eventLocation,String eventTheme,String eventDresscode,String eventPhotographers,String eventDescription,String place){
         SQLiteDatabase db =getWritableDatabase();
 
@@ -436,7 +437,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return  newRowId;
     }
 
-
+    //retrieve all event details from the database
     public List<Event> readAllEvent(){
 
 
@@ -475,7 +476,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-
+    //counting the total number of events.
     public int countEvents(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -485,6 +486,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    //deleting details of the required event.
     public void deleteEvent(int id){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
@@ -526,7 +528,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
-
+    //updating details of the required event.
     public int updateSingleEvent(Event event){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -553,15 +555,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //count the Indoor events .
     public int countIndoor(String place) {
 
         SQLiteDatabase db = getReadableDatabase();
-        //String query = "SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE =?" + EventsMaster.Tasks.COLUMN_NAME_FINISHED +  String.valueOf(1);
         Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Events.TABLE_NAME + " WHERE " + EventsMaster.Events.COLUMN_NAME_PLACE + "=?" , new String[]{String.valueOf(place)});
-
-        // Cursor cursor = db.rawQuery(query,null);
-
-        // Cursor cursor = db.rawQuery("SELECT * FROM " + EventsMaster.Tasks.TABLE_NAME + " WHERE " + EventsMaster.Tasks.COLUMN_NAME_FINISHED + "=?", new String[]{String.valueOf(i)});
         return cursor.getCount();
     }
 

@@ -1,3 +1,4 @@
+//This class is the eventEdit.java class
 package com.example.eventplanner;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,9 @@ import android.widget.Toast;
 import com.example.eventplanner.Database.DBHelper;
 
 public class EventEdit extends AppCompatActivity {
-    TextView etEventName,etEventDate,etEventTime,tietLocation,tietTheme,etDressCode,etPhotographer,etDescription , etLocationType;
 
+    //create objects
+    TextView etEventName,etEventDate,etEventTime,tietLocation,tietTheme,etDressCode,etPhotographer,etDescription , etLocationType;
     public String myExtra = "text";
     Button btnedit;
     private DBHelper dbevent;
@@ -45,6 +47,7 @@ public class EventEdit extends AppCompatActivity {
         etLocationType = (TextView) findViewById(R.id.editLocationType);
 
         final String id = getIntent().getStringExtra("id");
+        //retrieve the event details by calling getSingleEvent function in dbHelper class.
         final com.example.eventplanner.Database.Event event = dbevent.getSingleEvent(Integer.parseInt(id));
         getSupportActionBar().setTitle(event.getEventName());
 
@@ -59,6 +62,7 @@ public class EventEdit extends AppCompatActivity {
         etLocationType.setText(event.getPlace());
         System.out.println(id);
 
+        //Can execute By clicking edit button in the EventEdit interface.
         btnedit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
